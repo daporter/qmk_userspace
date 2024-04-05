@@ -81,6 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Custom shift keys.
  */
+
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
     { HD_HASH, KC_DLR  },
@@ -90,6 +91,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     { HD_QUOT, KC_EXLM },
     { HD_COMM, KC_SCLN },
     { HD_MINS, KC_PLUS },
+    { HD_BSPC, KC_DEL  },
     // clang-format on
 };
 
