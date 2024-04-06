@@ -103,8 +103,8 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 
 // clang-format off
 // Left top row.
-const uint16_t PROGMEM combo_HD_Q[]     = { HD_combo_keys_Q,            COMBO_END };
-const uint16_t PROGMEM combo_HD_Z[]     = { HD_combo_keys_Z,            COMBO_END };
+const uint16_t PROGMEM combo_HD_Q[]     = { HD_LT3, HD_LT2,             COMBO_END };
+const uint16_t PROGMEM combo_HD_Z[]     = { HD_LT2, HD_LT1,             COMBO_END };
 const uint16_t PROGMEM combo_APP[]      = { HD_LT1, HD_LT0,             COMBO_END };
 // Right top row.
 const uint16_t PROGMEM combo_EQL[]      = { HD_RT1, HD_RT2,             COMBO_END };
@@ -114,7 +114,7 @@ const uint16_t PROGMEM combo_ESC[]      = { HD_LM3, HD_LM2,             COMBO_EN
 const uint16_t PROGMEM combo_STAB[]     = { HD_LM3, HD_LM2, HD_LM1,     COMBO_END };
 const uint16_t PROGMEM combo_TAB[]      = { HD_LM2, HD_LM1,             COMBO_END };
 // Right middle row.
-const uint16_t PROGMEM combo_HD_SCLN[]  = { HD_combo_keys_SCLN,         COMBO_END };
+const uint16_t PROGMEM combo_HD_SCLN[]  = { HD_RM0, HD_RM1,             COMBO_END };
 // Mixed middle row.
 const uint16_t PROGMEM combo_CAPS[]     = { HD_LM2, HD_RM2,             COMBO_END };
 const uint16_t PROGMEM combo_CAPW[]     = { HD_LM1, HD_RM1,             COMBO_END };

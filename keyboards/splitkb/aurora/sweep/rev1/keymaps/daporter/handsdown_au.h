@@ -17,9 +17,8 @@
 #ifndef HANDSDOWN_AU_H
 #define HANDSDOWN_AU_H
 
-/*
-  First, define HD alpha keycodes with any hold-taps/custom keycodes.
-*/
+// Define HD alpha keycodes with any hold-taps/custom keycodes.
+
 // clang-format off
 #define HD_A RSFT_T(KC_A)
 #define HD_B KC_B
@@ -70,7 +69,7 @@
 // ╰───────────╮ bsp  T  │   │ spc  ret ╭──────────╯
 //             ╰─────────╯   ╰──────────╯
 //
-// Q & Z are on the sym layer and accessible combos (defined below).
+// Q & Z are available via combos.
 
 #define HD_LT4 HD_J
 #define HD_LT3 HD_G
@@ -110,14 +109,6 @@
 #define HD_RH1 HD_SPC
 #define HD_RH2 HD_ENT
 
-/*
-  Key combos that are layout-dependent.  The combos are actually defined in
-  ‘combos.def’.
- */
-
-#define HD_combo_keys_Q         HD_G,    HD_M
-#define HD_combo_keys_Z         HD_M,    HD_P
-#define HD_combo_keys_SCLN      HD_COMM, HD_A
 // clang-format on
 
 #endif
