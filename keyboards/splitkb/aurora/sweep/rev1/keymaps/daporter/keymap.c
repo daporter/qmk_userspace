@@ -33,13 +33,13 @@ enum layers {
 };
 
 /*
-  Alpha Layer for a 34 key (3x5+2) form factor.
- ╭─────────────────────╮ ╭─────────────────────╮
- │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
- │ LM4 LM3 LM2 LM1 LM0 │ │ RT0 RM1 RM2 RM3 RM4 │
- │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
- ╰───────────╮ LH2 LH1 │ │ RH1 RH2 ╭───────────╯
-             ╰─────────╯ ╰─────────╯
+ * Alpha Layer for a 34 key (3x5+2) form factor.
+ * ╭─────────────────────╮ ╭─────────────────────╮
+ * │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+ * │ LM4 LM3 LM2 LM1 LM0 │ │ RT0 RM1 RM2 RM3 RM4 │
+ * │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+ * ╰───────────╮ LH2 LH1 │ │ RH1 RH2 ╭───────────╯
+ *             ╰─────────╯ ╰─────────╯
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -78,10 +78,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format on
 };
 
-/*
- * Custom shift keys.
- */
-
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
     { HD_HASH, KC_DLR  },
@@ -97,30 +93,22 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
-/*
- * Combos.
- */
-
 // clang-format off
-// Left top row.
 const uint16_t PROGMEM combo_HD_Q[]     = { HD_LT3, HD_LT2,             COMBO_END };
 const uint16_t PROGMEM combo_HD_Z[]     = { HD_LT2, HD_LT1,             COMBO_END };
 const uint16_t PROGMEM combo_APP[]      = { HD_LT1, HD_LT0,             COMBO_END };
-// Right top row.
+
 const uint16_t PROGMEM combo_EQL[]      = { HD_RT1, HD_RT2,             COMBO_END };
 
-// Left middle row.
 const uint16_t PROGMEM combo_ESC[]      = { HD_LM3, HD_LM2,             COMBO_END };
 const uint16_t PROGMEM combo_STAB[]     = { HD_LM3, HD_LM2, HD_LM1,     COMBO_END };
 const uint16_t PROGMEM combo_TAB[]      = { HD_LM2, HD_LM1,             COMBO_END };
-// Right middle row.
+
 const uint16_t PROGMEM combo_HD_SCLN[]  = { HD_RM0, HD_RM1,             COMBO_END };
-// Mixed middle row.
+
 const uint16_t PROGMEM combo_CAPS[]     = { HD_LM2, HD_RM2,             COMBO_END };
 const uint16_t PROGMEM combo_CAPW[]     = { HD_LM1, HD_RM1,             COMBO_END };
 
-// Left bottom row.
-// Right bottom row.
 const uint16_t PROGMEM combo_UNDS[]     = { HD_RB1, HD_RB3,             COMBO_END };
 const uint16_t PROGMEM combo_TILD[]     = { HD_RB1, HD_RB4,             COMBO_END };
 // clang-format on
@@ -142,17 +130,15 @@ combo_t key_combos[] = {
     // clang-format on
 };
 
-/*
- * Achordion.
- */
-
 void matrix_scan_user(void) {
     achordion_task();
 }
 
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
-    // Consider the following chords as holds, even though they’re on the
-    // same hand in the Hands Down layout.
+    /*
+     * Allow same-hand chords if the held modifier is a thumb key, since I find
+     * them necessary.
+     */
     switch (tap_hold_keycode) {
         case HD_LH1:
         case HD_LH2:
@@ -161,7 +147,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
             return true;
     }
 
-    // Otherwise, follow the opposite hands rule.
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 

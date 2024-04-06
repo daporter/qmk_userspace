@@ -16,12 +16,14 @@
 
 #pragma once
 
-// Tap-hold configuration for home row mods.
+/* Tap-hold configuration for home row mods. */
 #define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM_PER_KEY
 
-// Enable the QK_MAKE key.  See:
-// https://docs.qmk.fm/#/quantum_keycodes?id=qmk-keycodes
+/*
+ * Enable the QK_MAKE key.  See:
+ * https://docs.qmk.fm/#/quantum_keycodes?id=qmk-keycodes
+ */
 #define ENABLE_COMPILE_KEYCODE

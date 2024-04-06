@@ -17,7 +17,7 @@
 #ifndef HANDSDOWN_AU_H
 #define HANDSDOWN_AU_H
 
-// Define HD alpha keycodes with any hold-taps/custom keycodes.
+/* Define HD alpha keycodes with any hold-taps/custom keycodes. */
 
 // clang-format off
 #define HD_A RSFT_T(KC_A)
@@ -58,18 +58,20 @@
 #define HD_BSPC LT(L_NAV, KC_BSPC)
 #define HD_ENT	LT(L_CFG, KC_ENT)
 
-// Place these HD keycodes on the keymap for variation independent spatial
-// referencing by key position.
-//
-// Base (alpha) layer Hands Down Gold (HRMs + thumb mods):
-// ╭─────────────────────╮   ╭─────────────────────╮
-// │  J   G   M   P   V  │   │  #$  .:  /*  "?  '! │
-// │  R   S   N   D   B  │   │  ,;  A   E   I   H  │
-// │  X   F   L   C   W  │   │  -+  U   O   Y   K  │
-// ╰───────────╮ bsp  T  │   │ spc  ret ╭──────────╯
-//             ╰─────────╯   ╰──────────╯
-//
-// Q & Z are available via combos.
+/*
+ * Place these HD keycodes on the keymap for variation independent spatial
+ * referencing by key position.
+ *
+ * Base (alpha) layer Hands Down Gold (HRMs + thumb mods):
+ * ╭─────────────────────╮   ╭──────────────────────╮
+ * │  J   G   M   P   V  │   │  #$  .:  /\*  "?  '! │
+ * │  R   S   N   D   B  │   │  ,;  A   E   I   H   │
+ * │  X   F   L   C   W  │   │  -+  U   O   Y   K   │
+ * ╰───────────╮ bsp  T  │   │ spc  ret ╭───────────╯
+ *             ╰─────────╯   ╰──────────╯
+ *
+ * Q & Z are available via combos.
+ */
 
 #define HD_LT4 HD_J
 #define HD_LT3 HD_G

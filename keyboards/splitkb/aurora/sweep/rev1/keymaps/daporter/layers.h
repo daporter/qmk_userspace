@@ -18,13 +18,13 @@
 #define LAYERS_H
 
 /*
-  L_SYM: Symbols and punctuation.
-  ╭─────────────────╮   ╭─────────────────╮
-  │  `  <  >  @  .  │   │  &  _  $  ?     │
-  │  !  -  +  =  #  │   │  |  {  (  [  %  │
-  │  :  /  *  ^  \  │   │  ~  }  )  ]     │
-  ╰──────────╮      │   │      ╭──────────╯
-             ╰──-───╯   ╰──────╯
+ * L_SYM: Symbols and punctuation.
+ * ╭─────────────────╮   ╭─────────────────╮
+ * │  `  <  >  @  .  │   │  &  _  $  ?     │
+ * │  !  -  +  =  #  │   │  |  {  (  [  %  │
+ * │  :  /  *  ^  \  │   │  ~  }  )  ]     │
+ * ╰──────────╮      │   │      ╭──────────╯
+ *            ╰──-───╯   ╰──────╯
  */
 
 #define LS_LT4 KC_GRV
@@ -66,14 +66,14 @@
 #define LS_RH2 _______
 
 /*
-  L_NUM: Function keys and numbers.
-  ╭───────────────────────╮   ╭─────────────────────╮
-  │  F9  F10 F11 F12 F13  │   │  /   7   8   9   -  │
-  │  F5  F6  F7  F8  F14  │   │  *   1   2   3   +  │
-  │  F1  F2  F3  F4  INS  │   │  ,   4   5   6   =  │
-  ╰────────────╮ ;  L_NAV │   │  0   . ╭────────────╯
-               ╰──────-───╯   ╰────────╯
-*/
+ * L_NUM: Function keys and numbers.
+ * ╭───────────────────────╮   ╭─────────────────────╮
+ * │  F9  F10 F11 F12 F13  │   │  /   7   8   9   -  │
+ * │  F5  F6  F7  F8  F14  │   │  *   1   2   3   +  │
+ * │  F1  F2  F3  F4  INS  │   │  ,   4   5   6   =  │
+ * ╰────────────╮ ;  L_NAV │   │  0   . ╭────────────╯
+ *              ╰──────-───╯   ╰────────╯
+ */
 
 #define LN_LT4 KC_F9
 #define LN_LT3 KC_F10
@@ -114,14 +114,14 @@
 #define LN_RH2 KC_DOT
 
 /*
-  L_NAV: Mouse and keyboard navigation.
- ╭──────────────────────────────────╮   ╭──────────────────────────────╮
- │ MB4    MB3   MB2    MB1    ←Win │   │ MAcc0   ⇱    ⇞    ⇟    ⇲  │
- │ ←M    ↑M    M↓    M→    Win→ │   │ MAcc1  ←    ↑    ↓    →   │
- │ ←MWh  ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  cut  copy  pste  undo │
- ╰────────────────────────╮         │   │           ╭──────────────────╯
-                          ╰─────────╯   ╰───────────╯
-*/
+ * L_NAV: Mouse and keyboard navigation.
+ * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
+ * │ MB4    MB3   MB2    MB1    ←Win │   │ MAcc0   ⇱    ⇞    ⇟    ⇲  │
+ * │ ←M    ↑M    M↓    M→    Win→ │   │ MAcc1  ←    ↑    ↓    →   │
+ * │ ←MWh  ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  cut  copy  pste  undo │
+ * ╰────────────────────────╮         │   │           ╭──────────────────╯
+ *                          ╰─────────╯   ╰───────────╯
+ */
 
 #define LV_LT4 KC_BTN4
 #define LV_LT3 KC_BTN2
@@ -162,14 +162,14 @@
 #define LV_RH2 KC_DOT
 
 /*
-  L_CFG: Keyboard configuration and media settings.
-  ╭─────────────────────────╮   ╭─────────────────────╮
-  │             RBT         │   │                     │
-  │  MAKE       vol↑ bri↑ │   │         mute        │
-  │  BOOT       vol↓ bri↓ │   │                     │
-  ╰──────────────╮          │   │         ╭───────────╯
-                 ╰──────────╯   ╰─────────╯
-*/
+ * L_CFG: Keyboard configuration and media settings.
+ * ╭─────────────────────────╮   ╭─────────────────────╮
+ * │             RBT         │   │                     │
+ * │  MAKE       vol↑ bri↑ │   │         mute        │
+ * │  BOOT       vol↓ bri↓ │   │                     │
+ * ╰──────────────╮          │   │         ╭───────────╯
+ *                ╰──────────╯   ╰─────────╯
+ */
 
 #define LC_LT4 _______
 #define LC_LT3 _______
