@@ -29,7 +29,7 @@
 #define HD_F KC_F
 #define HD_G KC_G
 #define HD_H RGUI_T(KC_H)
-#define HD_I RALT_T(KC_I)
+#define HD_I LALT_T(KC_I)
 #define HD_J KC_J
 #define HD_K KC_K
 #define HD_L KC_L
