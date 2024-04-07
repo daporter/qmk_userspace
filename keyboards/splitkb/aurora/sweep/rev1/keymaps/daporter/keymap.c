@@ -150,6 +150,23 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
+/*
+ * Implementation of a tap-or-long-press key.  Given a tap-hold keycode,
+ * replaces the hold behaviour with a tap of ‘lp_keycode’.
+ */
+static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keycode) {
+    /* Is the key being held? */
+    if (record->tap.count == 0) {
+        if (record->event.pressed) {
+            tap_code16(lp_keycode); /* Then just produce a tap of ‘lp_keycode’ */
+        };
+
+        return false; /* No further processing necessary */
+    }
+
+    return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_custom_shift_keys(keycode, record)) {
         return false;
@@ -157,6 +174,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (!process_achordion(keycode, record)) {
         return false;
+    }
+
+    switch (keycode) {
+        case LP_O_COPY:
+            return process_tap_or_long_press_key(record, LCTL(KC_C));
+        case LP_U_PASTE:
+            return process_tap_or_long_press_key(record, LCTL(KC_V));
     }
 
     return true;

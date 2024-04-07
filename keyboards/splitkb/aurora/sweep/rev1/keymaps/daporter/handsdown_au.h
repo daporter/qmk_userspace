@@ -17,7 +17,12 @@
 #ifndef HANDSDOWN_AU_H
 #define HANDSDOWN_AU_H
 
-/* Define HD alpha keycodes with any hold-taps/custom keycodes. */
+/* Custom keycodes */
+
+#define LP_O_COPY   LT(0, KC_O) /* O on tap, Copy on long press */
+#define LP_U_PASTE  LT(0, KC_U) /* UV on tap, Paste on long press */
+
+/* HD alpha keycodes with any hold-taps/custom keycodes. */
 
 // clang-format off
 #define HD_A RSFT_T(KC_A)
@@ -34,14 +39,14 @@
 #define HD_L KC_L
 #define HD_M KC_M
 #define HD_N LCTL_T(KC_N)
-#define HD_O KC_O
+#define HD_O LP_O_COPY
 #define HD_P KC_P
 #define HD_Q KC_Q
 #define HD_R LGUI_T(KC_R)
 #define HD_S LALT_T(KC_S)
 #define HD_T LT(L_NUM, KC_T)
-#define HD_U KC_U
 #define HD_V KC_V
+#define HD_U LP_U_PASTE
 #define HD_W KC_W
 #define HD_X KC_X
 #define HD_Y KC_Y
