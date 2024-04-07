@@ -28,36 +28,36 @@
  */
 
 #define LS_LT4 KC_GRV
-#define LS_LT3 KC_LABK
-#define LS_LT2 KC_RABK
+#define LS_LT3 KC_LEFT_ANGLE_BRACKET
+#define LS_LT2 KC_RIGHT_ANGLE_BRACKET
 #define LS_LT1 KC_AT
 #define LS_LT0 KC_DOT
-#define LS_RT0 KC_AMPR
-#define LS_RT1 KC_UNDS
-#define LS_RT2 KC_DLR
-#define LS_RT3 KC_QUES
+#define LS_RT0 KC_AMPERSAND
+#define LS_RT1 KC_UNDERSCORE
+#define LS_RT2 KC_DOLLAR
+#define LS_RT3 KC_QUESTION
 #define LS_RT4 _______
 
-#define LS_LM4 KC_EXLM
-#define LS_LM3 KC_MINS
+#define LS_LM4 KC_EXCLAIM
+#define LS_LM3 KC_MINUS
 #define LS_LM2 KC_PLUS
-#define LS_LM1 KC_EQL
+#define LS_LM1 KC_EQUAL
 #define LS_LM0 KC_HASH
 #define LS_RM0 KC_PIPE
-#define LS_RM1 KC_LCBR
-#define LS_RM2 KC_LPRN
-#define LS_RM3 KC_LBRC
-#define LS_RM4 KC_PERC
+#define LS_RM1 KC_LEFT_CURLY_BRACE
+#define LS_RM2 KC_LEFT_PAREN
+#define LS_RM3 KC_LEFT_BRACKET
+#define LS_RM4 KC_PERCENT
 
-#define LS_LB4 KC_COLN
-#define LS_LB3 KC_SLSH
-#define LS_LB2 KC_ASTR
-#define LS_LB1 KC_CIRC
-#define LS_LB0 KC_BSLS
-#define LS_RB0 KC_TILD
-#define LS_RB1 KC_RCBR
-#define LS_RB2 KC_RPRN
-#define LS_RB3 KC_RBRC
+#define LS_LB4 KC_COLON
+#define LS_LB3 KC_SLASH
+#define LS_LB2 KC_ASTERISK
+#define LS_LB1 KC_CIRCUMFLEX
+#define LS_LB0 KC_BACKSLASH
+#define LS_RB0 KC_TILDE
+#define LS_RB1 KC_RIGHT_CURLY_BRACE
+#define LS_RB2 KC_RIGHT_PAREN
+#define LS_RB3 KC_RIGHT_BRACKET
 #define LS_RB4 _______
 
 #define LS_LH2 _______
@@ -80,18 +80,18 @@
 #define LN_LT2 KC_F11
 #define LN_LT1 KC_F12
 #define LN_LT0 KC_F13
-#define LN_RT0 KC_SLSH
+#define LN_RT0 KC_SLASH
 #define LN_RT1 KC_7
 #define LN_RT2 KC_8
 #define LN_RT3 KC_9
-#define LN_RT4 KC_MINS
+#define LN_RT4 KC_MINUS
 
 #define LN_LM4 LGUI_T(KC_F5)
 #define LN_LM3 LALT_T(KC_F6)
 #define LN_LM2 LCTL_T(KC_F7)
 #define LN_LM1 LSFT_T(KC_F8)
 #define LN_LM0 KC_F14
-#define LN_RM0 KC_ASTR
+#define LN_RM0 KC_ASTERISK
 #define LN_RM1 RSFT_T(KC_1)
 #define LN_RM2 RCTL_T(KC_2)
 #define LN_RM3 RALT_T(KC_3)
@@ -101,14 +101,14 @@
 #define LN_LB3 KC_F2
 #define LN_LB2 KC_F3
 #define LN_LB1 KC_F4
-#define LN_LB0 KC_INS
-#define LN_RB0 KC_COMM
+#define LN_LB0 KC_INSERT
+#define LN_RB0 KC_COMMA
 #define LN_RB1 KC_4
 #define LN_RB2 KC_5
 #define LN_RB3 KC_6
-#define LN_RB4 KC_EQL
+#define LN_RB4 KC_EQUAL
 
-#define LN_LH2 KC_SCLN
+#define LN_LH2 KC_SEMICOLON
 #define LN_LH1 _______
 #define LN_RH1 KC_0
 #define LN_RH2 KC_DOT
@@ -123,41 +123,41 @@
  *                          ╰─────────╯   ╰───────────╯
  */
 
-#define LV_LT4 KC_BTN4
-#define LV_LT3 KC_BTN2
-#define LV_LT2 KC_BTN3
-#define LV_LT1 KC_BTN1
-#define LV_LT0 C(S(KC_TAB))
-#define LV_RT0 KC_ACL0
+#define LV_LT4 KC_MS_BTN4
+#define LV_LT3 KC_MS_BTN2
+#define LV_LT2 KC_MS_BTN3
+#define LV_LT1 KC_MS_BTN1
+#define LV_LT0 LCTL(LSFT(KC_TAB))
+#define LV_RT0 KC_MS_ACCEL0
 #define LV_RT1 KC_HOME
-#define LV_RT2 KC_PGUP
-#define LV_RT3 KC_PGDN
+#define LV_RT2 KC_PAGE_UP
+#define LV_RT3 KC_PAGE_DOWN
 #define LV_RT4 KC_END
 
-#define LV_LM4 KC_MS_L
-#define LV_LM3 KC_MS_U
-#define LV_LM2 KC_MS_D
-#define LV_LM1 KC_MS_R
-#define LV_LM0 C(KC_TAB)
-#define LV_RM0 KC_ACL1
+#define LV_LM4 KC_MS_LEFT
+#define LV_LM3 KC_MS_UP
+#define LV_LM2 KC_MS_DOWN
+#define LV_LM1 KC_MS_RIGHT
+#define LV_LM0 LCTL(KC_TAB)
+#define LV_RM0 KC_MS_ACCEL1
 #define LV_RM1 KC_LEFT
 #define LV_RM2 KC_UP
 #define LV_RM3 KC_DOWN
 #define LV_RM4 KC_RIGHT
 
-#define LV_LB4 KC_WH_L
-#define LV_LB3 KC_WH_U
-#define LV_LB2 KC_WH_D
-#define LV_LB1 KC_WH_R
-#define LV_LB0 C(S(KC_Z))
-#define LV_RB0 KC_ACL2
-#define LV_RB1 C(KC_X)
-#define LV_RB2 C(KC_C)
-#define LV_RB3 C(KC_V)
-#define LV_RB4 C(KC_Z)
+#define LV_LB4 KC_MS_WH_LEFT
+#define LV_LB3 KC_MS_WH_UP
+#define LV_LB2 KC_MS_WH_DOWN
+#define LV_LB1 KC_MS_WH_RIGHT
+#define LV_LB0 LCTL(LSFT(KC_Z))
+#define LV_RB0 KC_MS_ACCEL2
+#define LV_RB1 LCTL(KC_X)
+#define LV_RB2 LCTL(KC_C)
+#define LV_RB3 LCTL(KC_V)
+#define LV_RB4 LCTL(KC_Z)
 
-#define LV_LH2 LCTL_T(KC_BSPC)
-#define LV_LH1 LSFT_T(KC_ENT)
+#define LV_LH2 LCTL_T(KC_BACKSPACE)
+#define LV_LH1 LSFT_T(KC_ENTER)
 #define LV_RH1 KC_0
 #define LV_RH2 KC_DOT
 
@@ -174,7 +174,7 @@
 #define LC_LT4 _______
 #define LC_LT3 _______
 #define LC_LT2 _______
-#define LC_LT1 QK_RBT
+#define LC_LT1 QK_REBOOT
 #define LC_LT0 _______
 #define LC_RT0 _______
 #define LC_RT1 _______
@@ -185,8 +185,8 @@
 #define LC_LM4 QK_MAKE
 #define LC_LM3 _______
 #define LC_LM2 _______
-#define LC_LM1 KC_VOLU
-#define LC_LM0 KC_BRIU
+#define LC_LM1 KC_AUDIO_VOL_UP
+#define LC_LM0 KC_BRIGHTNESS_UP
 #define LC_RM0 _______
 #define LC_RM1 _______
 #define LC_RM2 KC_MUTE
@@ -196,16 +196,16 @@
 #define LC_LB4 QK_BOOT
 #define LC_LB3 _______
 #define LC_LB2 _______
-#define LC_LB1 KC_VOLD
-#define LC_LB0 KC_BRID
+#define LC_LB1 KC_AUDIO_VOL_DOWN
+#define LC_LB0 KC_BRIGHTNESS_DOWN
 #define LC_RB0 _______
 #define LC_RB1 _______
 #define LC_RB2 _______
 #define LC_RB3 _______
 #define LC_RB4 _______
 
-#define LC_LH2 KC_VOLD
-#define LC_LH1 KC_VOLU
+#define LC_LH2 KC_AUDIO_VOL_DOWN
+#define LC_LH1 KC_AUDIO_VOL_UP
 #define LC_RH1 _______
 #define LC_RH2 _______
 

@@ -80,14 +80,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
-    { HD_HASH, KC_DLR  },
-    { HD_DOT,  KC_COLN },
-    { HD_SLSH, KC_ASTR },
-    { HD_DQUO, KC_QUES },
-    { HD_QUOT, KC_EXLM },
-    { HD_COMM, KC_SCLN },
-    { HD_MINS, KC_PLUS },
-    { HD_BSPC, KC_DEL  },
+    { HD_HASH,          KC_DOLLAR  },
+    { HD_DOT,           KC_COLON },
+    { KC_SLASH,         KC_ASTERISK },
+    { KC_DOUBLE_QUOTE,  KC_QUESTION },
+    { KC_QUOTE,         KC_EXCLAIM },
+    { KC_COMMA,         KC_SEMICOLON },
+    { KC_MINUS,         KC_PLUS },
+    { KC_BACKSPACE,     KC_DELETE  },
     // clang-format on
 };
 
@@ -117,16 +117,16 @@ combo_t key_combos[] = {
     // clang-format off
     COMBO(combo_HD_Q,       KC_Q),
     COMBO(combo_HD_Z,       KC_Z),
-    COMBO(combo_APP,        KC_APP),
-    COMBO(combo_EQL,        KC_EQL),
-    COMBO(combo_ESC,        KC_ESC),
-    COMBO(combo_STAB,       S(KC_TAB)),
+    COMBO(combo_APP,        KC_APPLICATION),
+    COMBO(combo_EQL,        KC_EQUAL),
+    COMBO(combo_ESC,        KC_ESCAPE),
+    COMBO(combo_STAB,       LSFT(KC_TAB)),
     COMBO(combo_TAB,        KC_TAB),
-    COMBO(combo_HD_SCLN,    KC_SCLN),
-    COMBO(combo_CAPS,       KC_CAPS),
-    COMBO(combo_CAPW,       CW_TOGG),
-    COMBO(combo_UNDS,       KC_UNDS),
-    COMBO(combo_TILD,       KC_TILD),
+    COMBO(combo_HD_SCLN,    KC_SEMICOLON),
+    COMBO(combo_CAPS,       KC_CAPS_LOCK),
+    COMBO(combo_CAPW,       QK_CAPS_WORD_TOGGLE),
+    COMBO(combo_UNDS,       KC_UNDERSCORE),
+    COMBO(combo_TILD,       KC_TILDE),
     // clang-format on
 };
 

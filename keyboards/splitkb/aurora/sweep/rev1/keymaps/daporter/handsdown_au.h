@@ -47,16 +47,16 @@
 #define HD_Y KC_Y
 #define HD_Z KC_Z
 
-#define HD_HASH KC_HASH
-#define HD_DOT	KC_DOT
-#define HD_SLSH KC_SLSH
-#define HD_DQUO KC_DQUO
-#define HD_QUOT KC_QUOT
-#define HD_COMM KC_COMM
-#define HD_MINS KC_MINS
-#define HD_SPC	LT(L_SYM, KC_SPC)
-#define HD_BSPC LT(L_NAV, KC_BSPC)
-#define HD_ENT	LT(L_CFG, KC_ENT)
+#define HD_HASH         KC_HASH
+#define HD_DOT          KC_DOT
+#define HD_SLASH        KC_SLASH
+#define HD_DOUBLE_QUOTE KC_DOUBLE_QUOTE
+#define HD_QUOTE        KC_QUOTE
+#define HD_COMMA        KC_COMMA
+#define HD_MINUS        KC_MINUS
+#define HD_SPACE        LT(L_SYM, KC_SPACE)
+#define HD_BACKSPACE    LT(L_NAV, KC_BACKSPACE)
+#define HD_ENTER        LT(L_CFG, KC_ENTER)
 
 /*
  * Place these HD keycodes on the keymap for variation independent spatial
@@ -80,16 +80,16 @@
 #define HD_LT0 HD_V
 #define HD_RT0 HD_HASH
 #define HD_RT1 HD_DOT
-#define HD_RT2 HD_SLSH
-#define HD_RT3 HD_DQUO
-#define HD_RT4 HD_QUOT
+#define HD_RT2 HD_SLASH
+#define HD_RT3 HD_DOUBLE_QUOTE
+#define HD_RT4 HD_QUOTE
 
 #define HD_LM4 HD_R
 #define HD_LM3 HD_S
 #define HD_LM2 HD_N
 #define HD_LM1 HD_D
 #define HD_LM0 HD_B
-#define HD_RM0 HD_COMM
+#define HD_RM0 HD_COMMA
 #define HD_RM1 HD_A
 #define HD_RM2 HD_E
 #define HD_RM3 HD_I
@@ -100,16 +100,16 @@
 #define HD_LB2 HD_L
 #define HD_LB1 HD_C
 #define HD_LB0 HD_W
-#define HD_RB0 HD_MINS
+#define HD_RB0 HD_MINUS
 #define HD_RB1 HD_U
 #define HD_RB2 HD_O
 #define HD_RB3 HD_Y
 #define HD_RB4 HD_K
 
-#define HD_LH2 HD_BSPC
+#define HD_LH2 HD_BACKSPACE
 #define HD_LH1 HD_T
-#define HD_RH1 HD_SPC
-#define HD_RH2 HD_ENT
+#define HD_RH1 HD_SPACE
+#define HD_RH2 HD_ENTER
 
 // clang-format on
 
