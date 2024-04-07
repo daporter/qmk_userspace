@@ -14,8 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LAYERS_H
-#define LAYERS_H
+#pragma once
 
 /*
  * L_SYM: Symbols and punctuation.
@@ -208,5 +207,3 @@
 #define LC_LH1 KC_AUDIO_VOL_UP
 #define LC_RH1 _______
 #define LC_RH2 _______
-
-#endif
