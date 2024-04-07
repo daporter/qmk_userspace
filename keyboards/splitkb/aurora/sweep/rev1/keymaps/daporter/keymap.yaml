@@ -56,7 +56,7 @@ layers:
     - [ ←M, ↑M, M↓, M→, Win→,
         MAcc1, ←, ↑, ↓, →, ]
     - [ ←MWh, ↑MWh, MWh↓, MWh→, redo,
-        MAcc2, cut, copy, pste, undo, ]
+        MAcc2, paste, copy, cut, undo, ]
     - {type: held}
     - ""
     - ""

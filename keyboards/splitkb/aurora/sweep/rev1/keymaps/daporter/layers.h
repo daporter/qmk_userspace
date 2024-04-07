@@ -118,7 +118,7 @@
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
  * │ MB4    MB3   MB2    MB1    ←Win │   │ MAcc0   ⇱    ⇞    ⇟    ⇲  │
  * │ ←M    ↑M    M↓    M→    Win→ │   │ MAcc1  ←    ↑    ↓    →   │
- * │ ←MWh  ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  cut  copy  pste  undo │
+ * │ ←MWh  ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  copy  pste  cut  undo │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
  */
@@ -151,9 +151,9 @@
 #define LV_LB1 KC_MS_WH_RIGHT
 #define LV_LB0 LCTL(LSFT(KC_Z))
 #define LV_RB0 KC_MS_ACCEL2
-#define LV_RB1 LCTL(KC_X)
-#define LV_RB2 LCTL(KC_C)
-#define LV_RB3 LCTL(KC_V)
+#define LV_RB1 LCTL(KC_C)
+#define LV_RB2 LCTL(KC_V)
+#define LV_RB3 LCTL(KC_X)
 #define LV_RB4 LCTL(KC_Z)
 
 #define LV_LH2 LCTL_T(KC_BACKSPACE)
