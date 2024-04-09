@@ -155,26 +155,18 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
  * replaces the hold behaviour with a tap of ‘lp_keycode’.
  */
 static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keycode) {
-    /* Is the key being held? */
     if (record->tap.count == 0) {
-        if (record->event.pressed) {
-            tap_code16(lp_keycode); /* Then just produce a tap of ‘lp_keycode’ */
-        };
-
-        return false; /* No further processing necessary */
+        if (record->event.pressed) tap_code16(lp_keycode);
+        return false;
     }
 
     return true;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_custom_shift_keys(keycode, record)) {
-        return false;
-    }
+    if (!process_custom_shift_keys(keycode, record)) return false;
 
-    if (!process_achordion(keycode, record)) {
-        return false;
-    }
+    if (!process_achordion(keycode, record)) return false;
 
     switch (keycode) {
         case LP_O_COPY:
