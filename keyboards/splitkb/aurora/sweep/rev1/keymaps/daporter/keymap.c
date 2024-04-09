@@ -107,7 +107,6 @@ const uint16_t PROGMEM combo_TAB[]      = { HD_LM2, HD_LM1,             COMBO_EN
 const uint16_t PROGMEM combo_HD_SCLN[]  = { HD_RM0, HD_RM1,             COMBO_END };
 
 const uint16_t PROGMEM combo_CAPS[]     = { HD_LM2, HD_RM2,             COMBO_END };
-const uint16_t PROGMEM combo_CAPW[]     = { HD_LM1, HD_RM1,             COMBO_END };
 
 const uint16_t PROGMEM combo_UNDS[]     = { HD_RB1, HD_RB3,             COMBO_END };
 const uint16_t PROGMEM combo_TILD[]     = { HD_RB1, HD_RB4,             COMBO_END };
@@ -124,7 +123,6 @@ combo_t key_combos[] = {
     COMBO(combo_TAB,        KC_TAB),
     COMBO(combo_HD_SCLN,    KC_SEMICOLON),
     COMBO(combo_CAPS,       KC_CAPS_LOCK),
-    COMBO(combo_CAPW,       QK_CAPS_WORD_TOGGLE),
     COMBO(combo_UNDS,       KC_UNDERSCORE),
     COMBO(combo_TILD,       KC_TILDE),
     // clang-format on
