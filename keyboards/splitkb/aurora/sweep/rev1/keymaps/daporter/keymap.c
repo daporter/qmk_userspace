@@ -142,7 +142,7 @@ static bool process_qu(keyrecord_t *record) {
 }
 
 /*
- * Implementation of a tap-or-long-press key.  Given a tap-hold keycode,
+ * Implementation of a simple tap-or-long-press key.  Given a tap-hold keycode,
  * replaces the hold behaviour with a tap of ‘lp_keycode’.
  */
 static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keycode) {
@@ -154,11 +154,16 @@ static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keyco
     return true;
 }
 
-static bool process_tap_or_long_press_string(keyrecord_t *record, uint16_t tap_keycode, char *string) {
+/*
+ * Implementation of a more complex tap-or-long-press key.  Given a tap-hold
+ * keycode, replaces the tap behaviour with ‘tap_str’ and the hold behaviour
+ * with ‘lp_str’.
+ */
+static bool process_tap_or_long_press_string(keyrecord_t *record, char *tap_str, char *lp_str) {
     if (record->tap.count > 0) { /* Key is being tapped */
-        if (record->event.pressed) tap_code16(tap_keycode);
+        if (record->event.pressed) SEND_STRING(tap_str);
     } else { /* Key is being held */
-        if (record->event.pressed) SEND_STRING(string);
+        if (record->event.pressed) SEND_STRING(lp_str);
     }
     return false;
 }
@@ -167,33 +172,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_custom_shift_keys(keycode, record)) return false;
     if (!process_achordion(keycode, record)) return false;
 
-    const uint8_t mods    = get_mods();
-    const uint8_t os_mods = get_oneshot_mods();
-
     switch (keycode) {
         case LP_QU:
             return process_qu(record);
-        case ARROW:
-            if (record->event.pressed) {
-                if ((mods | os_mods) & MOD_MASK_SHIFT) { /* Shift held? */
-                    /* Temporarily remove Shift. */
-                    del_oneshot_mods(MOD_MASK_SHIFT);
-                    unregister_mods(MOD_MASK_SHIFT);
-                    SEND_STRING("=>");
-                    register_mods(mods); /* Restore mods */
-                } else {
-                    SEND_STRING("->");
-                }
-            }
-            return false;
+        case LP_EQUAL:
+            return process_tap_or_long_press_string(record, "=", " == ");
+        case LP_NEQUAL:
+            return process_tap_or_long_press_string(record, "!", " != ");
+        case LP_ARROW:
+            return process_tap_or_long_press_string(record, "->", "=>");
         case LP_O_COPY:
             return process_tap_or_long_press_key(record, LCTL(KC_C));
         case LP_U_PASTE:
             return process_tap_or_long_press_key(record, LCTL(KC_V));
-        case LP_EQUAL:
-            return process_tap_or_long_press_string(record, KC_EQUAL, " == ");
-        case LP_NEQUAL:
-            return process_tap_or_long_press_string(record, KC_EXCLAIM, " != ");
     }
 
     return true;
