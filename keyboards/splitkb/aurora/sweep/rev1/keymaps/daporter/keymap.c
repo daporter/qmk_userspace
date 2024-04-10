@@ -22,6 +22,8 @@
 #include "handsdown_au.h"
 #include "layers.h"
 
+#define QU LT(0, KC_Q) /* A smart "qu" key */
+
 enum layers {
     // clang-format off
     L_HD,
@@ -114,7 +116,7 @@ const uint16_t PROGMEM combo_TILD[]     = { HD_RB1, HD_RB4,             COMBO_EN
 
 combo_t key_combos[] = {
     // clang-format off
-    COMBO(combo_HD_Q,       KC_Q),
+    COMBO(combo_HD_Q,       QU),
     COMBO(combo_HD_Z,       KC_Z),
     COMBO(combo_APP,        KC_APPLICATION),
     COMBO(combo_EQL,        KC_EQUAL),
@@ -149,6 +151,31 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
 }
 
 /*
+ * Implementation of of a smart "qu" key.  If any non-Shift modifiers are held,
+ * Send "q".  If the key is tapped, send "qu", respecting Shift and Caps Word.
+ * If the key is held, send "q".
+ */
+static bool process_qu(keyrecord_t *record) {
+    if (!record->event.pressed) return true;
+
+    if (get_mods() & MOD_MASK_CAG) {
+        tap_code16(KC_Q);
+        return false;
+    }
+
+    if (is_caps_word_on()) {
+        SEND_STRING("QU");
+    } else {
+        tap_code16(KC_Q);
+        unregister_mods(MOD_MASK_SHIFT);
+        tap_code16(KC_U);
+    }
+    if (record->tap.count == 0) tap_code16(KC_BACKSPACE);
+
+    return false;
+}
+
+/*
  * Implementation of a tap-or-long-press key.  Given a tap-hold keycode,
  * replaces the hold behaviour with a tap of ‘lp_keycode’.
  */
@@ -167,6 +194,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_achordion(keycode, record)) return false;
 
     switch (keycode) {
+        case QU:
+            return process_qu(record);
         case LP_O_COPY:
             return process_tap_or_long_press_key(record, LCTL(KC_C));
         case LP_U_PASTE:
