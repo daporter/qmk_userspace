@@ -156,12 +156,27 @@ static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keyco
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_custom_shift_keys(keycode, record)) return false;
-
     if (!process_achordion(keycode, record)) return false;
+
+    const uint8_t mods    = get_mods();
+    const uint8_t os_mods = get_oneshot_mods();
 
     switch (keycode) {
         case QU:
             return process_qu(record);
+        case ARROW:
+            if (record->event.pressed) {
+                if ((mods | os_mods) & MOD_MASK_SHIFT) { /* Shift held? */
+                    /* Temporarily remove Shift. */
+                    del_oneshot_mods(MOD_MASK_SHIFT);
+                    unregister_mods(MOD_MASK_SHIFT);
+                    SEND_STRING("=>");
+                    register_mods(mods); /* Restore mods */
+                } else {
+                    SEND_STRING("->");
+                }
+            }
+            return false;
         case LP_O_COPY:
             return process_tap_or_long_press_key(record, LCTL(KC_C));
         case LP_U_PASTE:
