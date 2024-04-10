@@ -18,6 +18,7 @@
 
 #include "features/achordion.h"
 #include "features/custom_shift_keys.h"
+#include "features/tap_hold.h"
 
 #include "keycodes.h"
 #include "handsdown_au.h"
@@ -97,6 +98,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 void matrix_scan_user(void) {
+    tap_hold_matrix_scan();
     achordion_task();
 }
 
@@ -116,76 +118,88 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
-/*
- * Implementation of of a smart "qu" key.  If any non-Shift modifiers are held,
- * Send "q".  If the key is tapped, send "qu", respecting Shift and Caps Word.
- * If the key is held, send "q".
- */
-static bool process_qu(keyrecord_t *record) {
-    if (!record->event.pressed) return true;
-
-    if (get_mods() & MOD_MASK_CAG) {
-        tap_code16(KC_Q);
-        return false;
+bool tap_hold(uint16_t keycode) {
+    switch (keycode) {
+        case LP_QU:
+        case KC_O:
+        case KC_U:
+        case KC_EQUAL:
+        case KC_EXCLAIM:
+        case KC_AMPERSAND:
+        case KC_PIPE:
+        case LP_ARROW:
+            return true;
+        default:
+            return false;
     }
-
-    if (is_caps_word_on()) {
-        SEND_STRING("QU");
-    } else {
-        tap_code16(KC_Q);
-        unregister_mods(MOD_MASK_SHIFT);
-        tap_code16(KC_U);
-    }
-    if (record->tap.count == 0) tap_code16(KC_BACKSPACE);
-
-    return false;
 }
 
-/*
- * Implementation of a simple tap-or-long-press key.  Given a tap-hold keycode,
- * replaces the hold behaviour with a tap of ‘lp_keycode’.
- */
-static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keycode) {
-    if (record->tap.count == 0) { /* Key is being held */
-        if (record->event.pressed) tap_code16(lp_keycode);
-        return false;
+void tap_hold_send_tap(uint16_t keycode) {
+    switch (keycode) {
+        case LP_QU:
+            if (get_mods() & MOD_MASK_CAG) {
+                tap_code16(KC_Q);
+                break;
+            }
+            if (is_caps_word_on()) {
+                send_string("QU");
+            } else {
+                tap_code16(KC_Q);
+                unregister_mods(MOD_MASK_SHIFT);
+                tap_code16(KC_U);
+            }
+            break;
+        case KC_O:
+        case KC_U:
+            if (is_caps_word_on())
+                tap_code16(LSFT(keycode));
+            else
+                tap_code16(keycode);
+            break;
+        case LP_ARROW:
+            send_string("->");
+            break;
+        default:
+            tap_code16(keycode);
     }
-
-    return true;
 }
 
-/*
- * Implementation of a more complex tap-or-long-press key.  Given a tap-hold
- * keycode, replaces the tap behaviour with ‘tap_str’ and the hold behaviour
- * with ‘lp_str’.
- */
-static bool process_tap_or_long_press_string(keyrecord_t *record, char *tap_str, char *lp_str) {
-    if (record->tap.count > 0) { /* Key is being tapped */
-        if (record->event.pressed) SEND_STRING(tap_str);
-    } else { /* Key is being held */
-        if (record->event.pressed) SEND_STRING(lp_str);
+void tap_hold_send_hold(uint16_t keycode) {
+    switch (keycode) {
+        case LP_QU:
+            if (is_caps_word_on())
+                tap_code16(LSFT(KC_Q));
+            else
+                tap_code16(KC_Q);
+            break;
+        case KC_O:
+            tap_code16(LCTL(KC_C));
+            break;
+        case KC_U:
+            tap_code16(LCTL(KC_V));
+            break;
+        case KC_EQUAL:
+            send_string(" == ");
+            break;
+        case KC_EXCLAIM:
+            send_string_P(" != ");
+            break;
+        case KC_AMPERSAND:
+            send_string(" && ");
+            break;
+        case KC_PIPE:
+            send_string(" || ");
+            break;
+        case LP_ARROW:
+            send_string("=>");
+            break;
     }
-    return false;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_custom_shift_keys(keycode, record)) return false;
     if (!process_achordion(keycode, record)) return false;
-
-    switch (keycode) {
-        case LP_QU:
-            return process_qu(record);
-        case LP_EQUAL:
-            return process_tap_or_long_press_string(record, "=", " == ");
-        case LP_NEQUAL:
-            return process_tap_or_long_press_string(record, "!", " != ");
-        case LP_ARROW:
-            return process_tap_or_long_press_string(record, "->", "=>");
-        case LP_O_COPY:
-            return process_tap_or_long_press_key(record, LCTL(KC_C));
-        case LP_U_PASTE:
-            return process_tap_or_long_press_key(record, LCTL(KC_V));
-    }
+    if (!process_tap_hold(keycode, record)) return false;
 
     return true;
 }

@@ -33,14 +33,14 @@
 #define HD_L KC_L
 #define HD_M KC_M
 #define HD_N LCTL_T(KC_N)
-#define HD_O LP_O_COPY
+#define HD_O KC_O
 #define HD_P KC_P
 #define HD_Q KC_Q
 #define HD_R LGUI_T(KC_R)
 #define HD_S LALT_T(KC_S)
 #define HD_T LT(L_NUM, KC_T)
 #define HD_V KC_V
-#define HD_U LP_U_PASTE
+#define HD_U KC_U
 #define HD_W KC_W
 #define HD_X KC_X
 #define HD_Y KC_Y
