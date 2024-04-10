@@ -1,4 +1,4 @@
-COMB(combo_HD_Q,        QU,                 HD_LT3, HD_LT2)
+COMB(combo_HD_Q,        LP_QU,              HD_LT3, HD_LT2)
 COMB(combo_HD_Z,        KC_Z,               HD_LT2, HD_LT1)
 COMB(combo_APP,         KC_APPLICATION,     HD_LT1, HD_LT0)
 COMB(combo_EQL,         KC_EQUAL,           HD_RT1, HD_RT2)

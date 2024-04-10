@@ -162,7 +162,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     const uint8_t os_mods = get_oneshot_mods();
 
     switch (keycode) {
-        case QU:
+        case LP_QU:
             return process_qu(record);
         case ARROW:
             if (record->event.pressed) {
@@ -181,6 +181,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return process_tap_or_long_press_key(record, LCTL(KC_C));
         case LP_U_PASTE:
             return process_tap_or_long_press_key(record, LCTL(KC_V));
+        case LP_NOT_EQL:
+            if (record->event.pressed) {
+                if (record->tap.count > 0)
+                    tap_code16(KC_EXCLAIM);
+                else
+                    SEND_STRING(" != ");
+                return false;
+            }
+            return true;
     }
 
     return true;
