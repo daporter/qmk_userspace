@@ -37,10 +37,10 @@
 #define LS_RT3 KC_QUESTION
 #define LS_RT4 _______
 
-#define LS_LM4 LP_NOT_EQL
+#define LS_LM4 LP_NEQUAL
 #define LS_LM3 KC_MINUS
 #define LS_LM2 KC_PLUS
-#define LS_LM1 KC_EQUAL
+#define LS_LM1 LP_EQUAL
 #define LS_LM0 KC_HASH
 #define LS_RM0 KC_PIPE
 #define LS_RM1 KC_LEFT_CURLY_BRACE

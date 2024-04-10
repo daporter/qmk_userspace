@@ -146,12 +146,21 @@ static bool process_qu(keyrecord_t *record) {
  * replaces the hold behaviour with a tap of ‘lp_keycode’.
  */
 static bool process_tap_or_long_press_key(keyrecord_t *record, uint16_t lp_keycode) {
-    if (record->tap.count == 0) {
+    if (record->tap.count == 0) { /* Key is being held */
         if (record->event.pressed) tap_code16(lp_keycode);
         return false;
     }
 
     return true;
+}
+
+static bool process_tap_or_long_press_string(keyrecord_t *record, uint16_t tap_keycode, char *string) {
+    if (record->tap.count > 0) { /* Key is being tapped */
+        if (record->event.pressed) tap_code16(tap_keycode);
+    } else { /* Key is being held */
+        if (record->event.pressed) SEND_STRING(string);
+    }
+    return false;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -181,15 +190,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return process_tap_or_long_press_key(record, LCTL(KC_C));
         case LP_U_PASTE:
             return process_tap_or_long_press_key(record, LCTL(KC_V));
-        case LP_NOT_EQL:
-            if (record->event.pressed) {
-                if (record->tap.count > 0)
-                    tap_code16(KC_EXCLAIM);
-                else
-                    SEND_STRING(" != ");
-                return false;
-            }
-            return true;
+        case LP_EQUAL:
+            return process_tap_or_long_press_string(record, KC_EQUAL, " == ");
+        case LP_NEQUAL:
+            return process_tap_or_long_press_string(record, KC_EXCLAIM, " != ");
     }
 
     return true;
