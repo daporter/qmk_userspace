@@ -19,10 +19,11 @@
 #include "features/achordion.h"
 #include "features/custom_shift_keys.h"
 
+#include "keycodes.h"
 #include "handsdown_au.h"
 #include "layers.h"
 
-#define QU LT(0, KC_Q) /* A smart "qu" key */
+#include "g/keymap_combo.h"
 
 enum layers {
     // clang-format off
@@ -94,41 +95,6 @@ const custom_shift_key_t custom_shift_keys[] = {
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
-
-// clang-format off
-const uint16_t PROGMEM combo_HD_Q[]     = { HD_LT3, HD_LT2,             COMBO_END };
-const uint16_t PROGMEM combo_HD_Z[]     = { HD_LT2, HD_LT1,             COMBO_END };
-const uint16_t PROGMEM combo_APP[]      = { HD_LT1, HD_LT0,             COMBO_END };
-
-const uint16_t PROGMEM combo_EQL[]      = { HD_RT1, HD_RT2,             COMBO_END };
-
-const uint16_t PROGMEM combo_ESC[]      = { HD_LM3, HD_LM2,             COMBO_END };
-const uint16_t PROGMEM combo_STAB[]     = { HD_LM3, HD_LM2, HD_LM1,     COMBO_END };
-const uint16_t PROGMEM combo_TAB[]      = { HD_LM2, HD_LM1,             COMBO_END };
-
-const uint16_t PROGMEM combo_HD_SCLN[]  = { HD_RM0, HD_RM1,             COMBO_END };
-
-const uint16_t PROGMEM combo_CAPS[]     = { HD_LM2, HD_RM2,             COMBO_END };
-
-const uint16_t PROGMEM combo_UNDS[]     = { HD_RB1, HD_RB3,             COMBO_END };
-const uint16_t PROGMEM combo_TILD[]     = { HD_RB1, HD_RB4,             COMBO_END };
-// clang-format on
-
-combo_t key_combos[] = {
-    // clang-format off
-    COMBO(combo_HD_Q,       QU),
-    COMBO(combo_HD_Z,       KC_Z),
-    COMBO(combo_APP,        KC_APPLICATION),
-    COMBO(combo_EQL,        KC_EQUAL),
-    COMBO(combo_ESC,        KC_ESCAPE),
-    COMBO(combo_STAB,       LSFT(KC_TAB)),
-    COMBO(combo_TAB,        KC_TAB),
-    COMBO(combo_HD_SCLN,    KC_SEMICOLON),
-    COMBO(combo_CAPS,       KC_CAPS_LOCK),
-    COMBO(combo_UNDS,       KC_UNDERSCORE),
-    COMBO(combo_TILD,       KC_TILDE),
-    // clang-format on
-};
 
 void matrix_scan_user(void) {
     achordion_task();

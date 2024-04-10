@@ -24,3 +24,5 @@ CAPS_WORD_ENABLE = yes
 
 SRC += features/achordion.c
 SRC += features/custom_shift_keys.c
+
+VPATH += keyboards/gboards      # Allows easier combo definitions

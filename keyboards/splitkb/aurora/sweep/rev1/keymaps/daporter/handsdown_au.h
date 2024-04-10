@@ -16,13 +16,6 @@
 
 #pragma once
 
-/* Custom keycodes */
-
-// clang-format off
-#define LP_O_COPY   LT(0, KC_O)     /* O on tap, Copy on long press */
-#define LP_U_PASTE  LT(0, KC_U)     /* UV on tap, Paste on long press */
-// clang-format on
-
 /* HD alpha keycodes with any hold-taps/custom keycodes. */
 
 // clang-format off
