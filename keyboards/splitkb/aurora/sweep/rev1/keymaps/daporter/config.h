@@ -23,6 +23,7 @@
 #define QUICK_TAP_TERM_PER_KEY
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_INVERT_ON_SHIFT
 
 /*
  * Enable the QK_MAKE key.  See:
