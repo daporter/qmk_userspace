@@ -19,7 +19,7 @@
 /*
  * L_SYM: Symbols and punctuation.
  * ╭─────────────────╮   ╭─────────────────╮
- * │  `  <  >  @  .  │   │  &  _  $  ?     │
+ * │  `  <  @  >  .  │   │  &  _  $  ?     │
  * │  !  -  +  =  #  │   │  |  {  (  [  %  │
  * │  :  /  *  ^  \  │   │  ~  }  )  ]     │
  * ╰──────────╮      │   │      ╭──────────╯
@@ -28,8 +28,8 @@
 
 #define LS_LT4 KC_GRV
 #define LS_LT3 KC_LEFT_ANGLE_BRACKET
-#define LS_LT2 KC_RIGHT_ANGLE_BRACKET
-#define LS_LT1 KC_AT
+#define LS_LT2 KC_AT
+#define LS_LT1 KC_RIGHT_ANGLE_BRACKET
 #define LS_LT0 KC_DOT
 #define LS_RT0 KC_AMPERSAND
 #define LS_RT1 KC_UNDERSCORE
