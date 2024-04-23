@@ -134,6 +134,15 @@ bool tap_hold(uint16_t keycode) {
     }
 }
 
+uint16_t tap_hold_timeout(uint16_t keycode) {
+    switch (keycode) {
+        case KC_O: /* Needs a bit longer */
+            return 150;
+        default:
+            return 135;
+    }
+}
+
 void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
         case LP_QU:
