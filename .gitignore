@@ -9,5 +9,8 @@
 *.hex
 *.bin
 *.uf2
-/compile_commands.json
-/.cache/
+
+# clangd
+compile_commands.json
+.clangd/
+.cache/
