@@ -121,8 +121,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
 bool tap_hold(uint16_t keycode) {
     switch (keycode) {
         case LP_QU:
-        case KC_O:
-        case KC_U:
         case KC_EQUAL:
         case KC_EXCLAIM:
         case KC_AMPERSAND:
@@ -131,15 +129,6 @@ bool tap_hold(uint16_t keycode) {
             return true;
         default:
             return false;
-    }
-}
-
-uint16_t tap_hold_timeout(uint16_t keycode) {
-    switch (keycode) {
-        case KC_O: /* Needs a bit longer */
-            return 150;
-        default:
-            return 135;
     }
 }
 
@@ -158,13 +147,6 @@ void tap_hold_send_tap(uint16_t keycode) {
                 tap_code16(KC_U);
             }
             break;
-        case KC_O:
-        case KC_U:
-            if (is_caps_word_on())
-                tap_code16(LSFT(keycode));
-            else
-                tap_code16(keycode);
-            break;
         case LP_ARROW:
             send_string("->");
             break;
@@ -180,12 +162,6 @@ void tap_hold_send_hold(uint16_t keycode) {
                 tap_code16(LSFT(KC_Q));
             else
                 tap_code16(KC_Q);
-            break;
-        case KC_O:
-            tap_code16(LCTL(KC_C));
-            break;
-        case KC_U:
-            tap_code16(LCTL(KC_V));
             break;
         case KC_EQUAL:
             send_string(" == ");
