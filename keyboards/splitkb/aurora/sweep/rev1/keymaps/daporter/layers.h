@@ -66,18 +66,19 @@
 
 /*
  * L_NUM: Function keys and numbers.
+ *
  * ╭───────────────────────╮   ╭─────────────────────╮
- * │  F9  F10 F11 F12 F13  │   │  /   7   8   9   -  │
- * │  F5  F6  F7  F8  F14  │   │  *   1   2   3   +  │
- * │  F1  F2  F3  F4  INS  │   │  ,   4   5   6   =  │
- * ╰────────────╮ ;  L_NAV │   │  0   . ╭────────────╯
+ * │  F10 F9  F8  F7  F13  │   │  /   7   8   9   -  │
+ * │  F11 F3  F2  F1  F14  │   │  *   1   2   3   +  │
+ * │  F12 F6  F5  F4  INS  │   │  ,   4   5   6   =  │
+ * ╰────────────╮ ;  L_NUM │   │  0   . ╭────────────╯
  *              ╰──────-───╯   ╰────────╯
  */
 
-#define LN_LT4 KC_F9
-#define LN_LT3 KC_F10
-#define LN_LT2 KC_F11
-#define LN_LT1 KC_F12
+#define LN_LT4 KC_F10
+#define LN_LT3 KC_F9
+#define LN_LT2 KC_F8
+#define LN_LT1 KC_F7
 #define LN_LT0 KC_F13
 #define LN_RT0 KC_SLASH
 #define LN_RT1 KC_7
@@ -85,10 +86,10 @@
 #define LN_RT3 KC_9
 #define LN_RT4 KC_MINUS
 
-#define LN_LM4 LGUI_T(KC_F5)
-#define LN_LM3 LALT_T(KC_F6)
-#define LN_LM2 LCTL_T(KC_F7)
-#define LN_LM1 LSFT_T(KC_F8)
+#define LN_LM4 LGUI_T(KC_F11)
+#define LN_LM3 LALT_T(KC_F3)
+#define LN_LM2 LCTL_T(KC_F2)
+#define LN_LM1 LSFT_T(KC_F1)
 #define LN_LM0 KC_F14
 #define LN_RM0 KC_ASTERISK
 #define LN_RM1 RSFT_T(KC_1)
@@ -96,9 +97,9 @@
 #define LN_RM3 RALT_T(KC_3)
 #define LN_RM4 RGUI_T(KC_PLUS)
 
-#define LN_LB4 KC_F1
-#define LN_LB3 KC_F2
-#define LN_LB2 KC_F3
+#define LN_LB4 KC_F12
+#define LN_LB3 KC_F6
+#define LN_LB2 KC_F5
 #define LN_LB1 KC_F4
 #define LN_LB0 KC_INSERT
 #define LN_RB0 KC_COMMA
