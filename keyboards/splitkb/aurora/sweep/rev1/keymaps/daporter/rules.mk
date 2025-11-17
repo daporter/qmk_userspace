@@ -13,11 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Convert from Elite-C to standard RP2040.
-CONVERT_TO = promicro_rp2040
-
-# Ensure compatibility with the rp2040 bootloader.
-BOOTLOADER = rp2040
+CONVERT_TO = liatris
 
 COMBO_ENABLE = yes
 CAPS_WORD_ENABLE = yes
