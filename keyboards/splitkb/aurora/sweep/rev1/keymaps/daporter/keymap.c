@@ -16,7 +16,6 @@
 
 #include QMK_KEYBOARD_H
 
-#include "features/achordion.h"
 #include "features/custom_shift_keys.h"
 #include "features/tap_hold.h"
 
@@ -99,10 +98,9 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 
 void matrix_scan_user(void) {
     tap_hold_matrix_scan();
-    achordion_task();
 }
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     /*
      * Allow same-hand chords if the held modifier is a thumb key, since I find
      * them necessary.
@@ -115,7 +113,8 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
             return true;
     }
 
-    return achordion_opposite_hands(tap_hold_record, other_record);
+    // Otherwise defer to the opposite hands rule.
+    return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
 /* "Eagerly" apply modifiers, thereby reducing delay, which makes it easier to
@@ -189,7 +188,6 @@ void tap_hold_send_hold(uint16_t keycode) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_custom_shift_keys(keycode, record)) return false;
-    if (!process_achordion(keycode, record)) return false;
     if (!process_tap_hold(keycode, record)) return false;
 
     return true;
