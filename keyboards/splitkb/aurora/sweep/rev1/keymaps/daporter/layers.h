@@ -123,34 +123,34 @@
  *                          ╰─────────╯   ╰───────────╯
  */
 
-#define LV_LT4 KC_MS_BTN4
-#define LV_LT3 KC_MS_BTN2
-#define LV_LT2 KC_MS_BTN3
-#define LV_LT1 KC_MS_BTN1
+#define LV_LT4 MS_BTN4
+#define LV_LT3 MS_BTN2
+#define LV_LT2 MS_BTN3
+#define LV_LT1 MS_BTN1
 #define LV_LT0 LCTL(LSFT(KC_TAB))
-#define LV_RT0 KC_MS_ACCEL0
+#define LV_RT0 MS_ACL0
 #define LV_RT1 KC_HOME
 #define LV_RT2 KC_PAGE_UP
 #define LV_RT3 KC_PAGE_DOWN
 #define LV_RT4 KC_END
 
-#define LV_LM4 KC_MS_LEFT
-#define LV_LM3 KC_MS_UP
-#define LV_LM2 KC_MS_DOWN
-#define LV_LM1 KC_MS_RIGHT
+#define LV_LM4 MS_LEFT
+#define LV_LM3 MS_UP
+#define LV_LM2 MS_DOWN
+#define LV_LM1 MS_RGHT
 #define LV_LM0 LCTL(KC_TAB)
-#define LV_RM0 KC_MS_ACCEL1
+#define LV_RM0 MS_ACL1
 #define LV_RM1 KC_LEFT
 #define LV_RM2 KC_UP
 #define LV_RM3 KC_DOWN
 #define LV_RM4 KC_RIGHT
 
-#define LV_LB4 KC_MS_WH_LEFT
-#define LV_LB3 KC_MS_WH_UP
-#define LV_LB2 KC_MS_WH_DOWN
-#define LV_LB1 KC_MS_WH_RIGHT
+#define LV_LB4 MS_WHLL
+#define LV_LB3 MS_WHLU
+#define LV_LB2 MS_WHLD
+#define LV_LB1 MS_WHLR
 #define LV_LB0 LCTL(LSFT(KC_Z))
-#define LV_RB0 KC_MS_ACCEL2
+#define LV_RB0 MS_ACL2
 #define LV_RB1 LCTL(KC_C)
 #define LV_RB2 LCTL(KC_V)
 #define LV_RB3 LCTL(KC_X)
