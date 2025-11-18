@@ -16,7 +16,6 @@
 
 #include QMK_KEYBOARD_H
 
-#include "features/custom_shift_keys.h"
 #include "features/tap_hold.h"
 
 #include "keycodes.h"
@@ -93,8 +92,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     { KC_BACKSPACE,     KC_DELETE  },
     // clang-format on
 };
-
-uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 void matrix_scan_user(void) {
     tap_hold_matrix_scan();
@@ -187,7 +184,6 @@ void tap_hold_send_hold(uint16_t keycode) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_custom_shift_keys(keycode, record)) return false;
     if (!process_tap_hold(keycode, record)) return false;
 
     return true;

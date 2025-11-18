@@ -19,7 +19,6 @@ MOUSEKEY_ENABLE  = yes
 COMBO_ENABLE     = yes
 CAPS_WORD_ENABLE = yes
 
-SRC += features/custom_shift_keys.c
 SRC += features/tap_hold.c
 
 VPATH += keyboards/gboards      # Allows easier combo definitions
