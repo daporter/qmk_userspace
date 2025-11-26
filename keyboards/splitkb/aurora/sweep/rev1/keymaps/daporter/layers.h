@@ -164,9 +164,9 @@
 /*
  * L_CFG: Keyboard configuration and media settings.
  * ╭─────────────────────────╮   ╭─────────────────────╮
- * │             RBT         │   │                     │
- * │  MAKE       vol↑ bri↑ │   │         mute        │
- * │  BOOT       vol↓ bri↓ │   │                     │
+ * │                         │   │                     │
+ * │  MAKE       vol↑ bri↑   │   │         mute        │
+ * │  BOOT       vol↓ bri↓   │   │                     │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
  */
@@ -174,7 +174,7 @@
 #define LC_LT4 _______
 #define LC_LT3 _______
 #define LC_LT2 _______
-#define LC_LT1 QK_REBOOT
+#define LC_LT1 _______
 #define LC_LT0 _______
 #define LC_RT0 _______
 #define LC_RT1 _______
