@@ -114,12 +114,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
-/* "Eagerly" apply modifiers, thereby reducing delay, which makes it easier to
- * combine with pressing a mouse button. */
-bool achordion_eager_mod(uint8_t mod) {
-    return true;
-}
-
 bool tap_hold(uint16_t keycode) {
     switch (keycode) {
         case LP_QU:

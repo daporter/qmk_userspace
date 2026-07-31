@@ -22,6 +22,10 @@
 #define QUICK_TAP_TERM_PER_KEY
 #define CHORDAL_HOLD
 
+/* Apply the modifier eagerly on keydown, reducing delay when combining a
+ * home row mod with a mouse click. */
+#define SPECULATIVE_HOLD
+
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 /*
