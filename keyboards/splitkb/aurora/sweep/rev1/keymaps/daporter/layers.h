@@ -117,8 +117,8 @@
  * L_NAV: Mouse and keyboard navigation.
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
  * │ MB4    MB3   MB2    MB1    ←Win │   │ MAcc0   ⇱    ⇞    ⇟    ⇲  │
- * │ ←M    ↑M    M↓    M→    Win→ │   │ MAcc1  ←    ↑    ↓    →   │
- * │ ←MWh  ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  copy  pste  cut  undo │
+ * │  ❖      ⎇      ⌃      ⇧    Win→ │   │ MAcc1  ←    ↑    ↓    →   │
+ * │ ^A     ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  copy  pste  cut  undo │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
  */
@@ -134,10 +134,10 @@
 #define LV_RT3 KC_PAGE_DOWN
 #define LV_RT4 KC_END
 
-#define LV_LM4 MS_LEFT
-#define LV_LM3 MS_UP
-#define LV_LM2 MS_DOWN
-#define LV_LM1 MS_RGHT
+#define LV_LM4 KC_LGUI
+#define LV_LM3 KC_LALT
+#define LV_LM2 KC_LCTL
+#define LV_LM1 KC_LSFT
 #define LV_LM0 LCTL(KC_TAB)
 #define LV_RM0 MS_ACL1
 #define LV_RM1 KC_LEFT
@@ -145,7 +145,7 @@
 #define LV_RM3 KC_DOWN
 #define LV_RM4 KC_RIGHT
 
-#define LV_LB4 MS_WHLL
+#define LV_LB4 LCTL(KC_A)
 #define LV_LB3 MS_WHLU
 #define LV_LB2 MS_WHLD
 #define LV_LB1 MS_WHLR
@@ -156,17 +156,20 @@
 #define LV_RB3 LCTL(KC_X)
 #define LV_RB4 LCTL(KC_Z)
 
-#define LV_LH2 LCTL_T(KC_BACKSPACE)
+/* LV_LH2 is unreachable: it's the same physical key that holds NAV active
+ * (HD_BACKSPACE = LT(L_NAV, KC_BACKSPACE)), so it can never be looked up
+ * again while held. */
+#define LV_LH2 _______
 #define LV_LH1 LSFT_T(KC_ENTER)
-#define LV_RH1 KC_0
-#define LV_RH2 KC_DOT
+#define LV_RH1 LCTL(KC_BACKSPACE)
+#define LV_RH2 LALT(KC_TAB)
 
 /*
- * L_CFG: Keyboard configuration and media settings.
+ * L_CFG: Keyboard configuration and brightness settings.
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │                         │   │                     │
- * │  MAKE       vol↑ bri↑   │   │         mute        │
- * │  BOOT       vol↓ bri↓   │   │                     │
+ * │  MAKE            bri↑   │   │                     │
+ * │  BOOT            bri↓   │   │                     │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
  */
@@ -185,18 +188,18 @@
 #define LC_LM4 QK_MAKE
 #define LC_LM3 _______
 #define LC_LM2 _______
-#define LC_LM1 KC_AUDIO_VOL_UP
+#define LC_LM1 _______
 #define LC_LM0 KC_BRIGHTNESS_UP
 #define LC_RM0 _______
 #define LC_RM1 _______
-#define LC_RM2 KC_MUTE
+#define LC_RM2 _______
 #define LC_RM3 _______
 #define LC_RM4 _______
 
 #define LC_LB4 QK_BOOT
 #define LC_LB3 _______
 #define LC_LB2 _______
-#define LC_LB1 KC_AUDIO_VOL_DOWN
+#define LC_LB1 _______
 #define LC_LB0 KC_BRIGHTNESS_DOWN
 #define LC_RB0 _______
 #define LC_RB1 _______
@@ -204,7 +207,7 @@
 #define LC_RB3 _______
 #define LC_RB4 _______
 
-#define LC_LH2 KC_AUDIO_VOL_DOWN
-#define LC_LH1 KC_AUDIO_VOL_UP
+#define LC_LH2 _______
+#define LC_LH1 _______
 #define LC_RH1 _______
 #define LC_RH2 _______
