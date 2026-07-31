@@ -162,7 +162,7 @@
 #define LV_LH2 _______
 #define LV_LH1 LSFT_T(KC_ENTER)
 #define LV_RH1 LCTL(KC_BACKSPACE)
-#define LV_RH2 LGUI(KC_TAB)
+#define LV_RH2 _______
 
 /*
  * L_CFG: Keyboard configuration and brightness settings.
@@ -207,7 +207,7 @@
 #define LC_RB3 _______
 #define LC_RB4 _______
 
-#define LC_LH2 _______
-#define LC_LH1 _______
+#define LC_LH2 LGUI(KC_TAB)
+#define LC_LH1 LGUI(LSFT(KC_TAB))
 #define LC_RH1 _______
 #define LC_RH2 _______
