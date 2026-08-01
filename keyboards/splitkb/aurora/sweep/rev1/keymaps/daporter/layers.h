@@ -71,7 +71,7 @@
  * │  F10 F9  F8  F7  F13  │   │  /   7   8   9   -  │
  * │  F11 F3  F2  F1  F14  │   │  *   1   2   3   +  │
  * │  F12 F6  F5  F4  INS  │   │  ,   4   5   6   =  │
- * ╰────────────╮ ;  L_NUM │   │  0   . ╭────────────╯
+ * ╰────────────╮    L_NUM │   │  0   . ╭────────────╯
  *              ╰──────-───╯   ╰────────╯
  */
 
@@ -108,7 +108,7 @@
 #define LN_RB3 KC_6
 #define LN_RB4 KC_EQUAL
 
-#define LN_LH2 KC_SEMICOLON
+#define LN_LH2 _______
 #define LN_LH1 _______
 #define LN_RH1 KC_0
 #define LN_RH2 KC_DOT
@@ -160,7 +160,7 @@
  * (HD_BACKSPACE = LT(L_NAV, KC_BACKSPACE)), so it can never be looked up
  * again while held. */
 #define LV_LH2 _______
-#define LV_LH1 LSFT_T(KC_ENTER)
+#define LV_LH1 _______
 #define LV_RH1 LCTL(KC_BACKSPACE)
 #define LV_RH2 _______
 
@@ -207,7 +207,7 @@
 #define LC_RB3 _______
 #define LC_RB4 _______
 
-#define LC_LH2 LGUI(KC_TAB)
-#define LC_LH1 LGUI(LSFT(KC_TAB))
+#define LC_LH2 _______
+#define LC_LH1 _______
 #define LC_RH1 _______
 #define LC_RH2 _______
