@@ -121,7 +121,6 @@ bool tap_hold(uint16_t keycode) {
         case KC_EXCLAIM:
         case KC_AMPERSAND:
         case KC_PIPE:
-        case LP_ARROW:
             return true;
         default:
             return false;
@@ -142,9 +141,6 @@ void tap_hold_send_tap(uint16_t keycode) {
                 unregister_mods(MOD_MASK_SHIFT);
                 tap_code16(KC_U);
             }
-            break;
-        case LP_ARROW:
-            send_string("->");
             break;
         default:
             tap_code16(keycode);
@@ -170,9 +166,6 @@ void tap_hold_send_hold(uint16_t keycode) {
             break;
         case KC_PIPE:
             send_string(" || ");
-            break;
-        case LP_ARROW:
-            send_string("=>");
             break;
     }
 }

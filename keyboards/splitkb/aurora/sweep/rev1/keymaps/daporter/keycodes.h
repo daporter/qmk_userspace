@@ -4,5 +4,4 @@
 
 enum custom_keys {
     LP_QU = QK_USER,
-    LP_ARROW,
 };
