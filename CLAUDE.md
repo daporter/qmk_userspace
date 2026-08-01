@@ -40,6 +40,9 @@ qmk flash -kb splitkb/aurora/sweep/rev1 -km daporter
 qmk userspace-add -kb <keyboard> -km <keymap>
 qmk userspace-remove -kb <keyboard> -km <keymap>
 qmk userspace-list
+
+# Regenerate the keymap diagram (see "Keymap diagram" below)
+keymap draw keyboards/splitkb/aurora/sweep/rev1/keymaps/daporter/keymap.yaml > keymap.svg
 ```
 
 There is no unit test suite or linter in this repo — correctness is verified by compiling and by exercising the keymap on real hardware. `.clang-format` (Google-based, 4-space indent, no tabs) and `.clangd` describe the expected C style/tooling for editor integration.
@@ -55,12 +58,24 @@ The keymap is split across several headers, each owning one layer (or one concer
 - **`keycodes.h`** — declares custom keycodes (`LP_QU`, `LP_ARROW`) starting at `QK_USER`.
 - **`features/tap_hold.[ch]`** — a small custom tap-hold engine, separate from QMK's built-in mod-tap/layer-tap. It calls back into `tap_hold()` (which keycodes opt in), `tap_hold_send_tap()`/`tap_hold_send_hold()` (what to send), and `tap_hold_timeout()` (per-key timing), all overridden as weak symbols and implemented in `keymap.c`. Used for keys with app-specific tap vs. hold output (e.g. `LP_QU` taps `Q` but holds/expands to `QU`; `KC_EQUAL` taps `=` but holds to send `" == "`). Wired up via `process_tap_hold()` in `process_record_user()` and `tap_hold_matrix_scan()` in `matrix_scan_user()`.
 - **`combos.def`** — combo definitions using `COMB(name, output, pos...)` / `SUBS(name, output, pos...)` X-macros, included via `#include "g/keymap_combo.h"` in `keymap.c`. `rules.mk` adds `VPATH += keyboards/gboards` so the build can locate the generator infrastructure this X-macro style depends on; `COMBO_ENABLE = yes` is required (also set in `rules.mk`).
-- **`keymap.yaml`** — config for the third-party `keymap-drawer` tool (not run in CI); mirrors the layer/combo layout above for generating SVG diagrams. Keep in sync manually when `layers.h`/`handsdown_au.h`/`combos.def` change.
+- **`keymap.yaml`** — config for the third-party `keymap-drawer` tool (not run in CI); mirrors the layer/combo layout above for generating SVG diagrams. Keep in sync manually when `layers.h`/`handsdown_au.h`/`combos.def` change — see "Keymap diagram" below.
 - **`keymap.json`** — declares community modules to enable (currently `getreuer/custom_shift_keys`, used for the `custom_shift_keys[]` table in `keymap.c` that remaps what Shift produces for specific keys, e.g. `Shift+,` → `;`).
 - **`config.h`** — tap/hold tuning shared across home-row mods: `TAPPING_TERM`, `PERMISSIVE_HOLD`, `QUICK_TAP_TERM_PER_KEY`, `CHORDAL_HOLD`, plus `BOTH_SHIFTS_TURNS_ON_CAPS_WORD`.
 - **`rules.mk`** — feature flags (`MOUSEKEY_ENABLE`, `COMBO_ENABLE`, `CAPS_WORD_ENABLE`), the `features/tap_hold.c` source addition, and `CONVERT_TO = liatris`.
 
 `keymap.c` itself wires these together: it assembles the `keymaps[][MATRIX_ROWS][MATRIX_COLS]` array from the per-layer position macros, defines `custom_shift_keys[]`, and implements the QMK callbacks (`get_chordal_hold`, `achordion_eager_mod`, `tap_hold*`, `process_record_user`). `get_chordal_hold` special-cases the four thumb keys (`HD_LH1/2`, `HD_RH1/2`) to permit same-hand chording, since they're used as hold-mods deliberately.
+
+## Keymap diagram (`keymap.svg`)
+
+`keymap.svg`, at the repo root, is a generated diagram rendered from `keymap.yaml` by the third-party [keymap-drawer](https://github.com/caksoylar/keymap-drawer) tool (`keymap` CLI, installed separately — not part of `qmk_firmware` or this repo's toolchain). It's committed so the layout is viewable directly on GitHub, and it's embedded in `README.md`.
+
+There is no CI job or git hook that keeps `keymap.yaml`/`keymap.svg` current — **whenever a change touches layers, combos, or key legends** (`layers.h`, `handsdown_au.h`, `combos.def`, or `custom_shift_keys[]` in `keymap.c`), do both of the following as part of that same change:
+
+1. Manually update `keymap.yaml` (`layers:`/`combos:` sections) to match — there's no generator from the C sources, so this is hand-maintained in parallel.
+2. Regenerate the SVG and commit it alongside the source change:
+    ```sh
+    keymap draw keyboards/splitkb/aurora/sweep/rev1/keymaps/daporter/keymap.yaml > keymap.svg
+    ```
 
 ## Community modules (`modules/getreuer/`)
 
