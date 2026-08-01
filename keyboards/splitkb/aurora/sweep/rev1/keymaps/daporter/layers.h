@@ -168,7 +168,7 @@
  * L_CFG: Keyboard configuration and brightness settings.
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │                         │   │                     │
- * │  MAKE            bri↑   │   │                     │
+ * │                  bri↑   │   │                     │
  * │  BOOT            bri↓   │   │                     │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
@@ -185,7 +185,7 @@
 #define LC_RT3 _______
 #define LC_RT4 _______
 
-#define LC_LM4 QK_MAKE
+#define LC_LM4 _______
 #define LC_LM3 _______
 #define LC_LM2 _______
 #define LC_LM1 _______
