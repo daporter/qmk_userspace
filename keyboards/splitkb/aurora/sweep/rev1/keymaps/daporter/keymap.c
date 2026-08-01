@@ -89,7 +89,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     { KC_QUOTE,         KC_EXCLAIM },
     { KC_COMMA,         KC_SEMICOLON },
     { KC_MINUS,         KC_PLUS },
-    { KC_BACKSPACE,     KC_DELETE  },
     // clang-format on
 };
 

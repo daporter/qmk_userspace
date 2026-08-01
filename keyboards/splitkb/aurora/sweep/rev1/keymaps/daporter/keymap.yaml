@@ -43,7 +43,7 @@ layers:
               { t: h, h: ❖ },
           ]
         - [x, f, l, c, w, { t: "-", s: "+" }, u, o, y, k]
-        - { t: ⌫, h: NAV, s: ⌦ }
+        - { t: ⌫, h: NAV }
         - { t: t, h: NUM }
         - { t: ␣, h: SYM }
         - { t: ⏎, h: CFG }

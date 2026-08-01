@@ -248,8 +248,7 @@ path.combo {
 <text x="0" y="0" class="key tap">⌫</text>
 <a href="#NAV">
 <text x="0" y="21" class="key hold layer-activator">NAV</text>
-</a><text x="0" y="-21" class="key shifted">⌦</text>
-</g>
+</a></g>
 <g transform="translate(329, 288) rotate(30.0)" class="key keypos-31">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
 <text x="0" y="0" class="key tap">t</text>
