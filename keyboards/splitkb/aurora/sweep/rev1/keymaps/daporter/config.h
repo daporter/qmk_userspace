@@ -19,21 +19,12 @@
 /* Tap-hold configuration for home row mods. */
 #define TAPPING_TERM 175
 #define PERMISSIVE_HOLD
-#define QUICK_TAP_TERM_PER_KEY
 #define CHORDAL_HOLD
-
-/* Apply the modifier eagerly on keydown, reducing delay when combining a
- * home row mod with a mouse click. */
-#define SPECULATIVE_HOLD
 
 /* In practice this fires on HD_D + HD_A (LSFT_T/RSFT_T, the Shift home row
  * mods), since holding both is holding both real Shift mods at once. Not
  * a combo, so it doesn't appear in combos.def or keymap.yaml. */
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-
-/* Give individual combos a longer window than the 50ms default, for
- * cross-hand combos that are harder to land within COMBO_TERM. */
-#define COMBO_TERM_PER_COMBO
 
 /*
  * Enable the QK_MAKE key.  See:
