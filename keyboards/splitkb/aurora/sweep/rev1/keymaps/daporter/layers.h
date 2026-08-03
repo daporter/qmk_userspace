@@ -162,7 +162,7 @@
 #define LV_LH2 _______
 #define LV_LH1 _______
 #define LV_RH1 LCTL(KC_BACKSPACE)
-#define LV_RH2 _______
+#define LV_RH2 SELWORD
 
 /*
  * L_CFG: Keyboard configuration and brightness settings.

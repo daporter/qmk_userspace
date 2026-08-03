@@ -96,6 +96,16 @@ void matrix_scan_user(void) {
     tap_hold_matrix_scan();
 }
 
+uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
+    switch (combo_index) {
+        case combo_REP:
+        case combo_AREP:
+            return COMBO_TERM + 40;
+        default:
+            return COMBO_TERM;
+    }
+}
+
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     /*
      * Allow same-hand chords if the held modifier is a thumb key, since I find

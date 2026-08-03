@@ -28,6 +28,10 @@
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
+/* Give individual combos a longer window than the 50ms default, for
+ * cross-hand combos that are harder to land within COMBO_TERM. */
+#define COMBO_TERM_PER_COMBO
+
 /*
  * Enable the QK_MAKE key.  See:
  * https://docs.qmk.fm/#/quantum_keycodes?id=qmk-keycodes
