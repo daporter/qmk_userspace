@@ -114,21 +114,21 @@
 #define LN_RH2 KC_DOT
 
 /*
- * L_NAV: Mouse and keyboard navigation.
+ * L_NAV: Keyboard navigation.
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
- * │ MB4    MB3   MB2    MB1    ←Win │   │ MAcc0   ⇱    ⇞    ⇟    ⇲  │
- * │  ❖      ⎇      ⌃      ⇧    Win→ │   │ MAcc1  ←    ↑    ↓    →   │
- * │ ^A     ↑MWh  MWh↓  MWh→  redo  │   │ MAcc2  copy  pste  cut  undo │
+ * │       ⇧⇥   ⇥              │   │        ⇱    ⇞    ⇟    ⇲  │
+ * │  ❖      ⎇      ⌃      ⇧        │   │  ^G   ←    ↑    ↓    →   │
+ * │                             │   │  undo  copy  pste  cut  ^A  │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
  */
 
-#define LV_LT4 MS_BTN4
-#define LV_LT3 MS_BTN2
-#define LV_LT2 MS_BTN3
-#define LV_LT1 MS_BTN1
-#define LV_LT0 LCTL(LSFT(KC_TAB))
-#define LV_RT0 MS_ACL0
+#define LV_LT4 _______
+#define LV_LT3 _______
+#define LV_LT2 LCTL(LSFT(KC_TAB))
+#define LV_LT1 LCTL(KC_TAB)
+#define LV_LT0 _______
+#define LV_RT0 _______
 #define LV_RT1 KC_HOME
 #define LV_RT2 KC_PAGE_UP
 #define LV_RT3 KC_PAGE_DOWN
@@ -138,23 +138,25 @@
 #define LV_LM3 KC_LALT
 #define LV_LM2 KC_LCTL
 #define LV_LM1 KC_LSFT
-#define LV_LM0 LCTL(KC_TAB)
-#define LV_RM0 MS_ACL1
+#define LV_LM0 _______
+#define LV_RM0 LCTL(KC_G)
 #define LV_RM1 KC_LEFT
 #define LV_RM2 KC_UP
 #define LV_RM3 KC_DOWN
 #define LV_RM4 KC_RIGHT
 
-#define LV_LB4 LCTL(KC_A)
-#define LV_LB3 MS_WHLU
-#define LV_LB2 MS_WHLD
-#define LV_LB1 MS_WHLR
-#define LV_LB0 LCTL(LSFT(KC_Z))
-#define LV_RB0 MS_ACL2
+#define LV_LB4 _______
+#define LV_LB3 _______
+#define LV_LB2 _______
+#define LV_LB1 _______
+#define LV_LB0 _______
+/* No dedicated redo key: NAV + LV_LM1 (shift) + RB0 already composes to
+ * Ctrl+Shift+Z, since held real mods stack with a modded keycode's own. */
+#define LV_RB0 LCTL(KC_Z)
 #define LV_RB1 LCTL(KC_C)
 #define LV_RB2 LCTL(KC_V)
 #define LV_RB3 LCTL(KC_X)
-#define LV_RB4 LCTL(KC_Z)
+#define LV_RB4 LCTL(KC_A)
 
 /* LV_LH2 is unreachable: it's the same physical key that holds NAV active
  * (HD_BACKSPACE = LT(L_NAV, KC_BACKSPACE)), so it can never be looked up

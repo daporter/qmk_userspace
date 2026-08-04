@@ -75,9 +75,9 @@ layers:
         - "0"
         - "."
     NAV:
-        - [MB4, MB2, MB3, MB1, prevtab, MAcc0, ⇱, ⇞, ⇟, ⇲]
-        - [❖, ⎇, ⌃, ⇧, nexttab, MAcc1, ←, ↑, ↓, →]
-        - [⌃A, ↑MWh, MWh↓, MWh→, redo, MAcc2, copy, paste, cut, undo]
+        - ["", "", prevtab, nexttab, "", "", ⇱, ⇞, ⇟, ⇲]
+        - [❖, ⎇, ⌃, ⇧, "", ⌃G, ←, ↑, ↓, →]
+        - ["", "", "", "", "", { t: undo, s: redo }, copy, paste, cut, ⌃A]
         - { type: held }
         - ""
         - ⌃⌫
