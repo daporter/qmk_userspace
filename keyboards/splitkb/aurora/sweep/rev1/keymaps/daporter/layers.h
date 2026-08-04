@@ -165,11 +165,11 @@
 #define LV_RH2 SELWORD
 
 /*
- * L_CFG: Keyboard configuration and brightness settings.
+ * L_CFG: Keyboard configuration.
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │                         │   │                     │
- * │                  bri↑   │   │                     │
- * │  BOOT            bri↓   │   │                     │
+ * │               CW        │   │                     │
+ * │  BOOT                   │   │                     │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
  */
@@ -188,8 +188,8 @@
 #define LC_LM4 _______
 #define LC_LM3 _______
 #define LC_LM2 _______
-#define LC_LM1 _______
-#define LC_LM0 KC_BRIGHTNESS_UP
+#define LC_LM1 CW_TOGG
+#define LC_LM0 _______
 #define LC_RM0 _______
 #define LC_RM1 _______
 #define LC_RM2 _______
@@ -200,7 +200,7 @@
 #define LC_LB3 _______
 #define LC_LB2 _______
 #define LC_LB1 _______
-#define LC_LB0 KC_BRIGHTNESS_DOWN
+#define LC_LB0 _______
 #define LC_RB0 _______
 #define LC_RB1 _______
 #define LC_RB2 _______

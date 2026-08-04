@@ -21,11 +21,6 @@
 #define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
 
-/* In practice this fires on HD_D + HD_A (LSFT_T/RSFT_T, the Shift home row
- * mods), since holding both is holding both real Shift mods at once. Not
- * a combo, so it doesn't appear in combos.def or keymap.yaml. */
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-
 /*
  * Enable the QK_MAKE key.  See:
  * https://docs.qmk.fm/#/quantum_keycodes?id=qmk-keycodes
