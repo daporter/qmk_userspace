@@ -1,6 +1,5 @@
 COMB(combo_HD_Q,        LP_QU,              HD_LT3, HD_LT2)
 COMB(combo_HD_Z,        KC_Z,               HD_LT2, HD_LT1)
-COMB(combo_APP,         KC_APPLICATION,     HD_LT1, HD_LT0)
 COMB(combo_ESC,         KC_ESCAPE,          HD_LM3, HD_LM2)
 COMB(combo_STAB,        LSFT(KC_TAB),       HD_LM3, HD_LM2, HD_LM1)
 COMB(combo_TAB,         KC_TAB,             HD_LM2, HD_LM1)

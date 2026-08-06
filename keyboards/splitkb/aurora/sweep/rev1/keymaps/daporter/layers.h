@@ -170,7 +170,7 @@
  * L_CFG: Keyboard configuration.
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │                         │   │                     │
- * │          Caps    CW     │   │                     │
+ * │     Menu Caps    CW     │   │                     │
  * │  BOOT                   │   │                     │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
@@ -188,7 +188,7 @@
 #define LC_RT4 _______
 
 #define LC_LM4 _______
-#define LC_LM3 _______
+#define LC_LM3 KC_APPLICATION
 #define LC_LM2 KC_CAPS_LOCK
 #define LC_LM1 CW_TOGG
 #define LC_LM0 _______
