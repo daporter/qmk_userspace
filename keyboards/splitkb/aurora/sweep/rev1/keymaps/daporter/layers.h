@@ -17,47 +17,49 @@
 #pragma once
 
 /*
- * L_SYM: Symbols and punctuation.
+ * L_SYM: Symbols and punctuation. Mirrored left/right of the natural QWERTY
+ * position so that the highest-frequency brackets land on the opposite hand
+ * from the thumb (Space) that holds this layer active.
  * ╭─────────────────╮   ╭─────────────────╮
- * │  `  <  @  >  .  │   │  &  _  $  ?     │
- * │  !  -  +  =  #  │   │  |  (  {  [  %  │
- * │  :  /  *  ^  \  │   │  ~  )  }  ]     │
+ * │     ?  $  _  &  │   │  .  <  @  >  `  │
+ * │  %  [  {  (  |  │   │  #  =  +  -  !  │
+ * │     ]  }  )  ~  │   │  \  ^  *  /  :  │
  * ╰──────────╮      │   │      ╭──────────╯
  *            ╰──-───╯   ╰──────╯
  */
 
-#define LS_LT4 KC_GRV
-#define LS_LT3 KC_LEFT_ANGLE_BRACKET
-#define LS_LT2 KC_AT
-#define LS_LT1 KC_RIGHT_ANGLE_BRACKET
-#define LS_LT0 KC_DOT
-#define LS_RT0 KC_AMPERSAND
-#define LS_RT1 KC_UNDERSCORE
-#define LS_RT2 KC_DOLLAR
-#define LS_RT3 KC_QUESTION
-#define LS_RT4 _______
+#define LS_LT4 _______
+#define LS_LT3 KC_QUESTION
+#define LS_LT2 KC_DOLLAR
+#define LS_LT1 KC_UNDERSCORE
+#define LS_LT0 KC_AMPERSAND
+#define LS_RT0 KC_DOT
+#define LS_RT1 KC_LEFT_ANGLE_BRACKET
+#define LS_RT2 KC_AT
+#define LS_RT3 KC_RIGHT_ANGLE_BRACKET
+#define LS_RT4 KC_GRV
 
-#define LS_LM4 KC_EXCLAIM
-#define LS_LM3 KC_MINUS
-#define LS_LM2 KC_PLUS
-#define LS_LM1 KC_EQUAL
-#define LS_LM0 KC_HASH
-#define LS_RM0 KC_PIPE
-#define LS_RM1 KC_LEFT_PAREN
-#define LS_RM2 KC_LEFT_CURLY_BRACE
-#define LS_RM3 KC_LEFT_BRACKET
-#define LS_RM4 KC_PERCENT
+#define LS_LM4 KC_PERCENT
+#define LS_LM3 KC_LEFT_BRACKET
+#define LS_LM2 KC_LEFT_CURLY_BRACE
+#define LS_LM1 KC_LEFT_PAREN
+#define LS_LM0 KC_PIPE
+#define LS_RM0 KC_HASH
+#define LS_RM1 KC_EQUAL
+#define LS_RM2 KC_PLUS
+#define LS_RM3 KC_MINUS
+#define LS_RM4 KC_EXCLAIM
 
-#define LS_LB4 KC_COLON
-#define LS_LB3 KC_SLASH
-#define LS_LB2 KC_ASTERISK
-#define LS_LB1 KC_CIRCUMFLEX
-#define LS_LB0 KC_BACKSLASH
-#define LS_RB0 KC_TILDE
-#define LS_RB1 KC_RIGHT_PAREN
-#define LS_RB2 KC_RIGHT_CURLY_BRACE
-#define LS_RB3 KC_RIGHT_BRACKET
-#define LS_RB4 _______
+#define LS_LB4 _______
+#define LS_LB3 KC_RIGHT_BRACKET
+#define LS_LB2 KC_RIGHT_CURLY_BRACE
+#define LS_LB1 KC_RIGHT_PAREN
+#define LS_LB0 KC_TILDE
+#define LS_RB0 KC_BACKSLASH
+#define LS_RB1 KC_CIRCUMFLEX
+#define LS_RB2 KC_ASTERISK
+#define LS_RB3 KC_SLASH
+#define LS_RB4 KC_COLON
 
 #define LS_LH2 _______
 #define LS_LH1 _______
@@ -167,19 +169,23 @@
 #define LV_RH2 SELWORD
 
 /*
- * L_CFG: Keyboard configuration.
+ * L_CFG: Keyboard configuration + modifier chording. The home row is a
+ * mirrored set of plain (non-tap-hold) mods, so any combination can be held
+ * simultaneously or sustained across several taps without the tap-hold
+ * races/chordal-hold restrictions that apply to the base layer's home-row
+ * mods -- needed for chords like Emacs's C-M-f, or sequences like C-c C-x.
  * ╭─────────────────────────╮   ╭─────────────────────╮
- * │                         │   │                     │
- * │     Menu Caps    CW     │   │                     │
+ * │     Menu  Caps   CW     │   │                     │
+ * │  ❖    ⎇     ⌃     ⇧     │   │  ⇧    ⌃    ⎇    ❖  │
  * │  BOOT                   │   │                     │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
  */
 
 #define LC_LT4 _______
-#define LC_LT3 _______
-#define LC_LT2 _______
-#define LC_LT1 _______
+#define LC_LT3 KC_APPLICATION
+#define LC_LT2 KC_CAPS_LOCK
+#define LC_LT1 CW_TOGG
 #define LC_LT0 _______
 #define LC_RT0 _______
 #define LC_RT1 _______
@@ -187,16 +193,16 @@
 #define LC_RT3 _______
 #define LC_RT4 _______
 
-#define LC_LM4 _______
-#define LC_LM3 KC_APPLICATION
-#define LC_LM2 KC_CAPS_LOCK
-#define LC_LM1 CW_TOGG
+#define LC_LM4 KC_LGUI
+#define LC_LM3 KC_LALT
+#define LC_LM2 KC_LCTL
+#define LC_LM1 KC_LSFT
 #define LC_LM0 _______
 #define LC_RM0 _______
-#define LC_RM1 _______
-#define LC_RM2 _______
-#define LC_RM3 _______
-#define LC_RM4 _______
+#define LC_RM1 KC_RSFT
+#define LC_RM2 KC_RCTL
+#define LC_RM3 KC_RALT
+#define LC_RM4 KC_RGUI
 
 #define LC_LB4 QK_BOOT
 #define LC_LB3 _______
