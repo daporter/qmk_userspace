@@ -177,7 +177,7 @@
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │     Menu  Caps   CW     │   │                     │
  * │  ❖    ⎇     ⌃     ⇧     │   │  ⇧    ⌃    ⎇    ❖  │
- * │  BOOT                   │   │                     │
+ * │                         │   │  BOOT               │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
  */
@@ -204,12 +204,12 @@
 #define LC_RM3 KC_RALT
 #define LC_RM4 KC_RGUI
 
-#define LC_LB4 QK_BOOT
+#define LC_LB4 _______
 #define LC_LB3 _______
 #define LC_LB2 _______
 #define LC_LB1 _______
 #define LC_LB0 _______
-#define LC_RB0 _______
+#define LC_RB0 QK_BOOT
 #define LC_RB1 _______
 #define LC_RB2 _______
 #define LC_RB3 _______
