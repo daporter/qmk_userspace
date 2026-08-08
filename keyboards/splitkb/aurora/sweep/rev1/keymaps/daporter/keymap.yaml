@@ -101,8 +101,9 @@ combos:
     - { p: [26, 29], k: "~", l: [HD] }
     - { p: [3, 6], k: rep, l: [HD] }
     - { p: [2, 7], k: arep, l: [HD] }
-    - { p: [16, 17], k: Del, l: [HD] }
+    - { p: [16, 17], k: "⌃X", l: [HD] }
     - { p: [16, 18], k: "⎇X", l: [HD] }
+    - { p: [20, 21], k: Del, l: [HD] }
 
 draw_config:
     key_w: 70
