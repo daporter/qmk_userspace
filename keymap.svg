@@ -313,6 +313,16 @@ path.combo {
 <rect rx="6" ry="6" x="382" y="20" width="28" height="26" class="combo"/>
 <text x="396" y="33" class="combo tap">arep</text>
 </g>
+<g class="combo combopos-9">
+<rect rx="6" ry="6" x="580" y="96" width="28" height="26" class="combo"/>
+<text x="594" y="109" class="combo tap">Del</text>
+</g>
+<g class="combo combopos-10">
+<path d="M627,119 l-44,-1" class="combo"/>
+<path d="M627,119 l44,1" class="combo"/>
+<rect rx="6" ry="6" x="613" y="106" width="28" height="26" class="combo"/>
+<text x="627" y="119" class="combo tap">⎇X</text>
+</g>
 </g>
 </g>
 <g transform="translate(30, 389)" class="layer-SYM">
