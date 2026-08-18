@@ -139,6 +139,7 @@ bool tap_hold(uint16_t keycode) {
         case KC_EXCLAIM:
         case KC_AMPERSAND:
         case KC_PIPE:
+        case UC(0x2013): // en dash (hold for em dash)
             return true;
         default:
             return false;
@@ -147,6 +148,9 @@ bool tap_hold(uint16_t keycode) {
 
 void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
+        case UC(0x2013):
+            register_unicode(0x2013); // en dash
+            break;
         case LP_QU:
             if (get_mods() & MOD_MASK_CAG) {
                 tap_code16(KC_Q);
@@ -167,6 +171,9 @@ void tap_hold_send_tap(uint16_t keycode) {
 
 void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
+        case UC(0x2013):
+            register_unicode(0x2014); // em dash
+            break;
         case LP_QU:
             if (is_caps_word_on())
                 tap_code16(LSFT(KC_Q));

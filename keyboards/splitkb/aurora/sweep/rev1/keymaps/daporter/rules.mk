@@ -18,6 +18,7 @@ CONVERT_TO = liatris
 COMBO_ENABLE      = yes
 CAPS_WORD_ENABLE  = yes
 REPEAT_KEY_ENABLE = yes
+UNICODE_ENABLE    = yes
 
 SRC += features/tap_hold.c
 
