@@ -100,19 +100,12 @@ void matrix_scan_user(void) {
 
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     /*
-     * Allow same-hand chords if the held modifier is a thumb key, since I find
-     * them necessary.
+     * Always allow same-hand chords: the only tap-hold keys left are the
+     * four thumb layer keys (home-row mods are gone), and same-hand
+     * chording with them -- e.g. RH2 + a right-hand L_CFG mod -- is
+     * necessary and deliberate.
      */
-    switch (tap_hold_keycode) {
-        case HD_LH1:
-        case HD_LH2:
-        case HD_RH1:
-        case HD_RH2:
-            return true;
-    }
-
-    // Otherwise defer to the opposite hands rule.
-    return get_chordal_hold_default(tap_hold_record, other_record);
+    return true;
 }
 
 /*

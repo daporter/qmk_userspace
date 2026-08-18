@@ -87,16 +87,16 @@
 #define LN_RT3 KC_9
 #define LN_RT4 KC_MINUS
 
-#define LN_LM4 LGUI_T(KC_F11)
-#define LN_LM3 LALT_T(KC_F3)
-#define LN_LM2 LCTL_T(KC_F2)
-#define LN_LM1 LSFT_T(KC_F1)
+#define LN_LM4 KC_F11
+#define LN_LM3 KC_F3
+#define LN_LM2 KC_F2
+#define LN_LM1 KC_F1
 #define LN_LM0 KC_F14
 #define LN_RM0 KC_ASTERISK
-#define LN_RM1 RSFT_T(KC_1)
-#define LN_RM2 RCTL_T(KC_2)
-#define LN_RM3 RALT_T(KC_3)
-#define LN_RM4 RGUI_T(KC_PLUS)
+#define LN_RM1 KC_1
+#define LN_RM2 KC_2
+#define LN_RM3 KC_3
+#define LN_RM4 KC_PLUS
 
 #define LN_LB4 KC_F12
 #define LN_LB3 KC_F6
@@ -115,10 +115,13 @@
 #define LN_RH2 KC_DOT
 
 /*
- * L_NAV: Keyboard navigation.
+ * L_NAV: Keyboard navigation. The left home row is a one-shot mod row (mods
+ * are only on the same hand as the LH2 layer key that reaches them; tap to
+ * queue for the next keystroke on any layer, hold to sustain like a normal
+ * held mod -- see L_CFG below for the mirror image on the right hand).
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
  * │       ⇧⇥   ⇥              │   │        ⇱    ⇞    ⇟    ⇲  │
- * │  ❖      ⎇      ⌃      ⇧        │   │  ^G   ←    ↑    ↓    →   │
+ * │  ❖¹     ⎇¹     ⌃¹     ⇧¹       │   │  ^G   ←    ↑    ↓    →   │
  * │                             │   │  undo  copy  pste  cut  ^A  │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
@@ -135,10 +138,10 @@
 #define LV_RT3 KC_PAGE_DOWN
 #define LV_RT4 KC_END
 
-#define LV_LM4 KC_LGUI
-#define LV_LM3 KC_LALT
-#define LV_LM2 KC_LCTL
-#define LV_LM1 KC_LSFT
+#define LV_LM4 OSM(MOD_LGUI)
+#define LV_LM3 OSM(MOD_LALT)
+#define LV_LM2 OSM(MOD_LCTL)
+#define LV_LM1 OSM(MOD_LSFT)
 #define LV_LM0 _______
 #define LV_RM0 LCTL(KC_G)
 #define LV_RM1 KC_LEFT
@@ -151,8 +154,9 @@
 #define LV_LB2 _______
 #define LV_LB1 _______
 #define LV_LB0 _______
-/* No dedicated redo key: NAV + LV_LM1 (shift) + RB0 already composes to
- * Ctrl+Shift+Z, since held real mods stack with a modded keycode's own. */
+/* No dedicated redo key: NAV + hold LV_LM1 (shift) + RB0 already composes
+ * to Ctrl+Shift+Z -- a held one-shot mod stacks with a modded keycode's own
+ * just like a plain held mod would. */
 #define LV_RB0 LCTL(KC_Z)
 #define LV_RB1 LCTL(KC_C)
 #define LV_RB2 LCTL(KC_V)
@@ -168,14 +172,16 @@
 #define LV_RH2 SELWORD
 
 /*
- * L_CFG: Keyboard configuration + modifier chording. The home row is a
- * mirrored set of plain (non-tap-hold) mods, so any combination can be held
- * simultaneously or sustained across several taps without the tap-hold
- * races/chordal-hold restrictions that apply to the base layer's home-row
- * mods -- needed for chords like Emacs's C-M-f, or sequences like C-c C-x.
+ * L_CFG: Keyboard configuration + modifier chording. The right home row is
+ * a one-shot mod row (mirroring L_NAV's left-hand one-shot row) -- tap to
+ * queue a mod for the next keystroke on any layer, hold to sustain like a
+ * normal held mod, so any combination can be held simultaneously or
+ * sustained across several taps -- needed for chords like Emacs's C-M-f, or
+ * sequences like C-c C-x. The left hand is transparent, so it types
+ * normally while RH2 is held.
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │     Menu  Caps   CW     │   │                     │
- * │  ❖    ⎇     ⌃     ⇧     │   │  ⇧    ⌃    ⎇    ❖  │
+ * │                         │   │  ⇧¹   ⌃¹   ⎇¹   ❖¹ │
  * │                         │   │  BOOT               │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
@@ -192,16 +198,16 @@
 #define LC_RT3 _______
 #define LC_RT4 _______
 
-#define LC_LM4 KC_LGUI
-#define LC_LM3 KC_LALT
-#define LC_LM2 KC_LCTL
-#define LC_LM1 KC_LSFT
+#define LC_LM4 _______
+#define LC_LM3 _______
+#define LC_LM2 _______
+#define LC_LM1 _______
 #define LC_LM0 _______
 #define LC_RM0 _______
-#define LC_RM1 KC_RSFT
-#define LC_RM2 KC_RCTL
-#define LC_RM3 KC_RALT
-#define LC_RM4 KC_RGUI
+#define LC_RM1 OSM(MOD_RSFT)
+#define LC_RM2 OSM(MOD_RCTL)
+#define LC_RM3 OSM(MOD_RALT)
+#define LC_RM4 OSM(MOD_RGUI)
 
 #define LC_LB4 _______
 #define LC_LB3 _______
