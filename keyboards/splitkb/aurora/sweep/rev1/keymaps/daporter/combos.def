@@ -13,6 +13,8 @@ COMB(combo_DOLR,  KC_DOLLAR,      HD_RT2,  HD_RT4)
 COMB(combo_EQL,   KC_EQUAL,       HD_RB2,  HD_RB3)
 COMB(combo_AT,    KC_AT,          HD_RT0,  HD_RT1)
 COMB(combo_NDSH,  UC(0x2013),     HD_RB0,  HD_RB1)  // en dash, hold for em dash (see tap_hold in keymap.c)
+COMB(combo_LSQO,  UC(0x2018),     HD_RM2,  HD_RM3)  // left single quote, hold for left double quote
+COMB(combo_RSQO,  UC(0x2019),     HD_RM3,  HD_RM4)  // right single quote, hold for right double quote
 COMB(combo_REP,   QK_REP,         HD_LT1,  HD_RT1)
 COMB(combo_AREP,  QK_AREP,        HD_LT2,  HD_RT2)
 COMB(combo_CX,    LCTL(KC_X),     HD_RM1,  HD_RM2)

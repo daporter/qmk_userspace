@@ -140,6 +140,8 @@ bool tap_hold(uint16_t keycode) {
         case KC_AMPERSAND:
         case KC_PIPE:
         case UC(0x2013): // en dash (hold for em dash)
+        case UC(0x2018): // left single quote (hold for left double quote)
+        case UC(0x2019): // right single quote (hold for right double quote)
             return true;
         default:
             return false;
@@ -150,6 +152,12 @@ void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
         case UC(0x2013):
             register_unicode(0x2013); // en dash
+            break;
+        case UC(0x2018):
+            register_unicode(0x2018); // left single quote
+            break;
+        case UC(0x2019):
+            register_unicode(0x2019); // right single quote
             break;
         case LP_QU:
             if (get_mods() & MOD_MASK_CAG) {
@@ -173,6 +181,12 @@ void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
         case UC(0x2013):
             register_unicode(0x2014); // em dash
+            break;
+        case UC(0x2018):
+            register_unicode(0x201C); // left double quote
+            break;
+        case UC(0x2019):
+            register_unicode(0x201D); // right double quote
             break;
         case LP_QU:
             if (is_caps_word_on())
