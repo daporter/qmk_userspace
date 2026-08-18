@@ -17,49 +17,48 @@
 #pragma once
 
 /*
- * L_SYM: Symbols and punctuation. Mirrored left/right of the natural QWERTY
- * position so that the highest-frequency brackets land on the opposite hand
- * from the thumb (Space) that holds this layer active.
+ * L_SYM: Symbols and punctuation.
+ *
  * ╭─────────────────╮   ╭─────────────────╮
- * │     ?  $  _  &  │   │  .  <  @  >  `  │
- * │  %  [  {  (  |  │   │  #  =  +  -  !  │
- * │     ]  }  )  ~  │   │  \  ^  *  /  :  │
+ * │  `  <  >  -  |  │   │  ^  {  }  $  \  │
+ * │  !  *  /  =  &  │   │  #  (  )  ;  "  │
+ * │  ~  +  [  ]  %  │   │  @  :  ,  .  '  │
  * ╰──────────╮      │   │      ╭──────────╯
  *            ╰──-───╯   ╰──────╯
  */
 
-#define LS_LT4 _______
-#define LS_LT3 KC_QUESTION
-#define LS_LT2 KC_DOLLAR
-#define LS_LT1 KC_UNDERSCORE
-#define LS_LT0 KC_AMPERSAND
-#define LS_RT0 KC_DOT
-#define LS_RT1 KC_LEFT_ANGLE_BRACKET
-#define LS_RT2 KC_AT
-#define LS_RT3 KC_RIGHT_ANGLE_BRACKET
-#define LS_RT4 KC_GRV
+#define LS_LT4 KC_GRV
+#define LS_LT3 KC_LEFT_ANGLE_BRACKET
+#define LS_LT2 KC_RIGHT_ANGLE_BRACKET
+#define LS_LT1 KC_MINUS
+#define LS_LT0 KC_PIPE
+#define LS_RT0 KC_CIRCUMFLEX
+#define LS_RT1 KC_LEFT_CURLY_BRACE
+#define LS_RT2 KC_RIGHT_CURLY_BRACE
+#define LS_RT3 KC_DOLLAR
+#define LS_RT4 KC_BACKSLASH
 
-#define LS_LM4 KC_PERCENT
-#define LS_LM3 KC_LEFT_BRACKET
-#define LS_LM2 KC_LEFT_CURLY_BRACE
-#define LS_LM1 KC_LEFT_PAREN
-#define LS_LM0 KC_PIPE
+#define LS_LM4 KC_EXCLAIM
+#define LS_LM3 KC_ASTERISK
+#define LS_LM2 KC_SLASH
+#define LS_LM1 KC_EQUAL
+#define LS_LM0 KC_AMPERSAND
 #define LS_RM0 KC_HASH
-#define LS_RM1 KC_EQUAL
-#define LS_RM2 KC_PLUS
-#define LS_RM3 KC_MINUS
-#define LS_RM4 KC_EXCLAIM
+#define LS_RM1 KC_LEFT_PAREN
+#define LS_RM2 KC_RIGHT_PAREN
+#define LS_RM3 KC_SEMICOLON
+#define LS_RM4 KC_DOUBLE_QUOTE
 
-#define LS_LB4 _______
-#define LS_LB3 KC_RIGHT_BRACKET
-#define LS_LB2 KC_RIGHT_CURLY_BRACE
-#define LS_LB1 KC_RIGHT_PAREN
-#define LS_LB0 KC_TILDE
-#define LS_RB0 KC_BACKSLASH
-#define LS_RB1 KC_CIRCUMFLEX
-#define LS_RB2 KC_ASTERISK
-#define LS_RB3 KC_SLASH
-#define LS_RB4 KC_COLON
+#define LS_LB4 KC_TILDE
+#define LS_LB3 KC_PLUS
+#define LS_LB2 KC_LEFT_BRACKET
+#define LS_LB1 KC_RIGHT_BRACKET
+#define LS_LB0 KC_PERCENT
+#define LS_RB0 KC_AT
+#define LS_RB1 KC_COLON
+#define LS_RB2 KC_COMMA
+#define LS_RB3 KC_DOT
+#define LS_RB4 KC_QUOTE
 
 #define LS_LH2 _______
 #define LS_LH1 _______
