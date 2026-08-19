@@ -21,8 +21,8 @@
 // clang-format off
 #define HD_A RSFT_T(KC_A)
 #define HD_B KC_B
-#define HD_C KC_C
-#define HD_D LSFT_T(KC_D)
+#define HD_C LALT_T(KC_C)
+#define HD_D KC_D
 #define HD_E RCTL_T(KC_E)
 #define HD_F KC_F
 #define HD_G KC_G
@@ -36,9 +36,9 @@
 #define HD_O KC_O
 #define HD_P KC_P
 #define HD_Q KC_Q
-#define HD_R LGUI_T(KC_R)
-#define HD_S LALT_T(KC_S)
-#define HD_T LT(L_NUM, KC_T)
+#define HD_R LT(L_NUM, KC_R)
+#define HD_S LGUI_T(KC_S)
+#define HD_T LSFT_T(KC_T)
 #define HD_U KC_U
 #define HD_V KC_V
 #define HD_W KC_W
@@ -65,12 +65,12 @@
  * Place these HD keycodes on the keymap for variation independent spatial
  * referencing by key position.
  *
- * Base (alpha) layer Hands Down Gold (HRMs + thumb mods):
+ * Base (alpha) layer Hands Down Vibranium b (HRMs + thumb mods):
  * ╭─────────────────────╮   ╭──────────────────────╮
- * │  J   G   M   P   V  │   │  #$  .:  /\*  "?  '! │
- * │  R   S   N   D   B  │   │  ,;  A   E   I   H   │
- * │  X   F   L   C   W  │   │  -+  U   O   Y   K   │
- * ╰───────────╮  ⇧   T  │   │ spc  -  ╭───────────╯
+ * │  X   W   M   G   J  │   │  #$  .:  /\*  "!  '? │
+ * │  S   C   N   T   K  │   │  ,;  A   E   I   H   │
+ * │  B   P   L   D   V  │   │  -+  U   O   Y   F   │
+ * ╰───────────╮  ⇧   R  │   │ spc      ╭───────────╯
  *             ╰─────────╯   ╰──────────╯
  *
  * Q & Z, and editing keys (Backspace, Delete, Tab, Enter, etc.), are
@@ -79,41 +79,41 @@
  * two is on. RH2 tap one-shots L_ALPHA2; RH2 hold is L_CFG.
  */
 
-#define HD_LT4 HD_J
-#define HD_LT3 HD_G
+#define HD_LT4 HD_X
+#define HD_LT3 HD_W
 #define HD_LT2 HD_M
-#define HD_LT1 HD_P
-#define HD_LT0 HD_V
+#define HD_LT1 HD_G
+#define HD_LT0 HD_J
 #define HD_RT0 HD_HASH
 #define HD_RT1 HD_DOT
 #define HD_RT2 HD_SLASH
 #define HD_RT3 HD_DOUBLE_QUOTE
 #define HD_RT4 HD_QUOTE
 
-#define HD_LM4 HD_R
-#define HD_LM3 HD_S
+#define HD_LM4 HD_S
+#define HD_LM3 HD_C
 #define HD_LM2 HD_N
-#define HD_LM1 HD_D
-#define HD_LM0 HD_B
+#define HD_LM1 HD_T
+#define HD_LM0 HD_K
 #define HD_RM0 HD_COMMA
 #define HD_RM1 HD_A
 #define HD_RM2 HD_E
 #define HD_RM3 HD_I
 #define HD_RM4 HD_H
 
-#define HD_LB4 HD_X
-#define HD_LB3 HD_F
+#define HD_LB4 HD_B
+#define HD_LB3 HD_P
 #define HD_LB2 HD_L
-#define HD_LB1 HD_C
-#define HD_LB0 HD_W
+#define HD_LB1 HD_D
+#define HD_LB0 HD_V
 #define HD_RB0 HD_MINUS
 #define HD_RB1 HD_U
 #define HD_RB2 HD_O
 #define HD_RB3 HD_Y
-#define HD_RB4 HD_K
+#define HD_RB4 HD_F
 
 #define HD_LH2 HD_OSFT_TD
-#define HD_LH1 HD_T
+#define HD_LH1 HD_R
 #define HD_RH1 HD_SPACE
 #define HD_RH2 HD_ALPHA2_TD
 

@@ -19,8 +19,8 @@
 #include "features/tap_hold.h"
 
 #include "keycodes.h"
-// Alpha layout: swap this include for "handsdown_vf.h" to switch to Hands
-// Down Vibranium f instead of Hands Down Gold.
+// Alpha layout: swap this include for "handsdown_vf.h" or "handsdown_vb.h"
+// to switch to Hands Down Vibranium f/b instead of Hands Down Gold.
 #include "handsdown_au.h"
 #include "layers.h"
 
