@@ -16,11 +16,5 @@
 
 #pragma once
 
-/*
- * Enable the QK_MAKE key.  See:
- * https://docs.qmk.fm/#/quantum_keycodes?id=qmk-keycodes
- */
-#define ENABLE_COMPILE_KEYCODE
-
 /* Unicode input via IBus; see combos.def for UC() usage (e.g. en dash). */
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
