@@ -17,6 +17,55 @@
 #pragma once
 
 /*
+ * L_ALPHA2: Secondary alpha layer.
+ *
+ * ╭─────────────────╮   ╭─────────────────╮
+ * │     q  qu       │   │                 │
+ * │     z           │   │                 │
+ * │                 │   │                 │
+ * ╰──────────╮      │   │      ╭──────────╯
+ *            ╰──-───╯   ╰──────╯
+ */
+
+#define LA2_LT4 _______
+#define LA2_LT3 KC_Q
+#define LA2_LT2 LP_QU
+#define LA2_LT1 _______
+#define LA2_LT0 _______
+#define LA2_RT0 _______
+#define LA2_RT1 _______
+#define LA2_RT2 _______
+#define LA2_RT3 _______
+#define LA2_RT4 _______
+
+#define LA2_LM4 _______
+#define LA2_LM3 KC_Z
+#define LA2_LM2 _______
+#define LA2_LM1 _______
+#define LA2_LM0 _______
+#define LA2_RM0 _______
+#define LA2_RM1 _______
+#define LA2_RM2 _______
+#define LA2_RM3 _______
+#define LA2_RM4 _______
+
+#define LA2_LB4 _______
+#define LA2_LB3 _______
+#define LA2_LB2 _______
+#define LA2_LB1 _______
+#define LA2_LB0 _______
+#define LA2_RB0 _______
+#define LA2_RB1 _______
+#define LA2_RB2 _______
+#define LA2_RB3 _______
+#define LA2_RB4 _______
+
+#define LA2_LH2 _______
+#define LA2_LH1 _______
+#define LA2_RH1 _______
+#define LA2_RH2 _______
+
+/*
  * L_SYM: Symbols and punctuation.
  *
  * ╭─────────────────╮   ╭─────────────────╮
@@ -163,8 +212,8 @@
 #define LV_RB4 LCTL(KC_A)
 
 /* LV_LH2 is unreachable: it's the same physical key that holds NAV active
- * (HD_BACKSPACE = LT(L_NAV, KC_BACKSPACE)), so it can never be looked up
- * again while held. */
+ * (HD_OSFT_TD's hold, see keymap.c), so it can never be looked up again
+ * while held. */
 #define LV_LH2 _______
 #define LV_LH1 _______
 #define LV_RH1 LCTL(KC_BACKSPACE)

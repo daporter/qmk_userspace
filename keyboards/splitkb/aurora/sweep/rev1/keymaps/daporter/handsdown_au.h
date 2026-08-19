@@ -54,8 +54,12 @@
 #define HD_COMMA        KC_COMMA
 #define HD_MINUS        KC_MINUS
 #define HD_SPACE        LT(L_SYM, KC_SPACE)
-#define HD_BACKSPACE    LT(L_NAV, KC_BACKSPACE)
-#define HD_ENTER        LT(L_CFG, KC_ENTER)
+// Tap: one-shot shift. Double tap: Caps Word. Hold: L_NAV. See the osft_td_*
+// tap dance callbacks in keymap.c.
+#define HD_OSFT_TD      TD(TD_OSFT)
+// Tap: one-shot L_ALPHA2. Hold: L_CFG. See the alpha2_td_* tap dance
+// callbacks in keymap.c.
+#define HD_ALPHA2_TD    TD(TD_ALPHA2)
 
 /*
  * Place these HD keycodes on the keymap for variation independent spatial
@@ -66,10 +70,13 @@
  * │  J   G   M   P   V  │   │  #$  .:  /\*  "?  '! │
  * │  R   S   N   D   B  │   │  ,;  A   E   I   H   │
  * │  X   F   L   C   W  │   │  -+  U   O   Y   K   │
- * ╰───────────╮ bsp  T  │   │ spc  ret ╭───────────╯
+ * ╰───────────╮  ⇧   T  │   │ spc  -  ╭───────────╯
  *             ╰─────────╯   ╰──────────╯
  *
- * Q & Z are available via combos.
+ * Q & Z are available via combos, as is Backspace (LT3+LT2). Enter is
+ * RM2+RM3+RH2 (see combos.def). LH2 double-tap enables Caps Lock; LH2 tap
+ * then RH1 tap enables Caps Word. LH2 tap disables whichever of the two is
+ * on. RH2 tap one-shots L_ALPHA2; RH2 hold is L_CFG.
  */
 
 #define HD_LT4 HD_J
@@ -105,9 +112,9 @@
 #define HD_RB3 HD_Y
 #define HD_RB4 HD_K
 
-#define HD_LH2 HD_BACKSPACE
+#define HD_LH2 HD_OSFT_TD
 #define HD_LH1 HD_T
 #define HD_RH1 HD_SPACE
-#define HD_RH2 HD_ENTER
+#define HD_RH2 HD_ALPHA2_TD
 
 // clang-format on

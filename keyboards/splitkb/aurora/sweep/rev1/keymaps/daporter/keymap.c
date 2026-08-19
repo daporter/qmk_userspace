@@ -27,6 +27,7 @@
 enum layers {
     // clang-format off
     L_HD,
+    L_ALPHA2,
     L_SYM,
     L_NUM,
     L_NAV,
@@ -56,6 +57,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     HD_LM4, HD_LM3, HD_LM2, HD_LM1, HD_LM0,     HD_RM0, HD_RM1, HD_RM2, HD_RM3, HD_RM4,
     HD_LB4, HD_LB3, HD_LB2, HD_LB1, HD_LB0,     HD_RB0, HD_RB1, HD_RB2, HD_RB3, HD_RB4,
                             HD_LH2, HD_LH1,     HD_RH1, HD_RH2),
+
+    [L_ALPHA2] = LAYOUT(
+    LA2_LT4, LA2_LT3, LA2_LT2, LA2_LT1, LA2_LT0,     LA2_RT0, LA2_RT1, LA2_RT2, LA2_RT3, LA2_RT4,
+    LA2_LM4, LA2_LM3, LA2_LM2, LA2_LM1, LA2_LM0,     LA2_RM0, LA2_RM1, LA2_RM2, LA2_RM3, LA2_RM4,
+    LA2_LB4, LA2_LB3, LA2_LB2, LA2_LB1, LA2_LB0,     LA2_RB0, LA2_RB1, LA2_RB2, LA2_RB3, LA2_RB4,
+                            LA2_LH2, LA2_LH1,     LA2_RH1, LA2_RH2),
 
     [L_SYM] = LAYOUT(
     LS_LT4, LS_LT3, LS_LT2, LS_LT1, LS_LT0,     LS_RT0, LS_RT1, LS_RT2, LS_RT3, LS_RT4,
@@ -89,8 +96,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     { HD_HASH,          KC_DOLLAR  },
     { HD_DOT,           KC_COLON },
     { KC_SLASH,         KC_ASTERISK },
-    { KC_DOUBLE_QUOTE,  KC_QUESTION },
-    { KC_QUOTE,         KC_EXCLAIM },
+    { KC_DOUBLE_QUOTE,  KC_EXCLAIM },
+    { KC_QUOTE,         KC_QUESTION },
     { KC_COMMA,         KC_SEMICOLON },
     { KC_MINUS,         KC_PLUS },
     // clang-format on
@@ -201,8 +208,152 @@ void tap_hold_send_hold(uint16_t keycode) {
     }
 }
 
+// HD_OSFT_TD tap then RH1 tap, within this long, turns on Caps Word (see
+// osft_td_finished/process_record_user below).
+#define OSFT_SPACE_SEQ_TERM 300
+
+static bool     osft_tap_pending = false;
+static uint16_t osft_tap_time    = 0;
+
+// Whether Caps Word was on when HD_OSFT_TD was last physically pressed.
+// Captured here because core's caps_word processing runs *after*
+// process_record_user but *before* process_tap_dance: it doesn't recognize
+// tap-dance keycodes, so it always turns Caps Word off on press, before
+// osft_td_finished ever sees it -- a live is_caps_word_on() check there
+// would always read false.
+static bool osft_press_caps_word_was_on = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_tap_hold(keycode, record)) return false;
 
+    if (keycode == HD_OSFT_TD && record->event.pressed) {
+        osft_press_caps_word_was_on = is_caps_word_on();
+    }
+
+    if (record->event.pressed) {
+        if (keycode == HD_SPACE && record->tap.count && osft_tap_pending && timer_elapsed(osft_tap_time) < OSFT_SPACE_SEQ_TERM) {
+            osft_tap_pending = false;
+            clear_oneshot_mods(); // cancel the shift armed by the HD_OSFT_TD tap
+            caps_word_on();
+            return false;
+        }
+        osft_tap_pending = false;
+    }
+
     return true;
 }
+
+/*
+ * Tap dance for HD_OSFT_TD (currently HD_LH2): tap = one-shot shift, double
+ * tap = Caps Lock, hold = L_NAV. A tap also starts (or ends) the
+ * HD_OSFT_TD-then-RH1 Caps Word sequence handled above.
+ *
+ * A plain LT() can't do this: its tap argument must be a basic keycode (so
+ * it can't send a one-shot mod), and it only has a tap/hold split, not a
+ * double-tap. `state->pressed`, not `state->interrupted`, decides hold here
+ * so that -- same as every other layer-tap key in this keymap -- pressing
+ * another key while HD_OSFT_TD is still held resolves it as a hold
+ * immediately, rather than waiting to see if HD_OSFT_TD itself gets tapped
+ * again.
+ */
+typedef enum {
+    OSFT_TD_NONE,
+    OSFT_TD_SINGLE_TAP,
+    OSFT_TD_SINGLE_HOLD,
+    OSFT_TD_DOUBLE_TAP,
+} osft_td_state_t;
+
+static osft_td_state_t osft_td_state = OSFT_TD_NONE;
+
+static osft_td_state_t osft_td_classify(tap_dance_state_t *state) {
+    if (state->count == 1) return state->pressed ? OSFT_TD_SINGLE_HOLD : OSFT_TD_SINGLE_TAP;
+    if (state->count == 2) return OSFT_TD_DOUBLE_TAP;
+    return OSFT_TD_NONE;
+}
+
+void osft_td_finished(tap_dance_state_t *state, void *user_data) {
+    osft_td_state = osft_td_classify(state);
+    switch (osft_td_state) {
+        case OSFT_TD_SINGLE_TAP:
+            // Caps Lock/Caps Word were already on: a plain tap turns them
+            // back off (core caps_word processing already did so for Caps
+            // Word, see osft_press_caps_word_was_on) instead of arming the
+            // one-shot shift/RH1 sequence.
+            if (host_keyboard_led_state().caps_lock) {
+                tap_code(KC_CAPS_LOCK);
+            } else if (!osft_press_caps_word_was_on) {
+                set_oneshot_mods(MOD_BIT(KC_LSFT));
+                osft_tap_pending = true;
+                osft_tap_time    = timer_read();
+            }
+            break;
+        case OSFT_TD_SINGLE_HOLD:
+            layer_on(L_NAV);
+            break;
+        case OSFT_TD_DOUBLE_TAP:
+            // Idempotent: a redundant double tap while already on shouldn't
+            // toggle it back off.
+            if (!host_keyboard_led_state().caps_lock) {
+                tap_code(KC_CAPS_LOCK);
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+void osft_td_reset(tap_dance_state_t *state, void *user_data) {
+    if (osft_td_state == OSFT_TD_SINGLE_HOLD) layer_off(L_NAV);
+    osft_td_state = OSFT_TD_NONE;
+}
+
+/*
+ * Tap dance for HD_ALPHA2_TD (HD_RH2): tap = one-shot L_ALPHA2, hold =
+ * L_CFG. A plain LT() can't do this since OSL() isn't a basic keycode, so
+ * the tap arms the one-shot layer directly the same way QMK's own OSL()
+ * keycode does (see quantum/action.c): set_oneshot_layer() then
+ * clear_oneshot_layer_state(ONESHOT_PRESSED), both called here since by the
+ * time a plain tap is recognized the physical press and release have
+ * already happened.
+ *
+ * As with osft_td_classify, `state->pressed` (not `state->interrupted`)
+ * decides hold, so chording another key while RH2 is still held resolves
+ * it as a hold immediately.
+ */
+typedef enum {
+    ALPHA2_TD_NONE,
+    ALPHA2_TD_TAP,
+    ALPHA2_TD_HOLD,
+} alpha2_td_state_t;
+
+static alpha2_td_state_t alpha2_td_state = ALPHA2_TD_NONE;
+
+static alpha2_td_state_t alpha2_td_classify(tap_dance_state_t *state) {
+    if (state->count == 1) return state->pressed ? ALPHA2_TD_HOLD : ALPHA2_TD_TAP;
+    return ALPHA2_TD_NONE;
+}
+
+void alpha2_td_finished(tap_dance_state_t *state, void *user_data) {
+    alpha2_td_state = alpha2_td_classify(state);
+    switch (alpha2_td_state) {
+        case ALPHA2_TD_TAP:
+            set_oneshot_layer(L_ALPHA2, ONESHOT_START);
+            clear_oneshot_layer_state(ONESHOT_PRESSED);
+            break;
+        case ALPHA2_TD_HOLD:
+            layer_on(L_CFG);
+            break;
+        default:
+            break;
+    }
+}
+
+void alpha2_td_reset(tap_dance_state_t *state, void *user_data) {
+    if (alpha2_td_state == ALPHA2_TD_HOLD) layer_off(L_CFG);
+    alpha2_td_state = ALPHA2_TD_NONE;
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_OSFT]   = ACTION_TAP_DANCE_FN_ADVANCED(NULL, osft_td_finished, osft_td_reset),
+    [TD_ALPHA2] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, alpha2_td_finished, alpha2_td_reset),
+};
