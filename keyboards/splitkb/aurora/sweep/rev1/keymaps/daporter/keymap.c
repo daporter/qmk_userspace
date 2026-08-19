@@ -131,6 +131,67 @@ bool caps_word_press_user(uint16_t keycode) {
     }
 }
 
+/*
+ * Same as the QMK default, except it classifies keys by what they actually
+ * send on this keymap. sentence_case_press_user() runs on the *raw* keymap
+ * keycode, before custom_shift_keys remaps it (community modules run before
+ * process_record_user; see quantum.c) -- so e.g. shifted KC_QUOTE (which
+ * custom_shift_keys turns into "?") arrives here as plain KC_QUOTE, which
+ * the QMK default always classifies as a quote, never as sentence-ending.
+ * Mirror custom_shift_keys' table (keymap.c above) instead of the default's
+ * US-ANSI assumptions (e.g. it assumes shifted KC_SLASH is "?"; here it's
+ * "*", from custom_shift_keys).
+ */
+char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
+    switch (keycode) {
+        // HD_OSFT_TD/HD_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
+        // Caps Lock/NAV on HD_LH2, one-shot L_ALPHA2/L_CFG on HD_RH2) don't
+        // type anything themselves -- ignore them like core's own
+        // QK_ONE_SHOT_MOD/QK_ONE_SHOT_LAYER ranges below, rather than
+        // falling through to the "unrecognized key" branch, which would
+        // wrongly reset Sentence Case state on every one-shot-shift tap
+        // (e.g. arming shift for "!"/"?" via HD_LH2 mid-sentence).
+        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
+            return '\0';
+    }
+
+    if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+        const bool shifted = mods & MOD_MASK_SHIFT;
+        switch (keycode) {
+            case KC_A ... KC_Z:
+            case LP_QU: // taps/holds to Q or QU
+                return 'a'; // Letter key.
+
+            case HD_DOT: // unshifted '.'; shifted ':' (see custom_shift_keys)
+                return !shifted ? '.' : '#';
+            case KC_DOUBLE_QUOTE: // unshifted '"'; shifted '!' via custom_shift_keys
+            case KC_QUOTE:        // unshifted '\''; shifted '?' via custom_shift_keys
+                return shifted ? '.' : '\'';
+            case KC_EXCLAIM: // '!' typed directly (SYM layer LM4, or combo_EXLM)
+            case KC_QUESTION: // '?' typed directly (combo_QUES)
+                return '.';
+
+            case KC_1: // shifted '!' (real Shift, not custom_shift_keys)
+                return shifted ? '.' : '#';
+            case KC_2 ... KC_0: // 2 3 4 5 6 7 8 9 0
+            case KC_AT ... KC_RPRN: // @ # $ % ^ & * ( )
+            case KC_MINS ... KC_SCLN: // - = [ ] backslash ;
+            case KC_UNDS ... KC_COLN: // _ + { } | :
+            case KC_GRV:
+            case KC_COMM:
+            case KC_SLASH: // unshifted '/'; shifted '*' (not '?')
+                return '#'; // Symbol key.
+
+            case KC_SPC:
+                return ' '; // Space key.
+        }
+    }
+
+    // Otherwise clear Sentence Case to initial state.
+    sentence_case_clear();
+    return '\0';
+}
+
 bool tap_hold(uint16_t keycode) {
     switch (keycode) {
         case LP_QU:
