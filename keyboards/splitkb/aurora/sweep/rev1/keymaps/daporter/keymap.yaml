@@ -19,32 +19,32 @@ layout:
 layers:
   HD:
     - [
-        j,
-        g,
+        x,
+        w,
         m,
-        p,
-        v,
+        g,
+        j,
         { t: "#", s: "$" },
         { t: ".", s: ":" },
         { t: "/", s: "*" },
-        { t: '"', s: "?" },
-        { t: "'", s: "!" },
+        { t: '"', s: "!" },
+        { t: "'", s: "?" },
       ]
     - [
-        { t: r, h: ❖ },
-        { t: s, h: ⎇ },
+        { t: s, h: ❖ },
+        { t: c, h: ⎇ },
         { t: n, h: ⌃ },
-        { t: d, h: ⇧ },
-        b,
+        { t: t, h: ⇧ },
+        k,
         { t: ",", s: ";" },
         { t: a, h: ⇧ },
         { t: e, h: ⌃ },
         { t: i, h: ⎇ },
         { t: h, h: ❖ },
       ]
-    - [x, f, l, c, w, { t: "-", s: "+" }, u, o, y, k]
+    - [b, p, l, d, v, { t: "-", s: "+" }, u, o, y, f]
     - { t: "⇧", h: NAV, s: Caps } # s: repurposed for double-tap, not shift
-    - { t: t, h: NUM }
+    - { t: r, h: NUM }
     - { t: ␣, h: SYM }
     - { t: A2, h: CFG }
   ALPHA2:
