@@ -16,5 +16,5 @@
 
 #pragma once
 
-/* Unicode input via IBus; see combos.def for UC() usage (e.g. en dash). */
+/* Unicode input via IBus. */
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
