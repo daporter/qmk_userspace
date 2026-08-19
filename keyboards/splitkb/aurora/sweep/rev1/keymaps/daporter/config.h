@@ -16,11 +16,6 @@
 
 #pragma once
 
-/* Tap-hold configuration for home row mods. */
-#define TAPPING_TERM 175
-#define PERMISSIVE_HOLD
-#define CHORDAL_HOLD
-
 /*
  * Enable the QK_MAKE key.  See:
  * https://docs.qmk.fm/#/quantum_keycodes?id=qmk-keycodes

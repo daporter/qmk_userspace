@@ -115,13 +115,12 @@
 #define LN_RH2 KC_DOT
 
 /*
- * L_NAV: Keyboard navigation. The left home row is a one-shot mod row (mods
- * are only on the same hand as the LH2 layer key that reaches them; tap to
- * queue for the next keystroke on any layer, hold to sustain like a normal
- * held mod -- see L_CFG below for the mirror image on the right hand).
+ * L_NAV: Keyboard navigation. The left home row is transparent -- mods are
+ * reached via the alpha layer's own home-row mods, held concurrently with
+ * this layer's key (LH2).
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
  * │       ⇧⇥   ⇥              │   │        ⇱    ⇞    ⇟    ⇲  │
- * │  ❖¹     ⎇¹     ⌃¹     ⇧¹       │   │  ^G   ←    ↑    ↓    →   │
+ * │                             │   │  ^G   ←    ↑    ↓    →   │
  * │                             │   │  undo  copy  pste  cut  ^A  │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
@@ -138,10 +137,10 @@
 #define LV_RT3 KC_PAGE_DOWN
 #define LV_RT4 KC_END
 
-#define LV_LM4 OSM(MOD_LGUI)
-#define LV_LM3 OSM(MOD_LALT)
-#define LV_LM2 OSM(MOD_LCTL)
-#define LV_LM1 OSM(MOD_LSFT)
+#define LV_LM4 _______
+#define LV_LM3 _______
+#define LV_LM2 _______
+#define LV_LM1 _______
 #define LV_LM0 _______
 #define LV_RM0 LCTL(KC_G)
 #define LV_RM1 KC_LEFT
@@ -154,9 +153,9 @@
 #define LV_LB2 _______
 #define LV_LB1 _______
 #define LV_LB0 _______
-/* No dedicated redo key: NAV + hold LV_LM1 (shift) + RB0 already composes
- * to Ctrl+Shift+Z -- a held one-shot mod stacks with a modded keycode's own
- * just like a plain held mod would. */
+/* No dedicated redo key: NAV + hold HD_D (Shift HRM, LV_LM1 is transparent
+ * so it falls through to the alpha layer) + RB0 already composes to
+ * Ctrl+Shift+Z, since held mods stack with a modded keycode's own. */
 #define LV_RB0 LCTL(KC_Z)
 #define LV_RB1 LCTL(KC_C)
 #define LV_RB2 LCTL(KC_V)
@@ -172,16 +171,12 @@
 #define LV_RH2 SELWORD
 
 /*
- * L_CFG: Keyboard configuration + modifier chording. The right home row is
- * a one-shot mod row (mirroring L_NAV's left-hand one-shot row) -- tap to
- * queue a mod for the next keystroke on any layer, hold to sustain like a
- * normal held mod, so any combination can be held simultaneously or
- * sustained across several taps -- needed for chords like Emacs's C-M-f, or
- * sequences like C-c C-x. The left hand is transparent, so it types
- * normally while RH2 is held.
+ * L_CFG: Keyboard configuration. Both hands are transparent -- mods are
+ * reached via the alpha layer's own home-row mods, held concurrently with
+ * this layer's key (RH2).
  * ╭─────────────────────────╮   ╭─────────────────────╮
  * │     Menu  Caps   CW     │   │                     │
- * │                         │   │  ⇧¹   ⌃¹   ⎇¹   ❖¹ │
+ * │                         │   │                     │
  * │                         │   │  BOOT               │
  * ╰──────────────╮          │   │         ╭───────────╯
  *                ╰──────────╯   ╰─────────╯
@@ -204,10 +199,10 @@
 #define LC_LM1 _______
 #define LC_LM0 _______
 #define LC_RM0 _______
-#define LC_RM1 OSM(MOD_RSFT)
-#define LC_RM2 OSM(MOD_RCTL)
-#define LC_RM3 OSM(MOD_RALT)
-#define LC_RM4 OSM(MOD_RGUI)
+#define LC_RM1 _______
+#define LC_RM2 _______
+#define LC_RM3 _______
+#define LC_RM4 _______
 
 #define LC_LB4 _______
 #define LC_LB3 _______

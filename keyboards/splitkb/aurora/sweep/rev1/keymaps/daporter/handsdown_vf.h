@@ -20,9 +20,12 @@
  * HD alpha keycodes with any hold-taps/custom keycodes.
  *
  * Ported from Hands Down Vibranium f
- * (https://raw.githubusercontent.com/moutis/HandsDown/main/handsdown/vf-config.h).
- * Home-row mods have moved to one-shot mods on L_NAV/L_CFG, so none of the
- * letter positions below carry a mod anymore.
+ * (https://raw.githubusercontent.com/moutis/HandsDown/main/handsdown/vf-config.h),
+ * with home-row mods re-mirrored to match this keymap's handedness
+ * convention instead of vf's (vf holds every home-row mod on the right-side
+ * variant regardless of hand; here each hand holds its own side's mod,
+ * except Alt, which stays LALT_T on both hands to avoid KC_RALT acting as
+ * AltGr on some OS layouts -- see HD_I in handsdown_au.h for precedent).
  *
  * vf natively puts L_NUM on the K home-row key and duplicates L_NAV across
  * both thumbs. To keep layers.h layout-agnostic, this file instead keeps our
@@ -31,25 +34,25 @@
  */
 
 // clang-format off
-#define HD_A KC_A
+#define HD_A RSFT_T(KC_A)
 #define HD_B KC_B
-#define HD_C KC_C
+#define HD_C LALT_T(KC_C)
 #define HD_D KC_D
-#define HD_E KC_E
+#define HD_E RGUI_T(KC_E)
 #define HD_F KC_F
 #define HD_G KC_G
-#define HD_H KC_H
-#define HD_I KC_I
+#define HD_H RCTL_T(KC_H)
+#define HD_I LALT_T(KC_I)
 #define HD_J KC_J
 #define HD_K KC_K
 #define HD_L KC_L
 #define HD_M KC_M
-#define HD_N KC_N
+#define HD_N LGUI_T(KC_N)
 #define HD_O KC_O
 #define HD_P KC_P
 #define HD_R LT(L_NUM, KC_R)
-#define HD_S KC_S
-#define HD_T KC_T
+#define HD_S LCTL_T(KC_S)
+#define HD_T LSFT_T(KC_T)
 #define HD_U KC_U
 #define HD_V KC_V
 #define HD_W KC_W
@@ -71,8 +74,7 @@
  * Place these HD keycodes on the keymap for variation independent spatial
  * referencing by key position.
  *
- * Base (alpha) layer Hands Down Vibranium f (thumb mods only; home-row mods
- * have moved to one-shot mods on L_NAV/L_CFG):
+ * Base (alpha) layer Hands Down Vibranium f (HRMs + thumb mods):
  * ╭─────────────────────╮   ╭──────────────────────╮
  * │  X   W   M   G   J  │   │  #$  .:  /\*  "?  '! │
  * │  S   C   N   T   K  │   │  ,;  A   E   I   H  │

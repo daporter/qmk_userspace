@@ -19,25 +19,25 @@
 /* HD alpha keycodes with any hold-taps/custom keycodes. */
 
 // clang-format off
-#define HD_A KC_A
+#define HD_A RSFT_T(KC_A)
 #define HD_B KC_B
 #define HD_C KC_C
-#define HD_D KC_D
-#define HD_E KC_E
+#define HD_D LSFT_T(KC_D)
+#define HD_E RCTL_T(KC_E)
 #define HD_F KC_F
 #define HD_G KC_G
-#define HD_H KC_H
-#define HD_I KC_I
+#define HD_H RGUI_T(KC_H)
+#define HD_I LALT_T(KC_I)
 #define HD_J KC_J
 #define HD_K KC_K
 #define HD_L KC_L
 #define HD_M KC_M
-#define HD_N KC_N
+#define HD_N LCTL_T(KC_N)
 #define HD_O KC_O
 #define HD_P KC_P
 #define HD_Q KC_Q
-#define HD_R KC_R
-#define HD_S KC_S
+#define HD_R LGUI_T(KC_R)
+#define HD_S LALT_T(KC_S)
 #define HD_T LT(L_NUM, KC_T)
 #define HD_V KC_V
 #define HD_U KC_U
@@ -61,8 +61,7 @@
  * Place these HD keycodes on the keymap for variation independent spatial
  * referencing by key position.
  *
- * Base (alpha) layer Hands Down Gold (thumb mods only; home-row mods have
- * moved to one-shot mods on L_NAV/L_CFG):
+ * Base (alpha) layer Hands Down Gold (HRMs + thumb mods):
  * ╭─────────────────────╮   ╭──────────────────────╮
  * │  J   G   M   P   V  │   │  #$  .:  /\*  "?  '! │
  * │  R   S   N   D   B  │   │  ,;  A   E   I   H   │

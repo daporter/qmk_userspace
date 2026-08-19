@@ -24,8 +24,6 @@
 #include "handsdown_au.h"
 #include "layers.h"
 
-#include "g/keymap_combo.h"
-
 enum layers {
     // clang-format off
     L_HD,
@@ -35,6 +33,10 @@ enum layers {
     L_CFG
     // clang-format on
 };
+
+// Must come after `enum layers`: combos.def uses layer-tap keys (e.g.
+// HD_LH1) and TG(L_NUM), both of which need L_NUM/L_SYM/etc. declared.
+#include "g/keymap_combo.h"
 
 /*
  * Alpha Layer for a 34 key (3x5+2) form factor.
@@ -96,16 +98,6 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 void matrix_scan_user(void) {
     tap_hold_matrix_scan();
-}
-
-bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
-    /*
-     * Always allow same-hand chords: the only tap-hold keys left are the
-     * four thumb layer keys (home-row mods are gone), and same-hand
-     * chording with them -- e.g. RH2 + a right-hand L_CFG mod -- is
-     * necessary and deliberate.
-     */
-    return true;
 }
 
 /*
