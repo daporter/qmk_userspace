@@ -73,10 +73,10 @@
  * ╰───────────╮  ⇧   T  │   │ spc  -  ╭───────────╯
  *             ╰─────────╯   ╰──────────╯
  *
- * Q & Z are available via combos, as is Backspace (LT3+LT2). Enter is
- * RM2+RM3+RH2 (see combos.def). LH2 double-tap enables Caps Lock; LH2 tap
- * then RH1 tap enables Caps Word. LH2 tap disables whichever of the two is
- * on. RH2 tap one-shots L_ALPHA2; RH2 hold is L_CFG.
+ * Q & Z, and editing keys (Backspace, Delete, Tab, Enter, etc.), are
+ * available via combos -- see combos.def. LH2 double-tap enables Caps Lock;
+ * LH2 tap then RH1 tap enables Caps Word. LH2 tap disables whichever of the
+ * two is on. RH2 tap one-shots L_ALPHA2; RH2 hold is L_CFG.
  */
 
 #define HD_LT4 HD_J
