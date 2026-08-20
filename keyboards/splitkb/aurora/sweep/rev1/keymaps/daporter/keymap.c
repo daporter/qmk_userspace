@@ -159,7 +159,7 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
         const bool shifted = mods & MOD_MASK_SHIFT;
         switch (keycode) {
             case KC_A ... KC_Z:
-            case LP_QU: // taps/holds to Q or QU
+            case LP_QU:     // taps/holds to Q or QU
                 return 'a'; // Letter key.
 
             case HD_DOT: // unshifted '.'; shifted ':' (see custom_shift_keys)
@@ -167,19 +167,19 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
             case KC_DOUBLE_QUOTE: // unshifted '"'; shifted '!' via custom_shift_keys
             case KC_QUOTE:        // unshifted '\''; shifted '?' via custom_shift_keys
                 return shifted ? '.' : '\'';
-            case KC_EXCLAIM: // '!' typed directly (SYM layer LM4, or combo_EXLM)
+            case KC_EXCLAIM:  // '!' typed directly (SYM layer LM4, or combo_EXLM)
             case KC_QUESTION: // '?' typed directly (combo_QUES)
                 return '.';
 
             case KC_1: // shifted '!' (real Shift, not custom_shift_keys)
                 return shifted ? '.' : '#';
-            case KC_2 ... KC_0: // 2 3 4 5 6 7 8 9 0
-            case KC_AT ... KC_RPRN: // @ # $ % ^ & * ( )
+            case KC_2 ... KC_0:       // 2 3 4 5 6 7 8 9 0
+            case KC_AT ... KC_RPRN:   // @ # $ % ^ & * ( )
             case KC_MINS ... KC_SCLN: // - = [ ] backslash ;
             case KC_UNDS ... KC_COLN: // _ + { } | :
             case KC_GRV:
             case KC_COMM:
-            case KC_SLASH: // unshifted '/'; shifted '*' (not '?')
+            case KC_SLASH:  // unshifted '/'; shifted '*' (not '?')
                 return '#'; // Symbol key.
 
             case KC_SPC:
