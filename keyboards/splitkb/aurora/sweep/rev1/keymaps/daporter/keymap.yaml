@@ -92,8 +92,6 @@ combos:
   # top row
   - { p: [2, 7], k: arep, l: [HD] }
   - { p: [3, 6], k: rep, l: [HD] }
-  - { p: [7, 8, 9], k: "⌃⇧PrtSc", l: [HD] }
-  - { p: [8, 9], k: "⇧PrtSc", l: [HD] }
   # top-middle vertical combos
   - { p: [0, 10], k: Esc, l: [HD] }
   - { p: [1, 11], k: "⌃⌫", l: [HD] }

@@ -281,48 +281,38 @@ path.combo {
 <text x="396" y="52" class="combo tap">rep</text>
 </g>
 <g class="combo combopos-2">
-<path d="M693,61 l-46,-19" class="combo"/>
-<path d="M693,61 l47,25" class="combo"/>
-<rect rx="6" ry="6" x="679" y="48" width="28" height="26" class="combo"/>
-<text x="693" y="61" class="combo tap">⌃⇧PrtSc</text>
-</g>
-<g class="combo combopos-3">
-<rect rx="6" ry="6" x="712" y="62" width="28" height="26" class="combo"/>
-<text x="726" y="75" class="combo tap">⇧PrtSc</text>
-</g>
-<g class="combo combopos-4">
 <rect rx="6" ry="6" x="19" y="116" width="28" height="26" class="combo"/>
 <text x="33" y="129" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-5">
+<g class="combo combopos-3">
 <rect rx="6" ry="6" x="85" y="74" width="28" height="26" class="combo"/>
 <text x="99" y="87" class="combo tap">⌃⌫</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-4">
 <rect rx="6" ry="6" x="151" y="53" width="28" height="26" class="combo"/>
 <text x="165" y="66" class="combo tap">⌫</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="217" y="72" width="28" height="26" class="combo"/>
 <text x="231" y="85" class="combo tap">Del</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="547" y="72" width="28" height="26" class="combo"/>
 <text x="561" y="85" class="combo tap">STab</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-7">
 <rect rx="6" ry="6" x="613" y="53" width="28" height="26" class="combo"/>
 <text x="627" y="66" class="combo tap">⏎</text>
 </g>
-<g class="combo combopos-10">
+<g class="combo combopos-8">
 <rect rx="6" ry="6" x="679" y="74" width="28" height="26" class="combo"/>
 <text x="693" y="87" class="combo tap">Tab</text>
 </g>
-<g class="combo combopos-11">
+<g class="combo combopos-9">
 <rect rx="6" ry="6" x="19" y="182" width="28" height="26" class="combo"/>
 <text x="33" y="195" class="combo tap">⌃Z</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-10">
 <rect rx="6" ry="6" x="85" y="140" width="28" height="26" class="combo"/>
 <text x="99" y="153" class="combo tap">⌃⇧Z</text>
 </g>

@@ -5,8 +5,6 @@
 // top row
 COMB(combo_AREP, QK_AREP,             HD_LT2, HD_RT2)
 COMB(combo_REP,  QK_REP,              HD_LT1, HD_RT1)
-COMB(combo_SCLP, LCTL(LSFT(KC_PSCR)), HD_RT2, HD_RT3, HD_RT4) // SCREEN shot SELECTION to clipboard
-COMB(combo_SCAP, LSFT(KC_PSCR),       HD_RT3, HD_RT4)         // SCREEN shot SELECTION to file
 
 // top-middle vertical combos
 COMB(combo_ESC,  KC_ESCAPE,           HD_LT4, HD_LM4)
