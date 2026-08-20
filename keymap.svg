@@ -712,11 +712,11 @@ path.combo {
 </g>
 <g transform="translate(99, 54)" class="key keypos-1">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
-<text x="0" y="0" class="key tap">prevtab</text>
+<text x="0" y="0" class="key tap">⇤</text>
 </g>
 <g transform="translate(165, 33)" class="key keypos-2">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
-<text x="0" y="0" class="key tap">nexttab</text>
+<text x="0" y="0" class="key tap">⇥</text>
 </g>
 <g transform="translate(231, 52)" class="key keypos-3">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
@@ -754,7 +754,7 @@ path.combo {
 </g>
 <g transform="translate(231, 118)" class="key keypos-13">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
-<text x="0" y="0" class="key tap">sellup</text>
+<text x="0" y="0" class="key tap">ln↑</text>
 </g>
 <g transform="translate(297, 127)" class="key keypos-14">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
@@ -789,7 +789,7 @@ path.combo {
 </g>
 <g transform="translate(231, 184)" class="key keypos-23">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
-<text x="0" y="0" class="key tap">selline</text>
+<text x="0" y="0" class="key tap">ln↓</text>
 </g>
 <g transform="translate(297, 193)" class="key keypos-24">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
@@ -799,11 +799,11 @@ path.combo {
 </g>
 <g transform="translate(561, 184)" class="key keypos-26">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
-<text x="0" y="0" class="key tap">selwbak</text>
+<text x="0" y="0" class="key tap">wd←</text>
 </g>
 <g transform="translate(627, 165)" class="key keypos-27">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
-<text x="0" y="0" class="key tap">selword</text>
+<text x="0" y="0" class="key tap">wd→</text>
 </g>
 <g transform="translate(693, 186)" class="key keypos-28">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>

@@ -168,9 +168,9 @@
  * reached via the alpha layer's own home-row mods, held concurrently with
  * this layer's key (LH2).
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
- * │          ⇤tab  tab⇥              │   │  ⇞   ⇱    ↑    ⇲        │
- * │                     sellup       │   │  ⇟   ←    ↓    →        │
- * │                     selline      │   │      selwbak selword     │
+ * │            ⇤    ⇥                │   │  ⇞   ⇱    ↑    ⇲        │
+ * │                     ln↑          │   │  ⇟   ←    ↓    →        │
+ * │                     ln↓          │   │      wd←   wd→          │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
  */
