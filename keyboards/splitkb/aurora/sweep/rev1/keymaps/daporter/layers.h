@@ -29,7 +29,7 @@
 
 #define LA2_LT4 _______
 #define LA2_LT3 KC_Q
-#define LA2_LT2 LP_QU
+#define LA2_LT2 CK_QU
 #define LA2_LT1 _______
 #define LA2_LT0 _______
 #define LA2_RT0 _______

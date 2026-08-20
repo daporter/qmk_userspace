@@ -159,7 +159,7 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
         const bool shifted = mods & MOD_MASK_SHIFT;
         switch (keycode) {
             case KC_A ... KC_Z:
-            case LP_QU:     // taps/holds to Q or QU
+            case CK_QU:     // sends "qu"/"Qu"/"QU" (shift/Caps Word-aware)
                 return 'a'; // Letter key.
 
             case HD_DOT: // unshifted '.'; shifted ':' (see custom_shift_keys)
@@ -194,7 +194,6 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
 
 bool tap_hold(uint16_t keycode) {
     switch (keycode) {
-        case LP_QU:
         case KC_EQUAL:
         case KC_EXCLAIM:
         case KC_AMPERSAND:
@@ -205,34 +204,8 @@ bool tap_hold(uint16_t keycode) {
     }
 }
 
-void tap_hold_send_tap(uint16_t keycode) {
-    switch (keycode) {
-        case LP_QU:
-            if (get_mods() & MOD_MASK_CAG) {
-                tap_code16(KC_Q);
-                break;
-            }
-            if (is_caps_word_on()) {
-                send_string("QU");
-            } else {
-                tap_code16(KC_Q);
-                unregister_mods(MOD_MASK_SHIFT);
-                tap_code16(KC_U);
-            }
-            break;
-        default:
-            tap_code16(keycode);
-    }
-}
-
 void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
-        case LP_QU:
-            if (is_caps_word_on())
-                tap_code16(LSFT(KC_Q));
-            else
-                tap_code16(KC_Q);
-            break;
         case KC_EQUAL:
             send_string(" == ");
             break;
@@ -265,6 +238,19 @@ static bool osft_press_caps_word_was_on = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_tap_hold(keycode, record)) return false;
+
+    if (keycode == CK_QU && record->event.pressed) {
+        if (get_mods() & MOD_MASK_CAG) {
+            tap_code16(KC_Q);
+        } else if (is_caps_word_on()) {
+            send_string("QU");
+        } else {
+            tap_code16(KC_Q);
+            unregister_mods(MOD_MASK_SHIFT);
+            tap_code16(KC_U);
+        }
+        return false;
+    }
 
     if (keycode == HD_OSFT_TD && record->event.pressed) {
         osft_press_caps_word_was_on = is_caps_word_on();

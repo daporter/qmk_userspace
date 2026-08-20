@@ -3,7 +3,7 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keys {
-    LP_QU = QK_USER,
+    CK_QU = QK_USER,
 };
 
 enum custom_tap_dances {
