@@ -168,56 +168,50 @@
  * reached via the alpha layer's own home-row mods, held concurrently with
  * this layer's key (LH2).
  * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
- * │       ⇧⇥   ⇥              │   │        ⇱    ⇞    ⇟    ⇲  │
- * │                             │   │  ^G   ←    ↑    ↓    →   │
- * │                             │   │  undo  copy  pste  cut  ^A  │
+ * │          ⇤tab  tab⇥              │   │  ⇞   ⇱    ↑    ⇲        │
+ * │                     sellup       │   │  ⇟   ←    ↓    →        │
+ * │                     selline      │   │      selwbak selword     │
  * ╰────────────────────────╮         │   │           ╭──────────────────╯
  *                          ╰─────────╯   ╰───────────╯
  */
 
 #define LV_LT4 _______
-#define LV_LT3 _______
-#define LV_LT2 LCTL(LSFT(KC_TAB))
-#define LV_LT1 LCTL(KC_TAB)
+#define LV_LT3 C(KC_PAGE_UP)
+#define LV_LT2 C(KC_PAGE_DOWN)
+#define LV_LT1 _______
 #define LV_LT0 _______
-#define LV_RT0 _______
+#define LV_RT0 KC_PAGE_UP
 #define LV_RT1 KC_HOME
-#define LV_RT2 KC_PAGE_UP
-#define LV_RT3 KC_PAGE_DOWN
-#define LV_RT4 KC_END
+#define LV_RT2 KC_UP
+#define LV_RT3 KC_END
+#define LV_RT4 _______
 
 #define LV_LM4 _______
 #define LV_LM3 _______
 #define LV_LM2 _______
-#define LV_LM1 _______
+#define LV_LM1 SELECT_LINE_UP
 #define LV_LM0 _______
-#define LV_RM0 LCTL(KC_G)
+#define LV_RM0 KC_PAGE_DOWN
 #define LV_RM1 KC_LEFT
-#define LV_RM2 KC_UP
-#define LV_RM3 KC_DOWN
-#define LV_RM4 KC_RIGHT
+#define LV_RM2 KC_DOWN
+#define LV_RM3 KC_RIGHT
+#define LV_RM4 _______
 
 #define LV_LB4 _______
 #define LV_LB3 _______
 #define LV_LB2 _______
-#define LV_LB1 _______
+#define LV_LB1 SELECT_LINE
 #define LV_LB0 _______
-/* No dedicated redo key: NAV + hold HD_D (Shift HRM, LV_LM1 is transparent
- * so it falls through to the alpha layer) + RB0 already composes to
- * Ctrl+Shift+Z, since held mods stack with a modded keycode's own. */
-#define LV_RB0 LCTL(KC_Z)
-#define LV_RB1 LCTL(KC_C)
-#define LV_RB2 LCTL(KC_V)
-#define LV_RB3 LCTL(KC_X)
-#define LV_RB4 LCTL(KC_A)
+#define LV_RB0 _______
+#define LV_RB1 SELECT_WORD_BACK
+#define LV_RB2 SELECT_WORD
+#define LV_RB3 _______
+#define LV_RB4 _______
 
-/* LV_LH2 is unreachable: it's the same physical key that holds NAV active
- * (HD_OSFT_TD's hold, see keymap.c), so it can never be looked up again
- * while held. */
 #define LV_LH2 _______
 #define LV_LH1 _______
-#define LV_RH1 LCTL(KC_BACKSPACE)
-#define LV_RH2 SELWORD
+#define LV_RH1 _______
+#define LV_RH2 _______
 
 /*
  * L_CFG: Keyboard configuration. Both hands are transparent -- mods are
