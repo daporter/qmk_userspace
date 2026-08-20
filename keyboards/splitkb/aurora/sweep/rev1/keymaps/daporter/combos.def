@@ -3,22 +3,26 @@
 //   name        result               chord keys
 
 // top row
-COMB(combo_ESC,  KC_ESCAPE,           HD_LT3, HD_LT2)
 COMB(combo_AREP, QK_AREP,             HD_LT2, HD_RT2)
 COMB(combo_REP,  QK_REP,              HD_LT1, HD_RT1)
 COMB(combo_SCLP, LCTL(LSFT(KC_PSCR)), HD_RT2, HD_RT3, HD_RT4) // SCREEN shot SELECTION to clipboard
 COMB(combo_SCAP, LSFT(KC_PSCR),       HD_RT3, HD_RT4)         // SCREEN shot SELECTION to file
 
+// top-middle vertical combos
+COMB(combo_ESC,  KC_ESCAPE,           HD_LT4, HD_LM4)
+COMB(combo_BSWD, LCTL(KC_BACKSPACE),  HD_LT3, HD_LM3)
+COMB(combo_BSPC, KC_BACKSPACE,        HD_LT2, HD_LM2)
+COMB(combo_DEL,  KC_DELETE,           HD_LT1, HD_LM1)
+COMB(combo_STAB, LSFT(KC_TAB),        HD_RT1, HD_RM1)
+COMB(combo_ENT,  KC_ENTER,            HD_RT2, HD_RM2)
+COMB(combo_TAB,  KC_TAB,              HD_RT3, HD_RM3)
+
 // middle row
 
+// middle-bottom row vertical combos
+COMB(combo_UNDO, LCTL(KC_Z),          HD_LM4, HD_LB4)
+COMB(combo_REDO, LCTL(LSFT(KC_Z)),    HD_LM3, HD_LB3)
+
 // bottom row
-COMB(combo_REDO, LCTL(LSFT(KC_Z)),    HD_LB4, HD_LB3, HD_LB2)
-COMB(combo_UNDO, LCTL(KC_Z),          HD_LB4, HD_LB3)
-COMB(combo_BSPC, KC_BACKSPACE,        HD_LB3, HD_LB2)
-COMB(combo_BSWD, LCTL(KC_BACKSPACE),  HD_LB3, HD_LB1)
-COMB(combo_DEL,  KC_DELETE,           HD_LB2, HD_LB1)
-COMB(combo_ENT,  KC_ENTER,            HD_RB1, HD_RB2, HD_RB3)
-COMB(combo_STAB, LSFT(KC_TAB),        HD_RB1, HD_RB2)
-COMB(combo_TAB,  KC_TAB,              HD_RB2, HD_RB3)
 
 // clang-format on
