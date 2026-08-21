@@ -1,31 +1,28 @@
-/* Copyright 2023-2024 David Porter <david@daporter.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright 2023-2024 David Porter <david@daporter.net>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-/*
- * L_AL2: Secondary alpha layer.
- *
- * ╭─────────────────╮   ╭─────────────────╮
- * │     q  qu       │   │                 │
- * │     z           │   │                 │
- * │                 │   │                 │
- * ╰──────────╮      │   │      ╭──────────╯
- *            ╰──-───╯   ╰──────╯
- */
+// L_AL2: Secondary alpha layer.
+//
+// ╭─────────────────╮   ╭─────────────────╮
+// │     q  qu       │   │                 │
+// │     z           │   │                 │
+// │                 │   │                 │
+// ╰──────────╮      │   │      ╭──────────╯
+//            ╰──-───╯   ╰──────╯
 
 #define AL2_LT4 _______
 #define AL2_LT3 KC_Q
@@ -65,16 +62,14 @@
 #define AL2_RH1 _______
 #define AL2_RH2 _______
 
-/*
- * L_SYM: Symbols and punctuation.
- *
- * ╭─────────────────╮   ╭─────────────────╮
- * │  `  <  >  -  |  │   │  ^  {  }  $  \  │
- * │  !  *  /  =  &  │   │  _  (  )  ;  "  │
- * │  ~  +  [  ]  %  │   │  @  :  ,  .  '  │
- * ╰──────────╮      │   │      ╭──────────╯
- *            ╰──-───╯   ╰──────╯
- */
+// L_SYM: Symbols and punctuation.
+//
+// ╭─────────────────╮   ╭─────────────────╮
+// │  `  <  >  -  |  │   │  ^  {  }  $  \  │
+// │  !  *  /  =  &  │   │  _  (  )  ;  "  │
+// │  ~  +  [  ]  %  │   │  @  :  ,  .  '  │
+// ╰──────────╮      │   │      ╭──────────╯
+//            ╰──-───╯   ╰──────╯
 
 #define SYM_LT4 KC_GRV
 #define SYM_LT3 KC_LEFT_ANGLE_BRACKET
@@ -114,16 +109,14 @@
 #define SYM_RH1 _______
 #define SYM_RH2 _______
 
-/*
- * L_NUM: Function keys and numbers.
- *
- * ╭───────────────────────╮   ╭─────────────────────╮
- * │  F10 F9  F8  F7  F13  │   │  /   7   8   9   -  │
- * │  F11 F3  F2  F1  F14  │   │  *   1   2   3   +  │
- * │  F12 F6  F5  F4  INS  │   │  ,   4   5   6   =  │
- * ╰────────────╮    L_NUM │   │  0   . ╭────────────╯
- *              ╰──────-───╯   ╰────────╯
- */
+// L_NUM: Function keys and numbers.
+//
+// ╭───────────────────────╮   ╭─────────────────────╮
+// │  F10 F9  F8  F7  F13  │   │  /   7   8   9   -  │
+// │  F11 F3  F2  F1  F14  │   │  *   1   2   3   +  │
+// │  F12 F6  F5  F4  INS  │   │  ,   4   5   6   =  │
+// ╰────────────╮    L_NUM │   │  0   . ╭────────────╯
+//              ╰──────-───╯   ╰────────╯
 
 #define NUM_LT4 KC_F10
 #define NUM_LT3 KC_F9
@@ -163,17 +156,15 @@
 #define NUM_RH1 KC_0
 #define NUM_RH2 KC_DOT
 
-/*
- * L_NAV: Keyboard navigation. The left home row is transparent -- mods are
- * reached via the alpha layer's own home-row mods, held concurrently with
- * this layer's key (LH2).
- * ╭──────────────────────────────────╮   ╭──────────────────────────────╮
- * │            ⇤    ⇥                │   │  ⇞   ⇱    ↑    ⇲        │
- * │                     ln↑          │   │  ⇟   ←    ↓    →        │
- * │                     ln↓          │   │      wd←   wd→          │
- * ╰────────────────────────╮         │   │           ╭──────────────────╯
- *                          ╰─────────╯   ╰───────────╯
- */
+// L_NAV: Keyboard navigation. The left home row is transparent -- mods are
+// reached via the alpha layer's own home-row mods, held concurrently with
+// this layer's key (LH2).
+// ╭──────────────────────────────────╮   ╭──────────────────────────────╮
+// │            ⇤    ⇥                │   │  ⇞   ⇱    ↑    ⇲        │
+// │                     ln↑          │   │  ⇟   ←    ↓    →        │
+// │                     ln↓          │   │      wd←   wd→          │
+// ╰────────────────────────╮         │   │           ╭──────────────────╯
+//                          ╰─────────╯   ╰───────────╯
 
 #define NAV_LT4 _______
 #define NAV_LT3 C(KC_PAGE_UP)
@@ -213,17 +204,15 @@
 #define NAV_RH1 _______
 #define NAV_RH2 _______
 
-/*
- * L_CFG: Keyboard configuration. Both hands are transparent -- mods are
- * reached via the alpha layer's own home-row mods, held concurrently with
- * this layer's key (RH2).
- * ╭─────────────────────────╮   ╭─────────────────────╮
- * │     Menu  Caps   CW     │   │                     │
- * │                         │   │                     │
- * │                         │   │  BOOT               │
- * ╰──────────────╮          │   │         ╭───────────╯
- *                ╰──────────╯   ╰─────────╯
- */
+// L_CFG: Keyboard configuration. Both hands are transparent -- mods are
+// reached via the alpha layer's own home-row mods, held concurrently with
+// this layer's key (RH2).
+// ╭─────────────────────────╮   ╭─────────────────────╮
+// │     Menu  Caps   CW     │   │                     │
+// │                         │   │                     │
+// │                         │   │  BOOT               │
+// ╰──────────────╮          │   │         ╭───────────╯
+//                ╰──────────╯   ╰─────────╯
 
 #define CFG_LT4 _______
 #define CFG_LT3 KC_APPLICATION

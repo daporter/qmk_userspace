@@ -1,18 +1,17 @@
-/* Copyright 2023-2024 David Porter <david@daporter.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright 2023-2024 David Porter <david@daporter.net>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
@@ -57,15 +56,13 @@ enum custom_tap_dances {
 // which need enum layers, above, already declared.
 #include "g/keymap_combo.h"
 
-/*
- * Alpha Layer for a 34 key (3x5+2) form factor.
- * ╭─────────────────────╮ ╭─────────────────────╮
- * │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
- * │ LM4 LM3 LM2 LM1 LM0 │ │ RT0 RM1 RM2 RM3 RM4 │
- * │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
- * ╰───────────╮ LH2 LH1 │ │ RH1 RH2 ╭───────────╯
- *             ╰─────────╯ ╰─────────╯
- */
+// Alpha Layer for a 34 key (3x5+2) form factor.
+// ╭─────────────────────╮ ╭─────────────────────╮
+// │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+// │ LM4 LM3 LM2 LM1 LM0 │ │ RT0 RM1 RM2 RM3 RM4 │
+// │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+// ╰───────────╮ LH2 LH1 │ │ RH1 RH2 ╭───────────╯
+//             ╰─────────╯ ╰─────────╯
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
@@ -125,10 +122,8 @@ void matrix_scan_user(void) {
     tap_hold_matrix_scan();
 }
 
-/*
- * Same as the QMK default, except KC_MINS is moved out of the shifted
- * group so it sends a literal `-` (e.g. FOO-BAR) instead of `_`.
- */
+// Same as the QMK default, except KC_MINS is moved out of the shifted
+// group so it sends a literal `-` (e.g. FOO-BAR) instead of `_`.
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Keycodes that continue Caps Word, with shift applied.
@@ -149,17 +144,15 @@ bool caps_word_press_user(uint16_t keycode) {
     }
 }
 
-/*
- * Same as the QMK default, except it classifies keys by what they actually
- * send on this keymap. sentence_case_press_user() runs on the *raw* keymap
- * keycode, before custom_shift_keys remaps it (community modules run before
- * process_record_user; see quantum.c) -- so e.g. shifted KC_QUOTE (which
- * custom_shift_keys turns into "?") arrives here as plain KC_QUOTE, which
- * the QMK default always classifies as a quote, never as sentence-ending.
- * Mirror custom_shift_keys' table (keymap.c above) instead of the default's
- * US-ANSI assumptions (e.g. it assumes shifted KC_SLASH is "?"; here it's
- * "*", from custom_shift_keys).
- */
+// Same as the QMK default, except it classifies keys by what they actually
+// send on this keymap. sentence_case_press_user() runs on the *raw* keymap
+// keycode, before custom_shift_keys remaps it (community modules run before
+// process_record_user; see quantum.c) -- so e.g. shifted KC_QUOTE (which
+// custom_shift_keys turns into "?") arrives here as plain KC_QUOTE, which
+// the QMK default always classifies as a quote, never as sentence-ending.
+// Mirror custom_shift_keys' table (keymap.c above) instead of the default's
+// US-ANSI assumptions (e.g. it assumes shifted KC_SLASH is "?"; here it's
+// "*", from custom_shift_keys).
 char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
     switch (keycode) {
         // BASE_OSFT_TD/BASE_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
@@ -287,19 +280,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-/*
- * Tap dance for BASE_OSFT_TD (currently BASE_LH2): tap = one-shot shift, double
- * tap = Caps Lock, hold = L_NAV. A tap also starts (or ends) the
- * BASE_OSFT_TD-then-RH1 Caps Word sequence handled above.
- *
- * A plain LT() can't do this: its tap argument must be a basic keycode (so
- * it can't send a one-shot mod), and it only has a tap/hold split, not a
- * double-tap. `state->pressed`, not `state->interrupted`, decides hold here
- * so that -- same as every other layer-tap key in this keymap -- pressing
- * another key while BASE_OSFT_TD is still held resolves it as a hold
- * immediately, rather than waiting to see if BASE_OSFT_TD itself gets tapped
- * again.
- */
+// Tap dance for BASE_OSFT_TD (currently BASE_LH2): tap = one-shot shift, double
+// tap = Caps Lock, hold = L_NAV. A tap also starts (or ends) the
+// BASE_OSFT_TD-then-RH1 Caps Word sequence handled above.
+//
+// A plain LT() can't do this: its tap argument must be a basic keycode (so
+// it can't send a one-shot mod), and it only has a tap/hold split, not a
+// double-tap. `state->pressed`, not `state->interrupted`, decides hold here
+// so that -- same as every other layer-tap key in this keymap -- pressing
+// another key while BASE_OSFT_TD is still held resolves it as a hold
+// immediately, rather than waiting to see if BASE_OSFT_TD itself gets tapped
+// again.
 typedef enum {
     OSFT_TD_NONE,
     OSFT_TD_SINGLE_TAP,
@@ -351,19 +342,17 @@ void osft_td_reset(tap_dance_state_t *state, void *user_data) {
     osft_td_state = OSFT_TD_NONE;
 }
 
-/*
- * Tap dance for BASE_ALPHA2_TD (BASE_RH2): tap = one-shot L_AL2, hold =
- * L_CFG. A plain LT() can't do this since OSL() isn't a basic keycode, so
- * the tap arms the one-shot layer directly the same way QMK's own OSL()
- * keycode does (see quantum/action.c): set_oneshot_layer() then
- * clear_oneshot_layer_state(ONESHOT_PRESSED), both called here since by the
- * time a plain tap is recognized the physical press and release have
- * already happened.
- *
- * As with osft_td_classify, `state->pressed` (not `state->interrupted`)
- * decides hold, so chording another key while RH2 is still held resolves
- * it as a hold immediately.
- */
+// Tap dance for BASE_ALPHA2_TD (BASE_RH2): tap = one-shot L_AL2, hold =
+// L_CFG. A plain LT() can't do this since OSL() isn't a basic keycode, so
+// the tap arms the one-shot layer directly the same way QMK's own OSL()
+// keycode does (see quantum/action.c): set_oneshot_layer() then
+// clear_oneshot_layer_state(ONESHOT_PRESSED), both called here since by the
+// time a plain tap is recognized the physical press and release have
+// already happened.
+//
+// As with osft_td_classify, `state->pressed` (not `state->interrupted`)
+// decides hold, so chording another key while RH2 is still held resolves
+// it as a hold immediately.
 typedef enum {
     ALPHA2_TD_NONE,
     ALPHA2_TD_TAP,

@@ -1,49 +1,46 @@
-/* Copyright 2023-2024 David Porter <david@daporter.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright 2023-2024 David Porter <david@daporter.net>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-/*
- * Place these BASE keycodes on the keymap for variation independent spatial
- * referencing by key position.
- *
- * Ported from Hands Down Vibranium f
- * (https://raw.githubusercontent.com/moutis/HandsDown/main/handsdown/vf-config.h),
- * with home-row mods re-mirrored to match this keymap's handedness
- * convention instead of vf's (vf holds every home-row mod on the right-side
- * variant regardless of hand; here each hand holds its own side's mod,
- * except Alt, which stays LALT_T on both hands to avoid KC_RALT acting as
- * AltGr on some OS layouts -- see BASE_RM3 in handsdown_au.h/vb.h for
- * precedent).
- *
- * vf natively puts L_NUM on the K home-row key and duplicates L_NAV across
- * both thumbs. To keep layers.h layout-agnostic, this file instead keeps our
- * "4 aux keys -> 4 distinct layers" convention: L_NUM moves to vf's own
- * thumb letter, R, in place of Gold's T.
- *
- * Base (alpha) layer Hands Down Vibranium f (HRMs + thumb mods):
- * ╭─────────────────────╮   ╭──────────────────────╮
- * │  X   W   M   G   J  │   │  #$  .:  /\*  "?  '! │
- * │  S   C   N   T   K  │   │  ,;  A   E   I   H  │
- * │  F   P   L   D   V  │   │  -+  U   O   Y   B  │
- * ╰───────────╮ bsp  R  │   │ spc  ret ╭───────────╯
- *             ╰─────────╯   ╰──────────╯
- *
- * Q & Z are available via combos.
- */
+// Place these BASE keycodes on the keymap for variation independent spatial
+// referencing by key position.
+//
+// Ported from Hands Down Vibranium f
+// (https://raw.githubusercontent.com/moutis/HandsDown/main/handsdown/vf-config.h),
+// with home-row mods re-mirrored to match this keymap's handedness
+// convention instead of vf's (vf holds every home-row mod on the right-side
+// variant regardless of hand; here each hand holds its own side's mod,
+// except Alt, which stays LALT_T on both hands to avoid KC_RALT acting as
+// AltGr on some OS layouts -- see BASE_RM3 in handsdown_au.h/vb.h for
+// precedent).
+//
+// vf natively puts L_NUM on the K home-row key and duplicates L_NAV across
+// both thumbs. To keep layers.h layout-agnostic, this file instead keeps our
+// "4 aux keys -> 4 distinct layers" convention: L_NUM moves to vf's own
+// thumb letter, R, in place of Gold's T.
+//
+// Base (alpha) layer Hands Down Vibranium f (HRMs + thumb mods):
+// ╭─────────────────────╮   ╭──────────────────────╮
+// │  X   W   M   G   J  │   │  #$  .:  /\*  "?  '! │
+// │  S   C   N   T   K  │   │  ,;  A   E   I   H  │
+// │  F   P   L   D   V  │   │  -+  U   O   Y   B  │
+// ╰───────────╮ bsp  R  │   │ spc  ret ╭───────────╯
+//             ╰─────────╯   ╰──────────╯
+//
+// Q & Z are available via combos.
 
 // clang-format off
 #define BASE_LT4 KC_X
