@@ -26,7 +26,7 @@
  * convention instead of vf's (vf holds every home-row mod on the right-side
  * variant regardless of hand; here each hand holds its own side's mod,
  * except Alt, which stays LALT_T on both hands to avoid KC_RALT acting as
- * AltGr on some OS layouts -- see LB_RM3 in handsdown_au.h/vb.h for
+ * AltGr on some OS layouts -- see BASE_RM3 in handsdown_au.h/vb.h for
  * precedent).
  *
  * vf natively puts L_NUM on the K home-row key and duplicates L_NAV across
@@ -46,42 +46,42 @@
  */
 
 // clang-format off
-#define LB_LT4 KC_X
-#define LB_LT3 KC_W
-#define LB_LT2 KC_M
-#define LB_LT1 KC_G
-#define LB_LT0 KC_J
-#define LB_RT0 KC_HASH
-#define LB_RT1 KC_DOT
-#define LB_RT2 KC_SLASH
-#define LB_RT3 KC_DOUBLE_QUOTE
-#define LB_RT4 KC_QUOTE
+#define BASE_LT4 KC_X
+#define BASE_LT3 KC_W
+#define BASE_LT2 KC_M
+#define BASE_LT1 KC_G
+#define BASE_LT0 KC_J
+#define BASE_RT0 KC_HASH
+#define BASE_RT1 KC_DOT
+#define BASE_RT2 KC_SLASH
+#define BASE_RT3 KC_DOUBLE_QUOTE
+#define BASE_RT4 KC_QUOTE
 
-#define LB_LM4 LCTL_T(KC_S)
-#define LB_LM3 LALT_T(KC_C)
-#define LB_LM2 LGUI_T(KC_N)
-#define LB_LM1 LSFT_T(KC_T)
-#define LB_LM0 KC_K
-#define LB_RM0 KC_COMMA
-#define LB_RM1 RSFT_T(KC_A)
-#define LB_RM2 RGUI_T(KC_E)
-#define LB_RM3 LALT_T(KC_I)
-#define LB_RM4 RCTL_T(KC_H)
+#define BASE_LM4 LCTL_T(KC_S)
+#define BASE_LM3 LALT_T(KC_C)
+#define BASE_LM2 LGUI_T(KC_N)
+#define BASE_LM1 LSFT_T(KC_T)
+#define BASE_LM0 KC_K
+#define BASE_RM0 KC_COMMA
+#define BASE_RM1 RSFT_T(KC_A)
+#define BASE_RM2 RGUI_T(KC_E)
+#define BASE_RM3 LALT_T(KC_I)
+#define BASE_RM4 RCTL_T(KC_H)
 
-#define LB_LB4 KC_F
-#define LB_LB3 KC_P
-#define LB_LB2 KC_L
-#define LB_LB1 KC_D
-#define LB_LB0 KC_V
-#define LB_RB0 KC_MINUS
-#define LB_RB1 KC_U
-#define LB_RB2 KC_O
-#define LB_RB3 KC_Y
-#define LB_RB4 KC_B
+#define BASE_LB4 KC_F
+#define BASE_LB3 KC_P
+#define BASE_LB2 KC_L
+#define BASE_LB1 KC_D
+#define BASE_LB0 KC_V
+#define BASE_RB0 KC_MINUS
+#define BASE_RB1 KC_U
+#define BASE_RB2 KC_O
+#define BASE_RB3 KC_Y
+#define BASE_RB4 KC_B
 
-#define LB_LH2 LT(L_NAV, KC_BACKSPACE)
-#define LB_LH1 LT(L_NUM, KC_R)
-#define LB_RH1 KEY_SPACE
-#define LB_RH2 LT(L_CFG, KC_ENTER)
+#define BASE_LH2 LT(L_NAV, KC_BACKSPACE)
+#define BASE_LH1 LT(L_NUM, KC_R)
+#define BASE_RH1 BASE_SPACE
+#define BASE_RH2 LT(L_CFG, KC_ENTER)
 
 // clang-format on

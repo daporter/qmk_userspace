@@ -3,23 +3,23 @@
 //   name        result               chord keys
 
 // top row
-COMB(combo_AREP, QK_AREP,             LB_LT2, LB_RT2)
-COMB(combo_REP,  QK_REP,              LB_LT1, LB_RT1)
+COMB(combo_AREP, QK_AREP,             BASE_LT2, BASE_RT2)
+COMB(combo_REP,  QK_REP,              BASE_LT1, BASE_RT1)
 
 // top-middle vertical combos
-COMB(combo_ESC,  KC_ESCAPE,           LB_LT4, LB_LM4)
-COMB(combo_BSWD, LCTL(KC_BACKSPACE),  LB_LT3, LB_LM3)
-COMB(combo_BSPC, KC_BACKSPACE,        LB_LT2, LB_LM2)
-COMB(combo_DEL,  KC_DELETE,           LB_LT1, LB_LM1)
-COMB(combo_STAB, LSFT(KC_TAB),        LB_RT1, LB_RM1)
-COMB(combo_ENT,  KC_ENTER,            LB_RT2, LB_RM2)
-COMB(combo_TAB,  KC_TAB,              LB_RT3, LB_RM3)
+COMB(combo_ESC,  KC_ESCAPE,           BASE_LT4, BASE_LM4)
+COMB(combo_BSWD, LCTL(KC_BACKSPACE),  BASE_LT3, BASE_LM3)
+COMB(combo_BSPC, KC_BACKSPACE,        BASE_LT2, BASE_LM2)
+COMB(combo_DEL,  KC_DELETE,           BASE_LT1, BASE_LM1)
+COMB(combo_STAB, LSFT(KC_TAB),        BASE_RT1, BASE_RM1)
+COMB(combo_ENT,  KC_ENTER,            BASE_RT2, BASE_RM2)
+COMB(combo_TAB,  KC_TAB,              BASE_RT3, BASE_RM3)
 
 // middle row
 
 // middle-bottom row vertical combos
-COMB(combo_UNDO, LCTL(KC_Z),          LB_LM4, LB_LB4)
-COMB(combo_REDO, LCTL(LSFT(KC_Z)),    LB_LM3, LB_LB3)
+COMB(combo_UNDO, LCTL(KC_Z),          BASE_LM4, BASE_LB4)
+COMB(combo_REDO, LCTL(LSFT(KC_Z)),    BASE_LM3, BASE_LB3)
 
 // bottom row
 

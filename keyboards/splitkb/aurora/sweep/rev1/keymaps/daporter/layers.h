@@ -17,7 +17,7 @@
 #pragma once
 
 /*
- * L_ALPHA2: Secondary alpha layer.
+ * L_AL2: Secondary alpha layer.
  *
  * ╭─────────────────╮   ╭─────────────────╮
  * │     q  qu       │   │                 │
@@ -27,43 +27,43 @@
  *            ╰──-───╯   ╰──────╯
  */
 
-#define LA2_LT4 _______
-#define LA2_LT3 KC_Q
-#define LA2_LT2 CK_QU
-#define LA2_LT1 _______
-#define LA2_LT0 _______
-#define LA2_RT0 _______
-#define LA2_RT1 _______
-#define LA2_RT2 _______
-#define LA2_RT3 _______
-#define LA2_RT4 _______
+#define AL2_LT4 _______
+#define AL2_LT3 KC_Q
+#define AL2_LT2 CK_QU
+#define AL2_LT1 _______
+#define AL2_LT0 _______
+#define AL2_RT0 _______
+#define AL2_RT1 _______
+#define AL2_RT2 _______
+#define AL2_RT3 _______
+#define AL2_RT4 _______
 
-#define LA2_LM4 _______
-#define LA2_LM3 KC_Z
-#define LA2_LM2 _______
-#define LA2_LM1 _______
-#define LA2_LM0 _______
-#define LA2_RM0 _______
-#define LA2_RM1 _______
-#define LA2_RM2 _______
-#define LA2_RM3 _______
-#define LA2_RM4 _______
+#define AL2_LM4 _______
+#define AL2_LM3 KC_Z
+#define AL2_LM2 _______
+#define AL2_LM1 _______
+#define AL2_LM0 _______
+#define AL2_RM0 _______
+#define AL2_RM1 _______
+#define AL2_RM2 _______
+#define AL2_RM3 _______
+#define AL2_RM4 _______
 
-#define LA2_LB4 _______
-#define LA2_LB3 _______
-#define LA2_LB2 _______
-#define LA2_LB1 _______
-#define LA2_LB0 _______
-#define LA2_RB0 _______
-#define LA2_RB1 _______
-#define LA2_RB2 _______
-#define LA2_RB3 _______
-#define LA2_RB4 _______
+#define AL2_LB4 _______
+#define AL2_LB3 _______
+#define AL2_LB2 _______
+#define AL2_LB1 _______
+#define AL2_LB0 _______
+#define AL2_RB0 _______
+#define AL2_RB1 _______
+#define AL2_RB2 _______
+#define AL2_RB3 _______
+#define AL2_RB4 _______
 
-#define LA2_LH2 _______
-#define LA2_LH1 _______
-#define LA2_RH1 _______
-#define LA2_RH2 _______
+#define AL2_LH2 _______
+#define AL2_LH1 _______
+#define AL2_RH1 _______
+#define AL2_RH2 _______
 
 /*
  * L_SYM: Symbols and punctuation.
@@ -76,43 +76,43 @@
  *            ╰──-───╯   ╰──────╯
  */
 
-#define LS_LT4 KC_GRV
-#define LS_LT3 KC_LEFT_ANGLE_BRACKET
-#define LS_LT2 KC_RIGHT_ANGLE_BRACKET
-#define LS_LT1 KC_MINUS
-#define LS_LT0 KC_PIPE
-#define LS_RT0 KC_CIRCUMFLEX
-#define LS_RT1 KC_LEFT_CURLY_BRACE
-#define LS_RT2 KC_RIGHT_CURLY_BRACE
-#define LS_RT3 KC_DOLLAR
-#define LS_RT4 KC_BACKSLASH
+#define SYM_LT4 KC_GRV
+#define SYM_LT3 KC_LEFT_ANGLE_BRACKET
+#define SYM_LT2 KC_RIGHT_ANGLE_BRACKET
+#define SYM_LT1 KC_MINUS
+#define SYM_LT0 KC_PIPE
+#define SYM_RT0 KC_CIRCUMFLEX
+#define SYM_RT1 KC_LEFT_CURLY_BRACE
+#define SYM_RT2 KC_RIGHT_CURLY_BRACE
+#define SYM_RT3 KC_DOLLAR
+#define SYM_RT4 KC_BACKSLASH
 
-#define LS_LM4 KC_EXCLAIM
-#define LS_LM3 KC_ASTERISK
-#define LS_LM2 KC_SLASH
-#define LS_LM1 KC_EQUAL
-#define LS_LM0 KC_AMPERSAND
-#define LS_RM0 KC_UNDERSCORE
-#define LS_RM1 KC_LEFT_PAREN
-#define LS_RM2 KC_RIGHT_PAREN
-#define LS_RM3 KC_SEMICOLON
-#define LS_RM4 KC_DOUBLE_QUOTE
+#define SYM_LM4 KC_EXCLAIM
+#define SYM_LM3 KC_ASTERISK
+#define SYM_LM2 KC_SLASH
+#define SYM_LM1 KC_EQUAL
+#define SYM_LM0 KC_AMPERSAND
+#define SYM_RM0 KC_UNDERSCORE
+#define SYM_RM1 KC_LEFT_PAREN
+#define SYM_RM2 KC_RIGHT_PAREN
+#define SYM_RM3 KC_SEMICOLON
+#define SYM_RM4 KC_DOUBLE_QUOTE
 
-#define LS_LB4 KC_TILDE
-#define LS_LB3 KC_PLUS
-#define LS_LB2 KC_LEFT_BRACKET
-#define LS_LB1 KC_RIGHT_BRACKET
-#define LS_LB0 KC_PERCENT
-#define LS_RB0 KC_AT
-#define LS_RB1 KC_COLON
-#define LS_RB2 KC_COMMA
-#define LS_RB3 KC_DOT
-#define LS_RB4 KC_QUOTE
+#define SYM_LB4 KC_TILDE
+#define SYM_LB3 KC_PLUS
+#define SYM_LB2 KC_LEFT_BRACKET
+#define SYM_LB1 KC_RIGHT_BRACKET
+#define SYM_LB0 KC_PERCENT
+#define SYM_RB0 KC_AT
+#define SYM_RB1 KC_COLON
+#define SYM_RB2 KC_COMMA
+#define SYM_RB3 KC_DOT
+#define SYM_RB4 KC_QUOTE
 
-#define LS_LH2 _______
-#define LS_LH1 _______
-#define LS_RH1 _______
-#define LS_RH2 _______
+#define SYM_LH2 _______
+#define SYM_LH1 _______
+#define SYM_RH1 _______
+#define SYM_RH2 _______
 
 /*
  * L_NUM: Function keys and numbers.
@@ -125,43 +125,43 @@
  *              ╰──────-───╯   ╰────────╯
  */
 
-#define LN_LT4 KC_F10
-#define LN_LT3 KC_F9
-#define LN_LT2 KC_F8
-#define LN_LT1 KC_F7
-#define LN_LT0 KC_F13
-#define LN_RT0 KC_SLASH
-#define LN_RT1 KC_7
-#define LN_RT2 KC_8
-#define LN_RT3 KC_9
-#define LN_RT4 KC_MINUS
+#define NUM_LT4 KC_F10
+#define NUM_LT3 KC_F9
+#define NUM_LT2 KC_F8
+#define NUM_LT1 KC_F7
+#define NUM_LT0 KC_F13
+#define NUM_RT0 KC_SLASH
+#define NUM_RT1 KC_7
+#define NUM_RT2 KC_8
+#define NUM_RT3 KC_9
+#define NUM_RT4 KC_MINUS
 
-#define LN_LM4 KC_F11
-#define LN_LM3 KC_F3
-#define LN_LM2 KC_F2
-#define LN_LM1 KC_F1
-#define LN_LM0 KC_F14
-#define LN_RM0 KC_ASTERISK
-#define LN_RM1 KC_1
-#define LN_RM2 KC_2
-#define LN_RM3 KC_3
-#define LN_RM4 KC_PLUS
+#define NUM_LM4 KC_F11
+#define NUM_LM3 KC_F3
+#define NUM_LM2 KC_F2
+#define NUM_LM1 KC_F1
+#define NUM_LM0 KC_F14
+#define NUM_RM0 KC_ASTERISK
+#define NUM_RM1 KC_1
+#define NUM_RM2 KC_2
+#define NUM_RM3 KC_3
+#define NUM_RM4 KC_PLUS
 
-#define LN_LB4 KC_F12
-#define LN_LB3 KC_F6
-#define LN_LB2 KC_F5
-#define LN_LB1 KC_F4
-#define LN_LB0 KC_INSERT
-#define LN_RB0 KC_COMMA
-#define LN_RB1 KC_4
-#define LN_RB2 KC_5
-#define LN_RB3 KC_6
-#define LN_RB4 KC_EQUAL
+#define NUM_LB4 KC_F12
+#define NUM_LB3 KC_F6
+#define NUM_LB2 KC_F5
+#define NUM_LB1 KC_F4
+#define NUM_LB0 KC_INSERT
+#define NUM_RB0 KC_COMMA
+#define NUM_RB1 KC_4
+#define NUM_RB2 KC_5
+#define NUM_RB3 KC_6
+#define NUM_RB4 KC_EQUAL
 
-#define LN_LH2 _______
-#define LN_LH1 _______
-#define LN_RH1 KC_0
-#define LN_RH2 KC_DOT
+#define NUM_LH2 _______
+#define NUM_LH1 _______
+#define NUM_RH1 KC_0
+#define NUM_RH2 KC_DOT
 
 /*
  * L_NAV: Keyboard navigation. The left home row is transparent -- mods are
@@ -175,43 +175,43 @@
  *                          ╰─────────╯   ╰───────────╯
  */
 
-#define LV_LT4 _______
-#define LV_LT3 C(KC_PAGE_UP)
-#define LV_LT2 C(KC_PAGE_DOWN)
-#define LV_LT1 _______
-#define LV_LT0 _______
-#define LV_RT0 KC_PAGE_UP
-#define LV_RT1 KC_HOME
-#define LV_RT2 KC_UP
-#define LV_RT3 KC_END
-#define LV_RT4 _______
+#define NAV_LT4 _______
+#define NAV_LT3 C(KC_PAGE_UP)
+#define NAV_LT2 C(KC_PAGE_DOWN)
+#define NAV_LT1 _______
+#define NAV_LT0 _______
+#define NAV_RT0 KC_PAGE_UP
+#define NAV_RT1 KC_HOME
+#define NAV_RT2 KC_UP
+#define NAV_RT3 KC_END
+#define NAV_RT4 _______
 
-#define LV_LM4 _______
-#define LV_LM3 _______
-#define LV_LM2 _______
-#define LV_LM1 SELECT_LINE_UP
-#define LV_LM0 _______
-#define LV_RM0 KC_PAGE_DOWN
-#define LV_RM1 KC_LEFT
-#define LV_RM2 KC_DOWN
-#define LV_RM3 KC_RIGHT
-#define LV_RM4 _______
+#define NAV_LM4 _______
+#define NAV_LM3 _______
+#define NAV_LM2 _______
+#define NAV_LM1 SELECT_LINE_UP
+#define NAV_LM0 _______
+#define NAV_RM0 KC_PAGE_DOWN
+#define NAV_RM1 KC_LEFT
+#define NAV_RM2 KC_DOWN
+#define NAV_RM3 KC_RIGHT
+#define NAV_RM4 _______
 
-#define LV_LB4 _______
-#define LV_LB3 _______
-#define LV_LB2 _______
-#define LV_LB1 SELECT_LINE
-#define LV_LB0 _______
-#define LV_RB0 _______
-#define LV_RB1 SELECT_WORD_BACK
-#define LV_RB2 SELECT_WORD
-#define LV_RB3 _______
-#define LV_RB4 _______
+#define NAV_LB4 _______
+#define NAV_LB3 _______
+#define NAV_LB2 _______
+#define NAV_LB1 SELECT_LINE
+#define NAV_LB0 _______
+#define NAV_RB0 _______
+#define NAV_RB1 SELECT_WORD_BACK
+#define NAV_RB2 SELECT_WORD
+#define NAV_RB3 _______
+#define NAV_RB4 _______
 
-#define LV_LH2 _______
-#define LV_LH1 _______
-#define LV_RH1 _______
-#define LV_RH2 _______
+#define NAV_LH2 _______
+#define NAV_LH1 _______
+#define NAV_RH1 _______
+#define NAV_RH2 _______
 
 /*
  * L_CFG: Keyboard configuration. Both hands are transparent -- mods are
@@ -225,40 +225,40 @@
  *                ╰──────────╯   ╰─────────╯
  */
 
-#define LC_LT4 _______
-#define LC_LT3 KC_APPLICATION
-#define LC_LT2 KC_CAPS_LOCK
-#define LC_LT1 CW_TOGG
-#define LC_LT0 _______
-#define LC_RT0 _______
-#define LC_RT1 _______
-#define LC_RT2 _______
-#define LC_RT3 _______
-#define LC_RT4 _______
+#define CFG_LT4 _______
+#define CFG_LT3 KC_APPLICATION
+#define CFG_LT2 KC_CAPS_LOCK
+#define CFG_LT1 CW_TOGG
+#define CFG_LT0 _______
+#define CFG_RT0 _______
+#define CFG_RT1 _______
+#define CFG_RT2 _______
+#define CFG_RT3 _______
+#define CFG_RT4 _______
 
-#define LC_LM4 _______
-#define LC_LM3 _______
-#define LC_LM2 _______
-#define LC_LM1 _______
-#define LC_LM0 _______
-#define LC_RM0 _______
-#define LC_RM1 _______
-#define LC_RM2 _______
-#define LC_RM3 _______
-#define LC_RM4 _______
+#define CFG_LM4 _______
+#define CFG_LM3 _______
+#define CFG_LM2 _______
+#define CFG_LM1 _______
+#define CFG_LM0 _______
+#define CFG_RM0 _______
+#define CFG_RM1 _______
+#define CFG_RM2 _______
+#define CFG_RM3 _______
+#define CFG_RM4 _______
 
-#define LC_LB4 _______
-#define LC_LB3 _______
-#define LC_LB2 _______
-#define LC_LB1 _______
-#define LC_LB0 _______
-#define LC_RB0 QK_BOOT
-#define LC_RB1 _______
-#define LC_RB2 _______
-#define LC_RB3 _______
-#define LC_RB4 _______
+#define CFG_LB4 _______
+#define CFG_LB3 _______
+#define CFG_LB2 _______
+#define CFG_LB1 _______
+#define CFG_LB0 _______
+#define CFG_RB0 QK_BOOT
+#define CFG_RB1 _______
+#define CFG_RB2 _______
+#define CFG_RB3 _______
+#define CFG_RB4 _______
 
-#define LC_LH2 _______
-#define LC_LH1 _______
-#define LC_RH1 _______
-#define LC_RH2 _______
+#define CFG_LH2 _______
+#define CFG_LH1 _______
+#define CFG_RH1 _______
+#define CFG_RH2 _______

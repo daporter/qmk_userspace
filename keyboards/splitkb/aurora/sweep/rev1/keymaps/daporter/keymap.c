@@ -18,25 +18,14 @@
 
 #include "features/tap_hold.h"
 
-#include "keycodes.h"
-// Alpha layout: swap this include for "handsdown_au.h" or "handsdown_vf.h"
-// to switch to Hands Down Gold/Vibranium f instead of Vibranium b.
-#include "handsdown_vb.h"
-#include "layers.h"
-
-// Tap: one-shot shift. Double tap: Caps Word. Hold: L_NAV. See the osft_td_*
-// tap dance callbacks in keymap.c.
-#define KEY_OSFT_TD TD(TD_OSFT)
-// Tap: one-shot L_ALPHA2. Hold: L_CFG. See the alpha2_td_* tap dance
-// callbacks in keymap.c.
-#define KEY_ALPHA2_TD TD(TD_ALPHA2)
-
-#define KEY_SPACE LT(L_SYM, KC_SPACE)
+enum custom_keys {
+    CK_QU = QK_USER,
+};
 
 // clang-format off
 enum layers {
     L_BASE,
-    L_ALPHA2,
+    L_AL2,
     L_SYM,
     L_NUM,
     L_NAV,
@@ -44,8 +33,28 @@ enum layers {
 };
 // clang-format on
 
-// Must come after `enum layers`: combos.def uses layer-tap keys (e.g.
-// LB_LH1) and TG(L_NUM), both of which need L_NUM/L_SYM/etc. declared.
+enum custom_tap_dances {
+    TD_OSFT,   // see osft_td_* below: tap/double-tap/hold on BASE_LH2
+    TD_ALPHA2, // see alpha2_td_* below: tap/hold on BASE_RH2
+};
+
+// Tap: one-shot shift. Double tap: Caps Word. Hold: L_NAV. See the osft_td_*
+// tap dance callbacks below.
+#define BASE_OSFT_TD TD(TD_OSFT)
+// Tap: one-shot L_AL2. Hold: L_CFG. See the alpha2_td_* tap dance callbacks
+// below.
+#define BASE_ALPHA2_TD TD(TD_ALPHA2)
+
+#define BASE_SPACE LT(L_SYM, KC_SPACE)
+
+// Alpha layout: swap this include for "handsdown_au.h" or "handsdown_vf.h"
+// to switch to Hands Down Gold/Vibranium f instead of Vibranium b.
+#include "handsdown_vb.h"
+
+#include "layers.h"
+
+// combos.def uses layer-tap keys (e.g. BASE_LH1) and TG(L_NUM), both of
+// which need enum layers, above, already declared.
 #include "g/keymap_combo.h"
 
 /*
@@ -62,53 +71,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
 
     [L_BASE] = LAYOUT(
-    LB_LT4, LB_LT3, LB_LT2, LB_LT1, LB_LT0,     LB_RT0, LB_RT1, LB_RT2, LB_RT3, LB_RT4,
-    LB_LM4, LB_LM3, LB_LM2, LB_LM1, LB_LM0,     LB_RM0, LB_RM1, LB_RM2, LB_RM3, LB_RM4,
-    LB_LB4, LB_LB3, LB_LB2, LB_LB1, LB_LB0,     LB_RB0, LB_RB1, LB_RB2, LB_RB3, LB_RB4,
-                            LB_LH2, LB_LH1,     LB_RH1, LB_RH2),
+    BASE_LT4, BASE_LT3, BASE_LT2, BASE_LT1, BASE_LT0,     BASE_RT0, BASE_RT1, BASE_RT2, BASE_RT3, BASE_RT4,
+    BASE_LM4, BASE_LM3, BASE_LM2, BASE_LM1, BASE_LM0,     BASE_RM0, BASE_RM1, BASE_RM2, BASE_RM3, BASE_RM4,
+    BASE_LB4, BASE_LB3, BASE_LB2, BASE_LB1, BASE_LB0,     BASE_RB0, BASE_RB1, BASE_RB2, BASE_RB3, BASE_RB4,
+                            BASE_LH2, BASE_LH1,     BASE_RH1, BASE_RH2),
 
-    [L_ALPHA2] = LAYOUT(
-    LA2_LT4, LA2_LT3, LA2_LT2, LA2_LT1, LA2_LT0,     LA2_RT0, LA2_RT1, LA2_RT2, LA2_RT3, LA2_RT4,
-    LA2_LM4, LA2_LM3, LA2_LM2, LA2_LM1, LA2_LM0,     LA2_RM0, LA2_RM1, LA2_RM2, LA2_RM3, LA2_RM4,
-    LA2_LB4, LA2_LB3, LA2_LB2, LA2_LB1, LA2_LB0,     LA2_RB0, LA2_RB1, LA2_RB2, LA2_RB3, LA2_RB4,
-                            LA2_LH2, LA2_LH1,     LA2_RH1, LA2_RH2),
+    [L_AL2] = LAYOUT(
+    AL2_LT4, AL2_LT3, AL2_LT2, AL2_LT1, AL2_LT0,     AL2_RT0, AL2_RT1, AL2_RT2, AL2_RT3, AL2_RT4,
+    AL2_LM4, AL2_LM3, AL2_LM2, AL2_LM1, AL2_LM0,     AL2_RM0, AL2_RM1, AL2_RM2, AL2_RM3, AL2_RM4,
+    AL2_LB4, AL2_LB3, AL2_LB2, AL2_LB1, AL2_LB0,     AL2_RB0, AL2_RB1, AL2_RB2, AL2_RB3, AL2_RB4,
+                            AL2_LH2, AL2_LH1,     AL2_RH1, AL2_RH2),
 
     [L_SYM] = LAYOUT(
-    LS_LT4, LS_LT3, LS_LT2, LS_LT1, LS_LT0,     LS_RT0, LS_RT1, LS_RT2, LS_RT3, LS_RT4,
-    LS_LM4, LS_LM3, LS_LM2, LS_LM1, LS_LM0,     LS_RM0, LS_RM1, LS_RM2, LS_RM3, LS_RM4,
-    LS_LB4, LS_LB3, LS_LB2, LS_LB1, LS_LB0,     LS_RB0, LS_RB1, LS_RB2, LS_RB3, LS_RB4,
-                            LS_LH2, LS_LH1,     LS_RH1, LS_RH2),
+    SYM_LT4, SYM_LT3, SYM_LT2, SYM_LT1, SYM_LT0,     SYM_RT0, SYM_RT1, SYM_RT2, SYM_RT3, SYM_RT4,
+    SYM_LM4, SYM_LM3, SYM_LM2, SYM_LM1, SYM_LM0,     SYM_RM0, SYM_RM1, SYM_RM2, SYM_RM3, SYM_RM4,
+    SYM_LB4, SYM_LB3, SYM_LB2, SYM_LB1, SYM_LB0,     SYM_RB0, SYM_RB1, SYM_RB2, SYM_RB3, SYM_RB4,
+                            SYM_LH2, SYM_LH1,     SYM_RH1, SYM_RH2),
 
     [L_NUM] = LAYOUT(
-    LN_LT4, LN_LT3, LN_LT2, LN_LT1, LN_LT0,     LN_RT0, LN_RT1, LN_RT2, LN_RT3, LN_RT4,
-    LN_LM4, LN_LM3, LN_LM2, LN_LM1, LN_LM0,     LN_RM0, LN_RM1, LN_RM2, LN_RM3, LN_RM4,
-    LN_LB4, LN_LB3, LN_LB2, LN_LB1, LN_LB0,     LN_RB0, LN_RB1, LN_RB2, LN_RB3, LN_RB4,
-                            LN_LH2, LN_LH1,     LN_RH1, LN_RH2),
+    NUM_LT4, NUM_LT3, NUM_LT2, NUM_LT1, NUM_LT0,     NUM_RT0, NUM_RT1, NUM_RT2, NUM_RT3, NUM_RT4,
+    NUM_LM4, NUM_LM3, NUM_LM2, NUM_LM1, NUM_LM0,     NUM_RM0, NUM_RM1, NUM_RM2, NUM_RM3, NUM_RM4,
+    NUM_LB4, NUM_LB3, NUM_LB2, NUM_LB1, NUM_LB0,     NUM_RB0, NUM_RB1, NUM_RB2, NUM_RB3, NUM_RB4,
+                            NUM_LH2, NUM_LH1,     NUM_RH1, NUM_RH2),
 
     [L_NAV] = LAYOUT(
-    LV_LT4, LV_LT3, LV_LT2, LV_LT1, LV_LT0,     LV_RT0, LV_RT1, LV_RT2, LV_RT3, LV_RT4,
-    LV_LM4, LV_LM3, LV_LM2, LV_LM1, LV_LM0,     LV_RM0, LV_RM1, LV_RM2, LV_RM3, LV_RM4,
-    LV_LB4, LV_LB3, LV_LB2, LV_LB1, LV_LB0,     LV_RB0, LV_RB1, LV_RB2, LV_RB3, LV_RB4,
-                            LV_LH2, LV_LH1,     LV_RH1, LV_RH2),
+    NAV_LT4, NAV_LT3, NAV_LT2, NAV_LT1, NAV_LT0,     NAV_RT0, NAV_RT1, NAV_RT2, NAV_RT3, NAV_RT4,
+    NAV_LM4, NAV_LM3, NAV_LM2, NAV_LM1, NAV_LM0,     NAV_RM0, NAV_RM1, NAV_RM2, NAV_RM3, NAV_RM4,
+    NAV_LB4, NAV_LB3, NAV_LB2, NAV_LB1, NAV_LB0,     NAV_RB0, NAV_RB1, NAV_RB2, NAV_RB3, NAV_RB4,
+                            NAV_LH2, NAV_LH1,     NAV_RH1, NAV_RH2),
 
     [L_CFG] = LAYOUT(
-    LC_LT4, LC_LT3, LC_LT2, LC_LT1, LC_LT0,     LC_RT0, LC_RT1, LC_RT2, LC_RT3, LC_RT4,
-    LC_LM4, LC_LM3, LC_LM2, LC_LM1, LC_LM0,     LC_RM0, LC_RM1, LC_RM2, LC_RM3, LC_RM4,
-    LC_LB4, LC_LB3, LC_LB2, LC_LB1, LC_LB0,     LC_RB0, LC_RB1, LC_RB2, LC_RB3, LC_RB4,
-                            LC_LH2, LC_LH1,     LC_RH1, LC_RH2),
+    CFG_LT4, CFG_LT3, CFG_LT2, CFG_LT1, CFG_LT0,     CFG_RT0, CFG_RT1, CFG_RT2, CFG_RT3, CFG_RT4,
+    CFG_LM4, CFG_LM3, CFG_LM2, CFG_LM1, CFG_LM0,     CFG_RM0, CFG_RM1, CFG_RM2, CFG_RM3, CFG_RM4,
+    CFG_LB4, CFG_LB3, CFG_LB2, CFG_LB1, CFG_LB0,     CFG_RB0, CFG_RB1, CFG_RB2, CFG_RB3, CFG_RB4,
+                            CFG_LH2, CFG_LH1,     CFG_RH1, CFG_RH2),
 
     // clang-format on
 };
 
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
-    { KC_HASH,          KC_DOLLAR  },
-    { KC_DOT,           KC_COLON },
-    { KC_SLASH,         KC_ASTERISK },
-    { KC_DOUBLE_QUOTE,  KC_EXCLAIM },
-    { KC_QUOTE,         KC_QUESTION },
-    { KC_COMMA,         KC_SEMICOLON },
-    { KC_MINUS,         KC_PLUS },
+    { KC_HASH,         KC_DOLLAR  },
+    { KC_DOT,          KC_COLON },
+    { KC_SLASH,        KC_ASTERISK },
+    { KC_DOUBLE_QUOTE, KC_EXCLAIM },
+    { KC_QUOTE,        KC_QUESTION },
+    { KC_COMMA,        KC_SEMICOLON },
+    { KC_MINUS,        KC_PLUS },
     // clang-format on
 };
 
@@ -153,13 +162,13 @@ bool caps_word_press_user(uint16_t keycode) {
  */
 char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
     switch (keycode) {
-        // KEY_OSFT_TD/KEY_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
-        // Caps Lock/NAV on LB_LH2, one-shot L_ALPHA2/L_CFG on LB_RH2) don't
+        // BASE_OSFT_TD/BASE_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
+        // Caps Lock/NAV on BASE_LH2, one-shot L_AL2/L_CFG on BASE_RH2) don't
         // type anything themselves -- ignore them like core's own
         // QK_ONE_SHOT_MOD/QK_ONE_SHOT_LAYER ranges below, rather than
         // falling through to the "unrecognized key" branch, which would
         // wrongly reset Sentence Case state on every one-shot-shift tap
-        // (e.g. arming shift for "!"/"?" via LB_LH2 mid-sentence).
+        // (e.g. arming shift for "!"/"?" via BASE_LH2 mid-sentence).
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
             return '\0';
     }
@@ -230,14 +239,14 @@ void tap_hold_send_hold(uint16_t keycode) {
     }
 }
 
-// KEY_OSFT_TD tap then RH1 tap, within this long, turns on Caps Word (see
+// BASE_OSFT_TD tap then RH1 tap, within this long, turns on Caps Word (see
 // osft_td_finished/process_record_user below).
 #define OSFT_SPACE_SEQ_TERM 300
 
 static bool     osft_tap_pending = false;
 static uint16_t osft_tap_time    = 0;
 
-// Whether Caps Word was on when KEY_OSFT_TD was last physically pressed.
+// Whether Caps Word was on when BASE_OSFT_TD was last physically pressed.
 // Captured here because core's caps_word processing runs *after*
 // process_record_user but *before* process_tap_dance: it doesn't recognize
 // tap-dance keycodes, so it always turns Caps Word off on press, before
@@ -261,14 +270,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    if (keycode == KEY_OSFT_TD && record->event.pressed) {
+    if (keycode == BASE_OSFT_TD && record->event.pressed) {
         osft_press_caps_word_was_on = is_caps_word_on();
     }
 
     if (record->event.pressed) {
-        if (keycode == KEY_SPACE && record->tap.count && osft_tap_pending && timer_elapsed(osft_tap_time) < OSFT_SPACE_SEQ_TERM) {
+        if (keycode == BASE_SPACE && record->tap.count && osft_tap_pending && timer_elapsed(osft_tap_time) < OSFT_SPACE_SEQ_TERM) {
             osft_tap_pending = false;
-            clear_oneshot_mods(); // cancel the shift armed by the KEY_OSFT_TD tap
+            clear_oneshot_mods(); // cancel the shift armed by the BASE_OSFT_TD tap
             caps_word_on();
             return false;
         }
@@ -279,16 +288,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 /*
- * Tap dance for KEY_OSFT_TD (currently LB_LH2): tap = one-shot shift, double
+ * Tap dance for BASE_OSFT_TD (currently BASE_LH2): tap = one-shot shift, double
  * tap = Caps Lock, hold = L_NAV. A tap also starts (or ends) the
- * KEY_OSFT_TD-then-RH1 Caps Word sequence handled above.
+ * BASE_OSFT_TD-then-RH1 Caps Word sequence handled above.
  *
  * A plain LT() can't do this: its tap argument must be a basic keycode (so
  * it can't send a one-shot mod), and it only has a tap/hold split, not a
  * double-tap. `state->pressed`, not `state->interrupted`, decides hold here
  * so that -- same as every other layer-tap key in this keymap -- pressing
- * another key while KEY_OSFT_TD is still held resolves it as a hold
- * immediately, rather than waiting to see if KEY_OSFT_TD itself gets tapped
+ * another key while BASE_OSFT_TD is still held resolves it as a hold
+ * immediately, rather than waiting to see if BASE_OSFT_TD itself gets tapped
  * again.
  */
 typedef enum {
@@ -343,7 +352,7 @@ void osft_td_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 /*
- * Tap dance for KEY_ALPHA2_TD (LB_RH2): tap = one-shot L_ALPHA2, hold =
+ * Tap dance for BASE_ALPHA2_TD (BASE_RH2): tap = one-shot L_AL2, hold =
  * L_CFG. A plain LT() can't do this since OSL() isn't a basic keycode, so
  * the tap arms the one-shot layer directly the same way QMK's own OSL()
  * keycode does (see quantum/action.c): set_oneshot_layer() then
@@ -372,7 +381,7 @@ void alpha2_td_finished(tap_dance_state_t *state, void *user_data) {
     alpha2_td_state = alpha2_td_classify(state);
     switch (alpha2_td_state) {
         case ALPHA2_TD_TAP:
-            set_oneshot_layer(L_ALPHA2, ONESHOT_START);
+            set_oneshot_layer(L_AL2, ONESHOT_START);
             clear_oneshot_layer_state(ONESHOT_PRESSED);
             break;
         case ALPHA2_TD_HOLD:
