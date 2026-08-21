@@ -24,19 +24,28 @@
 #include "handsdown_vb.h"
 #include "layers.h"
 
+// Tap: one-shot shift. Double tap: Caps Word. Hold: L_NAV. See the osft_td_*
+// tap dance callbacks in keymap.c.
+#define KEY_OSFT_TD TD(TD_OSFT)
+// Tap: one-shot L_ALPHA2. Hold: L_CFG. See the alpha2_td_* tap dance
+// callbacks in keymap.c.
+#define KEY_ALPHA2_TD TD(TD_ALPHA2)
+
+#define KEY_SPACE LT(L_SYM, KC_SPACE)
+
+// clang-format off
 enum layers {
-    // clang-format off
-    L_HD,
+    L_BASE,
     L_ALPHA2,
     L_SYM,
     L_NUM,
     L_NAV,
     L_CFG
-    // clang-format on
 };
+// clang-format on
 
 // Must come after `enum layers`: combos.def uses layer-tap keys (e.g.
-// HD_LH1) and TG(L_NUM), both of which need L_NUM/L_SYM/etc. declared.
+// LB_LH1) and TG(L_NUM), both of which need L_NUM/L_SYM/etc. declared.
 #include "g/keymap_combo.h"
 
 /*
@@ -52,11 +61,11 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
 
-    [L_HD] = LAYOUT(
-    HD_LT4, HD_LT3, HD_LT2, HD_LT1, HD_LT0,     HD_RT0, HD_RT1, HD_RT2, HD_RT3, HD_RT4,
-    HD_LM4, HD_LM3, HD_LM2, HD_LM1, HD_LM0,     HD_RM0, HD_RM1, HD_RM2, HD_RM3, HD_RM4,
-    HD_LB4, HD_LB3, HD_LB2, HD_LB1, HD_LB0,     HD_RB0, HD_RB1, HD_RB2, HD_RB3, HD_RB4,
-                            HD_LH2, HD_LH1,     HD_RH1, HD_RH2),
+    [L_BASE] = LAYOUT(
+    LB_LT4, LB_LT3, LB_LT2, LB_LT1, LB_LT0,     LB_RT0, LB_RT1, LB_RT2, LB_RT3, LB_RT4,
+    LB_LM4, LB_LM3, LB_LM2, LB_LM1, LB_LM0,     LB_RM0, LB_RM1, LB_RM2, LB_RM3, LB_RM4,
+    LB_LB4, LB_LB3, LB_LB2, LB_LB1, LB_LB0,     LB_RB0, LB_RB1, LB_RB2, LB_RB3, LB_RB4,
+                            LB_LH2, LB_LH1,     LB_RH1, LB_RH2),
 
     [L_ALPHA2] = LAYOUT(
     LA2_LT4, LA2_LT3, LA2_LT2, LA2_LT1, LA2_LT0,     LA2_RT0, LA2_RT1, LA2_RT2, LA2_RT3, LA2_RT4,
@@ -93,8 +102,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
-    { HD_HASH,          KC_DOLLAR  },
-    { HD_DOT,           KC_COLON },
+    { KC_HASH,          KC_DOLLAR  },
+    { KC_DOT,           KC_COLON },
     { KC_SLASH,         KC_ASTERISK },
     { KC_DOUBLE_QUOTE,  KC_EXCLAIM },
     { KC_QUOTE,         KC_QUESTION },
@@ -144,13 +153,13 @@ bool caps_word_press_user(uint16_t keycode) {
  */
 char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
     switch (keycode) {
-        // HD_OSFT_TD/HD_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
-        // Caps Lock/NAV on HD_LH2, one-shot L_ALPHA2/L_CFG on HD_RH2) don't
+        // KEY_OSFT_TD/KEY_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
+        // Caps Lock/NAV on LB_LH2, one-shot L_ALPHA2/L_CFG on LB_RH2) don't
         // type anything themselves -- ignore them like core's own
         // QK_ONE_SHOT_MOD/QK_ONE_SHOT_LAYER ranges below, rather than
         // falling through to the "unrecognized key" branch, which would
         // wrongly reset Sentence Case state on every one-shot-shift tap
-        // (e.g. arming shift for "!"/"?" via HD_LH2 mid-sentence).
+        // (e.g. arming shift for "!"/"?" via LB_LH2 mid-sentence).
         case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
             return '\0';
     }
@@ -162,7 +171,7 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
             case CK_QU:     // sends "qu"/"Qu"/"QU" (shift/Caps Word-aware)
                 return 'a'; // Letter key.
 
-            case HD_DOT: // unshifted '.'; shifted ':' (see custom_shift_keys)
+            case KC_DOT: // unshifted '.'; shifted ':' (see custom_shift_keys)
                 return !shifted ? '.' : '#';
             case KC_DOUBLE_QUOTE: // unshifted '"'; shifted '!' via custom_shift_keys
             case KC_QUOTE:        // unshifted '\''; shifted '?' via custom_shift_keys
@@ -221,14 +230,14 @@ void tap_hold_send_hold(uint16_t keycode) {
     }
 }
 
-// HD_OSFT_TD tap then RH1 tap, within this long, turns on Caps Word (see
+// KEY_OSFT_TD tap then RH1 tap, within this long, turns on Caps Word (see
 // osft_td_finished/process_record_user below).
 #define OSFT_SPACE_SEQ_TERM 300
 
 static bool     osft_tap_pending = false;
 static uint16_t osft_tap_time    = 0;
 
-// Whether Caps Word was on when HD_OSFT_TD was last physically pressed.
+// Whether Caps Word was on when KEY_OSFT_TD was last physically pressed.
 // Captured here because core's caps_word processing runs *after*
 // process_record_user but *before* process_tap_dance: it doesn't recognize
 // tap-dance keycodes, so it always turns Caps Word off on press, before
@@ -252,14 +261,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    if (keycode == HD_OSFT_TD && record->event.pressed) {
+    if (keycode == KEY_OSFT_TD && record->event.pressed) {
         osft_press_caps_word_was_on = is_caps_word_on();
     }
 
     if (record->event.pressed) {
-        if (keycode == HD_SPACE && record->tap.count && osft_tap_pending && timer_elapsed(osft_tap_time) < OSFT_SPACE_SEQ_TERM) {
+        if (keycode == KEY_SPACE && record->tap.count && osft_tap_pending && timer_elapsed(osft_tap_time) < OSFT_SPACE_SEQ_TERM) {
             osft_tap_pending = false;
-            clear_oneshot_mods(); // cancel the shift armed by the HD_OSFT_TD tap
+            clear_oneshot_mods(); // cancel the shift armed by the KEY_OSFT_TD tap
             caps_word_on();
             return false;
         }
@@ -270,16 +279,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 /*
- * Tap dance for HD_OSFT_TD (currently HD_LH2): tap = one-shot shift, double
+ * Tap dance for KEY_OSFT_TD (currently LB_LH2): tap = one-shot shift, double
  * tap = Caps Lock, hold = L_NAV. A tap also starts (or ends) the
- * HD_OSFT_TD-then-RH1 Caps Word sequence handled above.
+ * KEY_OSFT_TD-then-RH1 Caps Word sequence handled above.
  *
  * A plain LT() can't do this: its tap argument must be a basic keycode (so
  * it can't send a one-shot mod), and it only has a tap/hold split, not a
  * double-tap. `state->pressed`, not `state->interrupted`, decides hold here
  * so that -- same as every other layer-tap key in this keymap -- pressing
- * another key while HD_OSFT_TD is still held resolves it as a hold
- * immediately, rather than waiting to see if HD_OSFT_TD itself gets tapped
+ * another key while KEY_OSFT_TD is still held resolves it as a hold
+ * immediately, rather than waiting to see if KEY_OSFT_TD itself gets tapped
  * again.
  */
 typedef enum {
@@ -334,7 +343,7 @@ void osft_td_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 /*
- * Tap dance for HD_ALPHA2_TD (HD_RH2): tap = one-shot L_ALPHA2, hold =
+ * Tap dance for KEY_ALPHA2_TD (LB_RH2): tap = one-shot L_ALPHA2, hold =
  * L_CFG. A plain LT() can't do this since OSL() isn't a basic keycode, so
  * the tap arms the one-shot layer directly the same way QMK's own OSL()
  * keycode does (see quantum/action.c): set_oneshot_layer() then

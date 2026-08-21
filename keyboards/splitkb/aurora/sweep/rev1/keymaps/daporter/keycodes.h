@@ -7,6 +7,6 @@ enum custom_keys {
 };
 
 enum custom_tap_dances {
-    TD_OSFT,   // see osft_td_* in keymap.c: tap/double-tap/hold on HD_LH2
-    TD_ALPHA2, // see alpha2_td_* in keymap.c: tap/hold on HD_RH2
+    TD_OSFT,   // see osft_td_* in keymap.c: tap/double-tap/hold on LB_LH2
+    TD_ALPHA2, // see alpha2_td_* in keymap.c: tap/hold on LB_RH2
 };

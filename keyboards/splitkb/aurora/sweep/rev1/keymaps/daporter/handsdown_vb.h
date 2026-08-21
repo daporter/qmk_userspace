@@ -16,53 +16,8 @@
 
 #pragma once
 
-/* HD alpha keycodes with any hold-taps/custom keycodes. */
-
-// clang-format off
-#define HD_A RSFT_T(KC_A)
-#define HD_B KC_B
-#define HD_C LALT_T(KC_C)
-#define HD_D KC_D
-#define HD_E RCTL_T(KC_E)
-#define HD_F KC_F
-#define HD_G KC_G
-#define HD_H RGUI_T(KC_H)
-#define HD_I LALT_T(KC_I)
-#define HD_J KC_J
-#define HD_K KC_K
-#define HD_L KC_L
-#define HD_M KC_M
-#define HD_N LCTL_T(KC_N)
-#define HD_O KC_O
-#define HD_P KC_P
-#define HD_Q KC_Q
-#define HD_R LT(L_NUM, KC_R)
-#define HD_S LGUI_T(KC_S)
-#define HD_T LSFT_T(KC_T)
-#define HD_U KC_U
-#define HD_V KC_V
-#define HD_W KC_W
-#define HD_X KC_X
-#define HD_Y KC_Y
-#define HD_Z KC_Z
-
-#define HD_HASH         KC_HASH
-#define HD_DOT          KC_DOT
-#define HD_SLASH        KC_SLASH
-#define HD_DOUBLE_QUOTE KC_DOUBLE_QUOTE
-#define HD_QUOTE        KC_QUOTE
-#define HD_COMMA        KC_COMMA
-#define HD_MINUS        KC_MINUS
-#define HD_SPACE        LT(L_SYM, KC_SPACE)
-// Tap: one-shot shift. Double tap: Caps Word. Hold: L_NAV. See the osft_td_*
-// tap dance callbacks in keymap.c.
-#define HD_OSFT_TD      TD(TD_OSFT)
-// Tap: one-shot L_ALPHA2. Hold: L_CFG. See the alpha2_td_* tap dance
-// callbacks in keymap.c.
-#define HD_ALPHA2_TD    TD(TD_ALPHA2)
-
 /*
- * Place these HD keycodes on the keymap for variation independent spatial
+ * Place these BASE keycodes on the keymap for variation independent spatial
  * referencing by key position.
  *
  * Base (alpha) layer Hands Down Vibranium b (HRMs + thumb mods):
@@ -79,42 +34,42 @@
  * two is on. RH2 tap one-shots L_ALPHA2; RH2 hold is L_CFG.
  */
 
-#define HD_LT4 HD_X
-#define HD_LT3 HD_W
-#define HD_LT2 HD_M
-#define HD_LT1 HD_G
-#define HD_LT0 HD_J
-#define HD_RT0 HD_HASH
-#define HD_RT1 HD_DOT
-#define HD_RT2 HD_SLASH
-#define HD_RT3 HD_DOUBLE_QUOTE
-#define HD_RT4 HD_QUOTE
+#define LB_LT4 KC_X
+#define LB_LT3 KC_W
+#define LB_LT2 KC_M
+#define LB_LT1 KC_G
+#define LB_LT0 KC_J
+#define LB_RT0 KC_HASH
+#define LB_RT1 KC_DOT
+#define LB_RT2 KC_SLASH
+#define LB_RT3 KC_DOUBLE_QUOTE
+#define LB_RT4 KC_QUOTE
 
-#define HD_LM4 HD_S
-#define HD_LM3 HD_C
-#define HD_LM2 HD_N
-#define HD_LM1 HD_T
-#define HD_LM0 HD_K
-#define HD_RM0 HD_COMMA
-#define HD_RM1 HD_A
-#define HD_RM2 HD_E
-#define HD_RM3 HD_I
-#define HD_RM4 HD_H
+#define LB_LM4 LGUI_T(KC_S)
+#define LB_LM3 LALT_T(KC_C)
+#define LB_LM2 LCTL_T(KC_N)
+#define LB_LM1 LSFT_T(KC_T)
+#define LB_LM0 KC_K
+#define LB_RM0 KC_COMMA
+#define LB_RM1 RSFT_T(KC_A)
+#define LB_RM2 RCTL_T(KC_E)
+#define LB_RM3 LALT_T(KC_I)
+#define LB_RM4 RGUI_T(KC_H)
 
-#define HD_LB4 HD_B
-#define HD_LB3 HD_P
-#define HD_LB2 HD_L
-#define HD_LB1 HD_D
-#define HD_LB0 HD_V
-#define HD_RB0 HD_MINUS
-#define HD_RB1 HD_U
-#define HD_RB2 HD_O
-#define HD_RB3 HD_Y
-#define HD_RB4 HD_F
+#define LB_LB4 KC_B
+#define LB_LB3 KC_P
+#define LB_LB2 KC_L
+#define LB_LB1 KC_D
+#define LB_LB0 KC_V
+#define LB_RB0 KC_MINUS
+#define LB_RB1 KC_U
+#define LB_RB2 KC_O
+#define LB_RB3 KC_Y
+#define LB_RB4 KC_F
 
-#define HD_LH2 HD_OSFT_TD
-#define HD_LH1 HD_R
-#define HD_RH1 HD_SPACE
-#define HD_RH2 HD_ALPHA2_TD
+#define LB_LH2 KEY_OSFT_TD
+#define LB_LH1 LT(L_NUM, KC_R)
+#define LB_RH1 KEY_SPACE
+#define LB_RH2 KEY_ALPHA2_TD
 
 // clang-format on
