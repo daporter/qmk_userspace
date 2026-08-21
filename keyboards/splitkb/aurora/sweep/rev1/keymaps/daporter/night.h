@@ -24,7 +24,7 @@
 // ╭─────────────────────╮   ╭──────────────────────╮
 // │  B   F   L   K   Q  │   │  P   G   O   U   .:  │
 // │  N   S   H   T   M  │   │  Y   C   A   E   I   │
-// │  X   V   J   D   Z  │   │  '?  W   /*  ;   ,;  │
+// │  X   V   J   D   Z  │   │  '"  W   -/  ?!  ,;  │
 // ╰───────────╮  ⇧   R  │   │ spc      ╭───────────╯
 //             ╰─────────╯   ╰──────────╯
 //
@@ -33,7 +33,6 @@
 // LH2 tap then RH1 tap enables Caps Word. LH2 tap disables whichever of the
 // two is on. RH2 tap one-shots L_AL2; RH2 hold is L_CFG.
 
-// clang-format off
 #define BASE_LT4 KC_B
 #define BASE_LT3 KC_F
 #define BASE_LT2 KC_L
@@ -63,12 +62,11 @@
 #define BASE_LB0 KC_Z
 #define BASE_RB0 KC_QUOTE
 #define BASE_RB1 KC_W
-#define BASE_RB2 KC_SLASH
-#define BASE_RB3 KC_SEMICOLON
+#define BASE_RB2 KC_MINUS
+#define BASE_RB3 KC_QUESTION
 #define BASE_RB4 KC_COMMA
 
 #define BASE_LH2 BASE_OSFT_TD
 #define BASE_LH1 LT(L_NUM, KC_R)
 #define BASE_RH1 BASE_SPACE
 #define BASE_RH2 BASE_ALPHA2_TD
-// clang-format on

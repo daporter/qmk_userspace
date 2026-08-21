@@ -46,9 +46,10 @@ enum custom_tap_dances {
 
 #define BASE_SPACE LT(L_SYM, KC_SPACE)
 
-// Alpha layout: swap this include for "handsdown_au.h" or "handsdown_vf.h"
-// to switch to Hands Down Gold/Vibranium f instead of Vibranium b.
-#include "handsdown_vb.h"
+// Alpha layout: swap this include for "handsdown_vb.h", "handsdown_au.h", or
+// "handsdown_vf.h" to switch to Hands Down Vibranium b/Gold/Vibranium f
+// instead of Night.
+#include "night.h"
 
 #include "layers.h"
 
@@ -108,13 +109,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
-    { KC_HASH,         KC_DOLLAR  },
-    { KC_DOT,          KC_COLON },
-    { KC_SLASH,        KC_ASTERISK },
-    { KC_DOUBLE_QUOTE, KC_EXCLAIM },
-    { KC_QUOTE,        KC_QUESTION },
-    { KC_COMMA,        KC_SEMICOLON },
-    { KC_MINUS,        KC_PLUS },
+    { KC_DOT,      KC_COLON },
+    { KC_QUOTE,    KC_DOUBLE_QUOTE },
+    { KC_MINUS,    KC_SLASH },
+    { KC_QUESTION, KC_EXCLAIM },
+    { KC_COMMA,    KC_SEMICOLON },
     // clang-format on
 };
 
