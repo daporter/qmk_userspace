@@ -17,32 +17,32 @@ layout:
   qmk_keyboard: ferris/sweep
   layout_name: LAYOUT_split_3x5_2
 layers:
-  HD:
+  BASE:
+    - [b, f, l, k, q, p, g, o, u, { t: "?", s: "!" }]
+    - [
+        { t: n, h: ❖ },
+        { t: s, h: ⎇ },
+        { t: h, h: ⌃ },
+        { t: t, h: ⇧ },
+        m,
+        y,
+        { t: c, h: ⇧ },
+        { t: a, h: ⌃ },
+        { t: e, h: ⎇ },
+        { t: i, h: ❖ },
+      ]
     - [
         x,
-        w,
-        m,
-        g,
+        v,
         j,
-        { t: "#", s: "$" },
-        { t: ".", s: ":" },
-        { t: "/", s: "*" },
-        { t: '"', s: "!" },
-        { t: "'", s: "?" },
-      ]
-    - [
-        { t: s, h: ❖ },
-        { t: c, h: ⎇ },
-        { t: n, h: ⌃ },
-        { t: t, h: ⇧ },
-        k,
+        d,
+        z,
+        { t: "-", s: "/" },
+        w,
+        { t: "'", s: '"' },
         { t: ",", s: ";" },
-        { t: a, h: ⇧ },
-        { t: e, h: ⌃ },
-        { t: i, h: ⎇ },
-        { t: h, h: ❖ },
+        { t: ".", s: ":" },
       ]
-    - [b, p, l, d, v, { t: "-", s: "+" }, u, o, y, f]
     - { t: "⇧", h: NAV, s: Caps } # s: repurposed for double-tap, not shift
     - { t: r, h: NUM }
     - { t: ␣, h: SYM }
@@ -90,19 +90,19 @@ layers:
 
 combos:
   # top row
-  - { p: [2, 7], k: arep, l: [HD] }
-  - { p: [3, 6], k: rep, l: [HD] }
+  - { p: [2, 7], k: arep, l: [BASE] }
+  - { p: [3, 6], k: rep, l: [BASE] }
   # top-middle vertical combos
-  - { p: [0, 10], k: Esc, l: [HD] }
-  - { p: [1, 11], k: "⌃⌫", l: [HD] }
-  - { p: [2, 12], k: "⌫", l: [HD] }
-  - { p: [3, 13], k: Del, l: [HD] }
-  - { p: [6, 16], k: STab, l: [HD] }
-  - { p: [7, 17], k: ⏎, l: [HD] }
-  - { p: [8, 18], k: Tab, l: [HD] }
+  - { p: [0, 10], k: Esc, l: [BASE] }
+  - { p: [1, 11], k: "⌃⌫", l: [BASE] }
+  - { p: [2, 12], k: "⌫", l: [BASE] }
+  - { p: [3, 13], k: Del, l: [BASE] }
+  - { p: [6, 16], k: STab, l: [BASE] }
+  - { p: [7, 17], k: ⏎, l: [BASE] }
+  - { p: [8, 18], k: Tab, l: [BASE] }
   # middle-bottom row vertical combos
-  - { p: [10, 20], k: "⌃Z", l: [HD] }
-  - { p: [11, 21], k: "⌃⇧Z", l: [HD] }
+  - { p: [10, 20], k: "⌃Z", l: [BASE] }
+  - { p: [11, 21], k: "⌃⇧Z", l: [BASE] }
 
 draw_config:
   key_w: 70
