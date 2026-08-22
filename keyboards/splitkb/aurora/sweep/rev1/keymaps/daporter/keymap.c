@@ -46,9 +46,7 @@ enum custom_tap_dances {
 
 #define BASE_SPACE LT(L_SYM, KC_SPACE)
 
-// Alpha layout: swap this include for "handsdown_vb.h", "handsdown_au.h", or
-// "handsdown_vf.h" to switch to Hands Down Vibranium b/Gold/Vibranium f
-// instead of Night.
+// Alpha layout (Night: https://valorance.net/night/).
 #include "night.h"
 
 #include "layers.h"

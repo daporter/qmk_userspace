@@ -18,9 +18,7 @@
 // Place these BASE keycodes on the keymap for variation independent spatial
 // referencing by key position.
 //
-// Base (alpha) layer Night (https://valorance.net/night/), with the same
-// HRMs/thumb keys as handsdown_vb.h -- only the alpha/punct arrangement
-// differs:
+// Base (alpha) layer Night (https://valorance.net/night/):
 // ╭─────────────────────╮   ╭──────────────────────╮
 // │  B   F   L   K   Q  │   │  P   G   O   U   ?!  │
 // │  N   S   H   T   M  │   │  Y   C   A   E   I   │
