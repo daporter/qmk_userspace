@@ -22,9 +22,9 @@
 // HRMs/thumb keys as handsdown_vb.h -- only the alpha/punct arrangement
 // differs:
 // ╭─────────────────────╮   ╭──────────────────────╮
-// │  B   F   L   K   Q  │   │  P   G   O   U   .:  │
+// │  B   F   L   K   Q  │   │  P   G   O   U   ?!  │
 // │  N   S   H   T   M  │   │  Y   C   A   E   I   │
-// │  X   V   J   D   Z  │   │  '"  W   -/  ?!  ,;  │
+// │  X   V   J   D   Z  │   │  -/  W   '"  ,;  .:  │
 // ╰───────────╮  ⇧   R  │   │ spc      ╭───────────╯
 //             ╰─────────╯   ╰──────────╯
 //
@@ -42,7 +42,7 @@
 #define BASE_RT1 KC_G
 #define BASE_RT2 KC_O
 #define BASE_RT3 KC_U
-#define BASE_RT4 KC_DOT
+#define BASE_RT4 KC_QUESTION
 
 #define BASE_LM4 LGUI_T(KC_N)
 #define BASE_LM3 LALT_T(KC_S)
@@ -60,11 +60,11 @@
 #define BASE_LB2 KC_J
 #define BASE_LB1 KC_D
 #define BASE_LB0 KC_Z
-#define BASE_RB0 KC_QUOTE
+#define BASE_RB0 KC_MINUS
 #define BASE_RB1 KC_W
-#define BASE_RB2 KC_MINUS
-#define BASE_RB3 KC_QUESTION
-#define BASE_RB4 KC_COMMA
+#define BASE_RB2 KC_QUOTE
+#define BASE_RB3 KC_COMMA
+#define BASE_RB4 KC_DOT
 
 #define BASE_LH2 BASE_OSFT_TD
 #define BASE_LH1 LT(L_NUM, KC_R)
