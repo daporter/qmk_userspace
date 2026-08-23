@@ -16,10 +16,6 @@ COMB(combo_TAB,  KC_TAB,              BASE_RT3, BASE_RM3)
 
 // middle row
 
-// middle-bottom row vertical combos
-COMB(combo_UNDO, LCTL(KC_Z),          BASE_LM4, BASE_LB4)
-COMB(combo_REDO, LCTL(LSFT(KC_Z)),    BASE_LM3, BASE_LB3)
-
 // bottom row
 
 // clang-format on

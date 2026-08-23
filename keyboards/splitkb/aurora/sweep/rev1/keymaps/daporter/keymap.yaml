@@ -91,9 +91,6 @@ combos:
   - { p: [6, 16], k: STab, l: [BASE] }
   - { p: [7, 17], k: ⏎, l: [BASE] }
   - { p: [8, 18], k: Tab, l: [BASE] }
-  # middle-bottom row vertical combos
-  - { p: [10, 20], k: "⌃Z", l: [BASE] }
-  - { p: [11, 21], k: "⌃⇧Z", l: [BASE] }
 
 draw_config:
   key_w: 70

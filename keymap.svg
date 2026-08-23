@@ -298,14 +298,6 @@ path.combo {
 <rect rx="6" ry="6" x="679" y="74" width="28" height="26" class="combo"/>
 <text x="693" y="87" class="combo tap">Tab</text>
 </g>
-<g class="combo combopos-8">
-<rect rx="6" ry="6" x="19" y="182" width="28" height="26" class="combo"/>
-<text x="33" y="195" class="combo tap">⌃Z</text>
-</g>
-<g class="combo combopos-9">
-<rect rx="6" ry="6" x="85" y="140" width="28" height="26" class="combo"/>
-<text x="99" y="153" class="combo tap">⌃⇧Z</text>
-</g>
 </g>
 </g>
 <g transform="translate(30, 389)" class="layer-SYM">
