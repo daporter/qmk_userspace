@@ -18,17 +18,17 @@
 // L_AL2: Secondary alpha layer.
 //
 // ╭─────────────────╮   ╭─────────────────╮
-// │     q  qu       │   │                 │
-// │     z           │   │                 │
+// │              q  │   │                 │
+// │                 │   │                 │
 // │                 │   │                 │
 // ╰──────────╮      │   │      ╭──────────╯
 //            ╰──-───╯   ╰──────╯
 
 #define AL2_LT4 _______
-#define AL2_LT3 KC_Q
-#define AL2_LT2 CK_QU
+#define AL2_LT3 _______
+#define AL2_LT2 _______
 #define AL2_LT1 _______
-#define AL2_LT0 _______
+#define AL2_LT0 KC_Q
 #define AL2_RT0 _______
 #define AL2_RT1 _______
 #define AL2_RT2 _______
@@ -36,7 +36,7 @@
 #define AL2_RT4 _______
 
 #define AL2_LM4 _______
-#define AL2_LM3 KC_Z
+#define AL2_LM3 _______
 #define AL2_LM2 _______
 #define AL2_LM1 _______
 #define AL2_LM0 _______

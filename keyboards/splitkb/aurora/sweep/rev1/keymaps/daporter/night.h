@@ -19,12 +19,12 @@
 // referencing by key position.
 //
 // Base (alpha) layer Night (https://valorance.net/night/):
-// ╭─────────────────────╮   ╭──────────────────────╮
-// │  B   F   L   K   Q  │   │  P   G   O   U   ?!  │
-// │  N   S   H   T   M  │   │  Y   C   A   E   I   │
-// │  X   V   J   D   Z  │   │  ’"  W   /-  ,;  .:  │
-// ╰───────────╮  ⇧   R  │   │ spc      ╭───────────╯
-//             ╰─────────╯   ╰──────────╯
+// ╭──────────────────────╮   ╭──────────────────────╮
+// │  B   F   L   K   QU  │   │  P   G   O   U   ?!  │
+// │  N   S   H   T   M   │   │  Y   C   A   E   I   │
+// │  X   V   J   D   Z   │   │  ’"  W   /-  ,;  .:  │
+// ╰───────────╮  ⇧   R   │   │ spc      ╭───────────╯
+//             ╰──────────╯   ╰──────────╯
 //
 // Q & Z, and editing keys (Backspace, Delete, Tab, Enter, etc.), are
 // available via combos -- see combos.def. LH2 double-tap enables Caps Lock;
@@ -35,7 +35,7 @@
 #define BASE_LT3 KC_F
 #define BASE_LT2 KC_L
 #define BASE_LT1 KC_K
-#define BASE_LT0 KC_Q
+#define BASE_LT0 CK_QU
 #define BASE_RT0 KC_P
 #define BASE_RT1 KC_G
 #define BASE_RT2 KC_O
