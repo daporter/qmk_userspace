@@ -29,7 +29,7 @@
 // Q & Z, and editing keys (Backspace, Delete, Tab, Enter, etc.), are
 // available via combos -- see combos.def. LH2 double-tap enables Caps Lock;
 // LH2 tap then RH1 tap enables Caps Word. LH2 tap disables whichever of the
-// two is on. RH2 tap one-shots L_AL2; RH2 hold is L_CFG.
+// two is on. RH2 tap repeats the last key; RH2 hold is L_CFG.
 
 #define BASE_LT4 KC_B
 #define BASE_LT3 KC_F

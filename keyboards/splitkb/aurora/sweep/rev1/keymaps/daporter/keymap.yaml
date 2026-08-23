@@ -46,15 +46,7 @@ layers:
     - { t: "⇧", h: NAV, s: Caps } # s: repurposed for double-tap, not shift
     - { t: r, h: NUM }
     - { t: ␣, h: SYM }
-    - { t: A2, h: CFG }
-  ALPHA2:
-    - ["", "", "", "", Q, "", "", "", "", ""]
-    - ["", "", "", "", "", "", "", "", "", ""]
-    - ["", "", "", "", "", "", "", "", "", ""]
-    - ""
-    - ""
-    - ""
-    - ""
+    - { t: rep, h: CFG }
   SYM:
     - ["`", "<", ">", "-", "|", "^", "{", "}", "$", "\\"]
     - ["!", "*", "/", "=", "&", "_", "(", ")", ";", '"']
@@ -92,6 +84,7 @@ combos:
   # top row
   - { p: [2, 7], k: arep, l: [BASE] }
   - { p: [3, 6], k: rep, l: [BASE] }
+  - { p: [3, 4], k: q, l: [BASE] }
   # top-middle vertical combos
   - { p: [0, 10], k: Esc, l: [BASE] }
   - { p: [1, 11], k: "⌃⌫", l: [BASE] }

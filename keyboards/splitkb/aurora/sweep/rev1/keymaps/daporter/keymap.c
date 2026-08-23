@@ -24,7 +24,6 @@ enum custom_keys {
 // clang-format off
 enum layers {
     L_BASE,
-    L_AL2,
     L_SYM,
     L_NUM,
     L_NAV,
@@ -40,7 +39,7 @@ enum custom_tap_dances {
 // Tap: one-shot shift. Double tap: Caps Word. Hold: L_NAV. See the osft_td_*
 // tap dance callbacks below.
 #define BASE_OSFT_TD TD(TD_OSFT)
-// Tap: one-shot L_AL2. Hold: L_CFG. See the alpha2_td_* tap dance callbacks
+// Tap: Repeat (QK_REP). Hold: L_CFG. See the alpha2_td_* tap dance callbacks
 // below.
 #define BASE_ALPHA2_TD TD(TD_ALPHA2)
 
@@ -71,12 +70,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     BASE_LM4, BASE_LM3, BASE_LM2, BASE_LM1, BASE_LM0,     BASE_RM0, BASE_RM1, BASE_RM2, BASE_RM3, BASE_RM4,
     BASE_LB4, BASE_LB3, BASE_LB2, BASE_LB1, BASE_LB0,     BASE_RB0, BASE_RB1, BASE_RB2, BASE_RB3, BASE_RB4,
                             BASE_LH2, BASE_LH1,     BASE_RH1, BASE_RH2),
-
-    [L_AL2] = LAYOUT(
-    AL2_LT4, AL2_LT3, AL2_LT2, AL2_LT1, AL2_LT0,     AL2_RT0, AL2_RT1, AL2_RT2, AL2_RT3, AL2_RT4,
-    AL2_LM4, AL2_LM3, AL2_LM2, AL2_LM1, AL2_LM0,     AL2_RM0, AL2_RM1, AL2_RM2, AL2_RM3, AL2_RM4,
-    AL2_LB4, AL2_LB3, AL2_LB2, AL2_LB1, AL2_LB0,     AL2_RB0, AL2_RB1, AL2_RB2, AL2_RB3, AL2_RB4,
-                            AL2_LH2, AL2_LH1,     AL2_RH1, AL2_RH2),
 
     [L_SYM] = LAYOUT(
     SYM_LT4, SYM_LT3, SYM_LT2, SYM_LT1, SYM_LT0,     SYM_RT0, SYM_RT1, SYM_RT2, SYM_RT3, SYM_RT4,
@@ -153,8 +146,8 @@ bool caps_word_press_user(uint16_t keycode) {
 char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
     switch (keycode) {
         // BASE_OSFT_TD/BASE_ALPHA2_TD (tap dance for one-shot shift/Caps Word/
-        // Caps Lock/NAV on BASE_LH2, one-shot L_AL2/L_CFG on BASE_RH2) don't
-        // type anything themselves -- ignore them like core's own
+        // Caps Lock/NAV on BASE_LH2, Repeat/L_CFG on BASE_RH2) don't type
+        // anything themselves -- ignore them like core's own
         // QK_ONE_SHOT_MOD/QK_ONE_SHOT_LAYER ranges below, rather than
         // falling through to the "unrecognized key" branch, which would
         // wrongly reset Sentence Case state on every one-shot-shift tap
@@ -244,6 +237,19 @@ static uint16_t osft_tap_time    = 0;
 // would always read false.
 static bool osft_press_caps_word_was_on = false;
 
+// Matrix position of BASE_ALPHA2_TD's physical press, for synthesizing the
+// repeat-key events in alpha2_td_finished() below.
+static keypos_t alpha2_press_key;
+
+// Exclude BASE_ALPHA2_TD itself from core's repeat-key bookkeeping, mirroring
+// how core excludes QK_REPEAT_KEY/QK_ALT_REPEAT_KEY in remember_last_key():
+// without this, a tap of BASE_ALPHA2_TD would itself become "the last key",
+// so a later repeat would just replay BASE_ALPHA2_TD instead of whatever was
+// actually pressed before it.
+bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *remembered_mods) {
+    return keycode != BASE_ALPHA2_TD;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_tap_hold(keycode, record)) return false;
 
@@ -262,6 +268,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (keycode == BASE_OSFT_TD && record->event.pressed) {
         osft_press_caps_word_was_on = is_caps_word_on();
+    }
+
+    if (keycode == BASE_ALPHA2_TD && record->event.pressed) {
+        alpha2_press_key = record->event.key;
     }
 
     if (record->event.pressed) {
@@ -339,13 +349,13 @@ void osft_td_reset(tap_dance_state_t *state, void *user_data) {
     osft_td_state = OSFT_TD_NONE;
 }
 
-// Tap dance for BASE_ALPHA2_TD (BASE_RH2): tap = one-shot L_AL2, hold =
-// L_CFG. A plain LT() can't do this since OSL() isn't a basic keycode, so
-// the tap arms the one-shot layer directly the same way QMK's own OSL()
-// keycode does (see quantum/action.c): set_oneshot_layer() then
-// clear_oneshot_layer_state(ONESHOT_PRESSED), both called here since by the
-// time a plain tap is recognized the physical press and release have
-// already happened.
+// Tap dance for BASE_ALPHA2_TD (BASE_RH2): tap = Repeat (QK_REP), hold =
+// L_CFG. A plain LT() can't do this since QK_REPEAT_KEY isn't a basic
+// keycode, so the tap invokes the repeat key directly via
+// repeat_key_invoke() -- the same primitive core's own QK_REPEAT_KEY
+// handling calls (see process_repeat_key() in
+// quantum/process_keycode/process_repeat_key.c) -- at alpha2_press_key
+// (RH2's own press position, captured in process_record_user() above).
 //
 // As with osft_td_classify, `state->pressed` (not `state->interrupted`)
 // decides hold, so chording another key while RH2 is still held resolves
@@ -366,10 +376,13 @@ static alpha2_td_state_t alpha2_td_classify(tap_dance_state_t *state) {
 void alpha2_td_finished(tap_dance_state_t *state, void *user_data) {
     alpha2_td_state = alpha2_td_classify(state);
     switch (alpha2_td_state) {
-        case ALPHA2_TD_TAP:
-            set_oneshot_layer(L_AL2, ONESHOT_START);
-            clear_oneshot_layer_state(ONESHOT_PRESSED);
+        case ALPHA2_TD_TAP: {
+            keyevent_t press_event = MAKE_KEYEVENT(alpha2_press_key.row, alpha2_press_key.col, true);
+            repeat_key_invoke(&press_event);
+            keyevent_t release_event = MAKE_KEYEVENT(alpha2_press_key.row, alpha2_press_key.col, false);
+            repeat_key_invoke(&release_event);
             break;
+        }
         case ALPHA2_TD_HOLD:
             layer_on(L_CFG);
             break;

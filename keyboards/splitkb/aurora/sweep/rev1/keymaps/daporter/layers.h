@@ -15,53 +15,6 @@
 
 #pragma once
 
-// L_AL2: Secondary alpha layer.
-//
-// ╭─────────────────╮   ╭─────────────────╮
-// │              q  │   │                 │
-// │                 │   │                 │
-// │                 │   │                 │
-// ╰──────────╮      │   │      ╭──────────╯
-//            ╰──-───╯   ╰──────╯
-
-#define AL2_LT4 _______
-#define AL2_LT3 _______
-#define AL2_LT2 _______
-#define AL2_LT1 _______
-#define AL2_LT0 KC_Q
-#define AL2_RT0 _______
-#define AL2_RT1 _______
-#define AL2_RT2 _______
-#define AL2_RT3 _______
-#define AL2_RT4 _______
-
-#define AL2_LM4 _______
-#define AL2_LM3 _______
-#define AL2_LM2 _______
-#define AL2_LM1 _______
-#define AL2_LM0 _______
-#define AL2_RM0 _______
-#define AL2_RM1 _______
-#define AL2_RM2 _______
-#define AL2_RM3 _______
-#define AL2_RM4 _______
-
-#define AL2_LB4 _______
-#define AL2_LB3 _______
-#define AL2_LB2 _______
-#define AL2_LB1 _______
-#define AL2_LB0 _______
-#define AL2_RB0 _______
-#define AL2_RB1 _______
-#define AL2_RB2 _______
-#define AL2_RB3 _______
-#define AL2_RB4 _______
-
-#define AL2_LH2 _______
-#define AL2_LH1 _______
-#define AL2_RH1 _______
-#define AL2_RH2 _______
-
 // L_SYM: Symbols and punctuation.
 //
 // ╭─────────────────╮   ╭─────────────────╮
