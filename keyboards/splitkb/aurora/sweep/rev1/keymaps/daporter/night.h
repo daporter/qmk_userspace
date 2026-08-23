@@ -22,7 +22,7 @@
 // ╭─────────────────────╮   ╭──────────────────────╮
 // │  B   F   L   K   Q  │   │  P   G   O   U   ?!  │
 // │  N   S   H   T   M  │   │  Y   C   A   E   I   │
-// │  X   V   J   D   Z  │   │  -/  W   '"  ,;  .:  │
+// │  X   V   J   D   Z  │   │  ’"  W   /-  ,;  .:  │
 // ╰───────────╮  ⇧   R  │   │ spc      ╭───────────╯
 //             ╰─────────╯   ╰──────────╯
 //
@@ -58,9 +58,9 @@
 #define BASE_LB2 KC_J
 #define BASE_LB1 KC_D
 #define BASE_LB0 KC_Z
-#define BASE_RB0 KC_MINUS
+#define BASE_RB0 KC_QUOTE
 #define BASE_RB1 KC_W
-#define BASE_RB2 KC_QUOTE
+#define BASE_RB2 KC_SLASH
 #define BASE_RB3 KC_COMMA
 #define BASE_RB4 KC_DOT
 

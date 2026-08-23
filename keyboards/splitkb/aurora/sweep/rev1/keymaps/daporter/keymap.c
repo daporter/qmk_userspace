@@ -108,10 +108,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const custom_shift_key_t custom_shift_keys[] = {
     // clang-format off
     { KC_DOT,      KC_COLON },
-    { KC_QUOTE,    KC_DOUBLE_QUOTE },
-    { KC_MINUS,    KC_SLASH },
-    { KC_QUESTION, KC_EXCLAIM },
     { KC_COMMA,    KC_SEMICOLON },
+    { KC_QUOTE,    KC_DOUBLE_QUOTE },
+    { KC_SLASH,    KC_MINUS },
+    { KC_QUESTION, KC_EXCLAIM },
     // clang-format on
 };
 
