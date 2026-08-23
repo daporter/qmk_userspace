@@ -3,9 +3,7 @@
 //   name        result               chord keys
 
 // top row
-COMB(combo_AREP, QK_AREP,             BASE_LT2, BASE_RT2)
-COMB(combo_REP,  QK_REP,              BASE_LT1, BASE_RT1)
-COMB(combo_Q,    KC_Q,                BASE_LT1, BASE_LT0)
+COMB(combo_Q,    KC_Q,                BASE_LT2, BASE_LT1)
 
 // top-middle vertical combos
 COMB(combo_ESC,  KC_ESCAPE,           BASE_LT4, BASE_LM4)
