@@ -753,6 +753,7 @@ path.combo {
 </g>
 <g transform="translate(561, 118)" class="key keypos-16">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
+<text x="0" y="0" class="key tap">PrtSc</text>
 </g>
 <g transform="translate(627, 99)" class="key keypos-17">
 <rect rx="6" ry="6" x="-29" y="-29" width="58" height="58" class="key"/>
