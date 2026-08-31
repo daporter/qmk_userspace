@@ -19,9 +19,9 @@
 //
 // ╭─────────────────╮   ╭─────────────────╮
 // │  `  <  >  -  |  │   │  ^  {  }  $  \  │
-// │  !  *  /  =  &  │   │  _  (  )  ;  "  │
+// │  !  *  /  =  &  │   │  #  (  )  ;  "  │
 // │  ~  +  [  ]  %  │   │  @  :  ,  .  '  │
-// ╰──────────╮      │   │      ╭──────────╯
+// ╰──────────╮  _   │   │      ╭──────────╯
 //            ╰──-───╯   ╰──────╯
 
 #define SYM_LT4 KC_GRV
@@ -40,7 +40,7 @@
 #define SYM_LM2 KC_SLASH
 #define SYM_LM1 KC_EQUAL
 #define SYM_LM0 KC_AMPERSAND
-#define SYM_RM0 KC_UNDERSCORE
+#define SYM_RM0 KC_HASH
 #define SYM_RM1 KC_LEFT_PAREN
 #define SYM_RM2 KC_RIGHT_PAREN
 #define SYM_RM3 KC_SEMICOLON
@@ -57,7 +57,7 @@
 #define SYM_RB3 KC_DOT
 #define SYM_RB4 KC_QUOTE
 
-#define SYM_LH2 _______
+#define SYM_LH2 KC_UNDERSCORE
 #define SYM_LH1 _______
 #define SYM_RH1 _______
 #define SYM_RH2 _______
