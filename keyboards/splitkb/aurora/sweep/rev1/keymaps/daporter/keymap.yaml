@@ -91,6 +91,8 @@ combos:
   - { p: [6, 16], k: STab, l: [BASE] }
   - { p: [7, 17], k: ⏎, l: [BASE] }
   - { p: [8, 18], k: Tab, l: [BASE] }
+  # middle row
+  - { p: [16, 17], k: "⌃X", l: [BASE] }
 
 draw_config:
   key_w: 70

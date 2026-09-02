@@ -15,6 +15,7 @@ COMB(combo_ENT,  KC_ENTER,            BASE_RT2, BASE_RM2)
 COMB(combo_TAB,  KC_TAB,              BASE_RT3, BASE_RM3)
 
 // middle row
+COMB(combo_CX,   LCTL(KC_X),          BASE_RM1, BASE_RM2)   // Emacs C-x (C + A)
 
 // bottom row
 
