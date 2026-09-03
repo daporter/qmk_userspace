@@ -6,10 +6,10 @@
 COMB(combo_Q,    KC_Q,                BASE_LT2, BASE_LT1)
 
 // top-middle vertical combos
-COMB(combo_ESC,  KC_ESCAPE,           BASE_LT4, BASE_LM4)
-COMB(combo_BSWD, LCTL(KC_BACKSPACE),  BASE_LT3, BASE_LM3)
-COMB(combo_BSPC, KC_BACKSPACE,        BASE_LT2, BASE_LM2)
-COMB(combo_DEL,  KC_DELETE,           BASE_LT1, BASE_LM1)
+COMB(combo_ESC,  KC_ESCAPE,           BASE_LT3, BASE_LM3)
+COMB(combo_BSWD, LCTL(KC_BACKSPACE),  BASE_LT2, BASE_LM2)
+COMB(combo_BSPC, KC_BACKSPACE,        BASE_LT1, BASE_LM1)
+COMB(combo_DEL,  KC_DELETE,           BASE_LT0, BASE_LM0)
 COMB(combo_STAB, LSFT(KC_TAB),        BASE_RT1, BASE_RM1)
 COMB(combo_ENT,  KC_ENTER,            BASE_RT2, BASE_RM2)
 COMB(combo_TAB,  KC_TAB,              BASE_RT3, BASE_RM3)

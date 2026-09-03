@@ -84,10 +84,10 @@ combos:
   # top row
   - { p: [2, 3], k: q, l: [BASE] }
   # top-middle vertical combos
-  - { p: [0, 10], k: Esc, l: [BASE] }
-  - { p: [1, 11], k: "⌃⌫", l: [BASE] }
-  - { p: [2, 12], k: "⌫", l: [BASE] }
-  - { p: [3, 13], k: Del, l: [BASE] }
+  - { p: [1, 11], k: Esc, l: [BASE] }
+  - { p: [2, 12], k: "⌃⌫", l: [BASE] }
+  - { p: [3, 13], k: "⌫", l: [BASE] }
+  - { p: [4, 14], k: Del, l: [BASE] }
   - { p: [6, 16], k: STab, l: [BASE] }
   - { p: [7, 17], k: ⏎, l: [BASE] }
   - { p: [8, 18], k: Tab, l: [BASE] }
