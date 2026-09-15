@@ -162,7 +162,7 @@
 // this layer's key (RH2).
 // ╭─────────────────────────╮   ╭─────────────────────╮
 // │     Menu  Caps   CW     │   │                     │
-// │                         │   │      PrtSc          │
+// │                         │   │      PrtSc  NoCap   │
 // │                         │   │  BOOT               │
 // ╰──────────────╮          │   │         ╭───────────╯
 //                ╰──────────╯   ╰─────────╯
@@ -185,7 +185,7 @@
 #define CFG_LM0 _______
 #define CFG_RM0 _______
 #define CFG_RM1 KC_PSCR
-#define CFG_RM2 _______
+#define CFG_RM2 CK_NO_CAP
 #define CFG_RM3 _______
 #define CFG_RM4 _______
 

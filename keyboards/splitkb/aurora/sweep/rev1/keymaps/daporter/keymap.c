@@ -19,6 +19,7 @@
 
 enum custom_keys {
     CK_QU = QK_USER,
+    CK_NO_CAP, // cancel a primed Sentence Case capitalization; see process_record_user
 };
 
 // clang-format off
@@ -252,6 +253,11 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_tap_hold(keycode, record)) return false;
+
+    if (keycode == CK_NO_CAP && record->event.pressed) {
+        sentence_case_clear(); // un-prime Sentence Case; next letter typed stays lowercase
+        return false;
+    }
 
     if (keycode == CK_QU && record->event.pressed) {
         if (get_mods() & MOD_MASK_CAG) {
