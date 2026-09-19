@@ -113,6 +113,20 @@ void matrix_scan_user(void) {
     tap_hold_matrix_scan();
 }
 
+// Allow same-hand chords on the thumb layer-tap keys: holding one and
+// tapping a same-hand key (e.g. Space + a right-hand symbol for L_SYM) is
+// the common case, not an accidental roll. BASE_LH2/BASE_RH2 are tap dances,
+// not real mod-tap/layer-tap keycodes, so they never reach this callback.
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    switch (tap_hold_keycode) {
+        case BASE_LH1:
+        case BASE_RH1:
+            return true;
+        default:
+            return get_chordal_hold_default(tap_hold_record, other_record);
+    }
+}
+
 // Same as the QMK default, except KC_MINS is moved out of the shifted
 // group so it sends a literal `-` (e.g. FOO-BAR) instead of `_`.
 bool caps_word_press_user(uint16_t keycode) {

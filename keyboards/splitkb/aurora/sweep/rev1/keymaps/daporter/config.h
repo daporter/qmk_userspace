@@ -17,3 +17,7 @@
 
 // Unicode input via IBus.
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
+
+// Prevent fast same-hand rolls from misfiring as a held home-row mod; see
+// get_chordal_hold() in keymap.c for the thumb-key exemption.
+#define CHORDAL_HOLD
