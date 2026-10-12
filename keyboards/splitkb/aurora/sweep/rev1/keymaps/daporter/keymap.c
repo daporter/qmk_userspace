@@ -354,8 +354,13 @@ void osft_td_finished(tap_dance_state_t *state, void *user_data) {
                 tap_code(KC_CAPS_LOCK);
             } else if (!osft_press_caps_word_was_on) {
                 set_oneshot_mods(MOD_BIT(KC_LSFT));
-                osft_tap_pending = true;
-                osft_tap_time    = timer_read();
+                // Only arm the Caps Word sequence if the tap timed out: an
+                // interrupting key's press was already processed (and would
+                // have cancelled it), but this callback runs after.
+                if (!state->interrupted) {
+                    osft_tap_pending = true;
+                    osft_tap_time    = timer_read();
+                }
             }
             break;
         case OSFT_TD_SINGLE_HOLD:
