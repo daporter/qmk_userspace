@@ -265,6 +265,15 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
     return keycode != BASE_ALPHA2_TD;
 }
 
+// Cancel the BASE_OSFT_TD-then-RH1 Caps Word sequence on any other key. This
+// must run here, not in process_record_user: custom_shift_keys consumes the
+// shifted press (e.g. shift + RB2 = "-") before process_record_user is
+// reached, which left the sequence armed and turned the next Space into Caps Word.
+bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed && keycode != BASE_SPACE) osft_tap_pending = false;
+    return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_tap_hold(keycode, record)) return false;
 
