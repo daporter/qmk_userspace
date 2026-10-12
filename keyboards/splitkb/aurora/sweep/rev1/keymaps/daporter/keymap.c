@@ -149,6 +149,9 @@ bool caps_word_press_user(uint16_t keycode) {
     }
 }
 
+// Length of the current run of unshifted '.' presses, for ellipses.
+static uint8_t dot_run = 0;
+
 // Same as the QMK default, except it classifies keys by what they actually
 // send on this keymap. sentence_case_press_user() runs on the *raw* keymap
 // keycode, before custom_shift_keys remaps it (community modules run before
@@ -171,6 +174,9 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
             return '\0';
     }
 
+    const uint8_t prev_dot_run = dot_run;
+    dot_run                    = 0;
+
     if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
         const bool shifted = mods & MOD_MASK_SHIFT;
         switch (keycode) {
@@ -179,7 +185,14 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
                 return 'a'; // Letter key.
 
             case KC_DOT: // unshifted '.'; shifted ':' (see custom_shift_keys)
-                return !shifted ? '.' : '#';
+                if (shifted) return '#';
+                // "foo..." must not end the sentence but "foo...." must (an
+                // ellipsis followed by a period). The module only reaches
+                // ENDING from a word, so report dots 2 and 3 as letters
+                // (after resetting from ENDING) and the 4th as a real '.'.
+                dot_run = prev_dot_run + 1;
+                if (dot_run == 2) sentence_case_clear();
+                return (dot_run == 2 || dot_run == 3) ? 'a' : '.';
             case KC_DOUBLE_QUOTE: // unshifted '"'; shifted '!' via custom_shift_keys
             case KC_QUOTE:        // unshifted '\''; shifted '?' via custom_shift_keys
                 return shifted ? '.' : '\'';
