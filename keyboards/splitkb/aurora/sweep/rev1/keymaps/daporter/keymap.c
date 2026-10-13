@@ -113,6 +113,17 @@ void matrix_scan_user(void) {
     tap_hold_matrix_scan();
 }
 
+// Longer term for the T Shift mod-tap so a lingering T in a "th" roll isn't
+// promoted to Shift before H lands.
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case BASE_LM1:
+            return 260;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 // Allow same-hand chords on the thumb layer-tap keys: holding one and
 // tapping a same-hand key (e.g. Space + a right-hand symbol for L_SYM) is
 // the common case, not an accidental roll. BASE_LH2/BASE_RH2 are tap dances,

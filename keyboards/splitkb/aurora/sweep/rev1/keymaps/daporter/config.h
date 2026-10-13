@@ -21,3 +21,6 @@
 // Prevent fast same-hand rolls from misfiring as a held home-row mod; see
 // get_chordal_hold() in keymap.c for the thumb-key exemption.
 #define CHORDAL_HOLD
+
+// Per-key tapping terms; see get_tapping_term() in keymap.c.
+#define TAPPING_TERM_PER_KEY
